@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就職・進学実績 - 荒木研究室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
+                    },
+                    colors: {
+                        primary: '#1a5c99',
+                        primaryDark: '#14487a',
+                        surface: '#f4f6f9',
+                        borderSubtle: '#e2e8f0',
+                        textMain: '#2d3748',
+                        textMuted: '#718096',
+                    },
+                    boxShadow: {
+                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+<!-- ヘッダー -->
+<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
+    <div class="flex items-center h-20 px-8 xl:px-14">
+        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
+            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
+            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
+            <div class="hidden sm:block">
+                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
+                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
+            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
+            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
+            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
+            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
+            <a href="career.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">就職・進学実績</a>
+        </nav>
+        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
+            <i class="ph ph-list text-2xl"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
+        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
+        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
+        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
+        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
+        <a href="career.html" class="py-2 text-sm font-medium text-primary">就職・進学実績</a>
+    </div>
+</header>
+
+<!-- メインレイアウト -->
+<div class="pt-20 w-full">
+
+    <!-- メインコンテンツ -->
+    <main class="bg-surface">
+
+        <!-- ページヘッダーバナー -->
+        <div class="relative bg-primary overflow-hidden">
+            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
+            <div class="relative z-10 px-8 py-14 text-center">
+                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Career</h2>
+                <p class="text-sm text-white/70 font-light mb-3">就職・進学実績</p>
+                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">荒木研究室の卒業生は、素材メーカーや製造業をはじめ、様々な分野の第一線で活躍しています。</p>
+            </div>
+        </div>
+
+        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[900px] mx-auto relative">
+
+            <!-- 就職先 -->
+            <div class="mb-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">近年の主な就職先</h3>
+                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-borderSubtle shadow-soft p-6 mb-10">
+                <h3 class="industry-title title-metal">鉄鋼・非鉄金属</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-metal">神戸製鋼所</span>
+                    <span class="company-tag tag-metal">住友電気工業</span>
+                    <span class="company-tag tag-metal">JFEスチール</span>
+                    <span class="company-tag tag-metal">三井金属</span>
+                </div>
+
+                <h3 class="industry-title title-machine">輸送用機器・機械</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-machine">小松製作所</span>
+                    <span class="company-tag tag-machine">豊田自動織機</span>
+                    <span class="company-tag tag-machine">日産自動車</span>
+                </div>
+
+                <h3 class="industry-title title-electronics">電機・電子部品</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-electronics">村田製作所</span>
+                </div>
+
+                <h3 class="industry-title title-food">その他メーカー</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-food">キリンホールディングス株式会社</span>
+                    <span class="company-tag tag-food">YKK</span>
+                </div>
+
+                <h3 class="industry-title title-infra">インフラ・エネルギー</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-infra">関西電力</span>
+                    <span class="company-tag tag-infra">大阪ガス</span>
+                </div>
+
+                <h3 class="industry-title title-it">IT・通信</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-it">NTTデータグループ</span>
+                </div>
+
+                <h3 class="industry-title title-consulting">コンサルティング</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-consulting">日立コンサルティング</span>
+                    <span class="company-tag tag-consulting">PwCコンサルティング合同会社</span>
+                    <span class="company-tag tag-consulting">ベイカレント・コンサルティング</span>
+                </div>
+
+                <h3 class="industry-title title-finance">金融・保険</h3>
+                <div class="company-container">
+                    <span class="company-tag tag-finance">東京海上日動火災保険</span>
+                </div>
+            </div>
+
+            <!-- 進学実績 -->
+            <div class="mb-8 mt-14 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">近年の進学実績</h3>
+                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
+                <ul class="divide-y divide-gray-100">
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[14px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        大阪大学大学院 工学研究科 マテリアル生産科学専攻
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- フッター -->
+        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
+            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[900px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="ph ph-atom text-white/70 text-lg"></i>
+                        <span class="font-bold text-base">荒木研究室</span>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed font-light">
+                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+                    </p>
+                </div>
+                <div class="flex flex-col gap-1 text-sm text-white/60">
+                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
+                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
+                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
+                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
+                </div>
+            </div>
+            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
+                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </main>
+</div>
+
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

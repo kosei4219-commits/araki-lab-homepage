@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荒木研究室</title>
+    <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, Araki Laboratory">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
+                    },
+                    colors: {
+                        primary: '#1a5c99',
+                        primaryDark: '#14487a',
+                        surface: '#f4f6f9',
+                        borderSubtle: '#e2e8f0',
+                        textMain: '#2d3748',
+                        textMuted: '#718096',
+                    },
+                    boxShadow: {
+                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+<!-- ヘッダー -->
+<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
+    <div class="flex items-center h-20 px-8 xl:px-14">
+        <!-- ロゴ・研究室名 -->
+        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
+            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
+            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
+            <div class="hidden sm:block">
+                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
+                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
+            </div>
+        </a>
+        <!-- 水平ナビゲーション -->
+        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
+            <a href="index.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">ホーム</a>
+            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
+            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
+            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
+            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
+        </nav>
+        <!-- モバイル用ハンバーガー -->
+        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
+            <i class="ph ph-list text-2xl"></i>
+        </button>
+    </div>
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
+        <a href="index.html" class="py-2 text-sm font-medium text-primary">ホーム</a>
+        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
+        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
+        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
+        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    </div>
+</header>
+
+<!-- ヒーローセクション -->
+<section class="flex flex-col md:flex-row w-full mt-20 md:h-[calc(100vh-5rem)]">
+    <!-- 左：テキストエリア -->
+    <div class="w-full md:w-1/2 order-2 md:order-1 flex flex-col justify-center px-8 md:px-14 xl:px-24 bg-white relative py-10 md:py-0">
+        <p class="text-xs text-textMuted tracking-widest uppercase mb-5 md:mb-8 font-light">
+            Osaka University — Graduate School of Engineering
+        </p>
+        <h1 class="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-2">
+            荒木研究室
+        </h1>
+        <p class="text-sm font-sans italic text-textMuted mb-5 md:mb-8">Araki Laboratory</p>
+        <div class="w-12 h-0.5 bg-primary mb-5 md:mb-8"></div>
+        <p class="text-lg md:text-xl xl:text-2xl text-gray-700 font-light leading-relaxed mb-4">
+            材料の謎を、原子の目で解き明かす。
+        </p>
+        <p class="text-lg md:text-xl xl:text-2xl text-gray-700 font-light leading-relaxed mb-8 md:mb-12">
+            陽電子と計算で切り拓く材料科学の最前線。
+        </p>
+        <div class="flex gap-4">
+            <a href="research.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-primaryDark transition-colors">
+                研究内容を見る <i class="ph ph-arrow-right"></i>
+            </a>
+            <a href="members.html" class="inline-flex items-center gap-2 px-6 py-3 border border-borderSubtle text-gray-700 text-sm font-medium rounded hover:border-primary hover:text-primary transition-colors">
+                メンバー
+            </a>
+        </div>
+        <p class="hidden md:block absolute bottom-8 left-14 xl:left-24 text-[10px] text-gray-300 font-light leading-relaxed">
+            Unravel the mysteries of materials at the atomic scale.<br>
+            Advancing materials science through positrons and computation.
+        </p>
+    </div>
+    <!-- 右：イメージエリア -->
+    <div class="w-full md:w-1/2 order-1 md:order-2 relative overflow-hidden bg-gray-900 h-56 sm:h-72 md:h-auto">
+        <img src="images/image.png" alt="研究風景" class="absolute inset-0 w-full h-full object-cover object-center">
+
+        <div class="absolute inset-0 flex items-end p-10">
+            <div class="text-white/60 text-xs font-light leading-relaxed hidden md:block">
+                大阪大学大学院工学研究科<br>
+                マテリアル生産科学専攻　量子機能材料設計学領域
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us セクション -->
+<section class="py-24 bg-surface border-t border-borderSubtle">
+    <div class="max-w-[720px] mx-auto px-8 text-center">
+        <h2 class="text-5xl font-bold text-gray-900 tracking-tight mb-3">About</h2>
+        <p class="text-sm text-textMuted mb-10">荒木研究室について</p>
+        <p class="text-xl font-bold text-gray-900 leading-relaxed mb-6">
+            材料の謎を、原子の目で解き明かす。
+        </p>
+        <p class="text-[0.97em] text-gray-600 leading-[2] mb-10">
+            電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。自動車用アルミニウム合金や高強度鋼などの金属材料や、高エントロピー合金・金属３Ｄプリンターで作製した合金の特性発現機構を、陽電子を用いた実験および第一原理計算により解明し、新しい材料を設計するための研究を行っています。
+        </p>
+        <a href="research.html" class="inline-block px-10 py-3 bg-gray-900 text-white text-sm font-medium tracking-wider hover:bg-gray-700 transition-colors">
+            View More
+        </a>
+    </div>
+</section>
+
+<!-- Research セクション -->
+<section class="py-24 bg-white border-t border-borderSubtle">
+    <div class="max-w-[960px] mx-auto px-8">
+        <div class="text-center mb-14">
+            <h2 class="text-5xl font-bold text-gray-900 tracking-tight mb-3">Activities</h2>
+            <p class="text-sm text-textMuted">研究室の活動</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <a href="research.html" class="group block">
+                <div class="overflow-hidden mb-5">
+                    <img src="images/photomultiplier.jpeg" alt="陽電子消滅法" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">陽電子消滅法による格子欠陥解析</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">陽電子消滅法の基礎研究の観点から、ディープラーニングと、時代を先駆ける研究に挑んでいます。特に、世界のモデルのドット研究、大規模言語モデル、脳・AIに関する研究を積極的に進めています。</p>
+            </a>
+            <a href="research.html" class="group block">
+                <div class="overflow-hidden mb-5">
+                    <img src="images/computer.jpeg" alt="第一原理計算" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">第一原理計算による材料設計</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">基礎研究の成果を発信のある学び・質の高い教育として多くの人に提供し、人・知識ひいては社会の変化に関わることを目的に講義の活動も積極的に進めています。</p>
+            </a>
+            <a href="research.html" class="group block">
+                <div class="overflow-hidden mb-5">
+                    <img src="images/research_scene.jpeg" alt="先進合金材料" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">高エントロピー合金・先進金属材料の研究</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">多種類の元素を均一に混合した高エントロピー合金の優れた特性発現機構を解明し、新しい材料設計の指針を提供します。</p>
+            </a>
+            <a href="research.html" class="group block">
+                <div class="overflow-hidden mb-5">
+                    <img src="images/electric_furnace.jpeg" alt="金属材料プロセス" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">金属3Dプリンター造形合金の欠陥評価</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">レーザー粉末床溶融結合法により造形された合金における格子欠陥を同定し、材料特性への影響を体系的に評価します。</p>
+            </a>
+        </div>
+        <div class="mt-12 text-center">
+            <a href="research.html" class="inline-block px-10 py-3 border border-gray-900 text-gray-900 text-sm font-medium tracking-wider hover:bg-gray-900 hover:text-white transition-colors">
+                View More
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- お知らせ セクション -->
+<section class="px-8 md:px-14 xl:px-24 py-20 bg-white border-t border-borderSubtle">
+    <div class="max-w-[960px] mx-auto">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="w-1 h-10 bg-primary rounded-full"></div>
+            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">お知らせ</h2>
+            <span class="text-base text-textMuted font-light">News & Topics</span>
+        </div>
+        <div class="bg-surface rounded-lg border border-borderSubtle overflow-hidden">
+            <a href="#" class="news-row flex flex-col sm:flex-row sm:items-center gap-3 p-4 hover:bg-white border-b border-gray-100 last:border-0 relative group">
+                <div class="flex items-center gap-3 sm:w-[200px] shrink-0">
+                    <time class="font-sans text-sm text-gray-500 w-20 shrink-0">2026年4月</time>
+                    <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 bg-blue-50 text-primary border border-blue-100 rounded-sm whitespace-nowrap">お知らせ</span>
+                </div>
+                <p class="flex-1 text-[15px] text-gray-700 group-hover:text-primary transition-colors leading-relaxed">
+                    荒木研究室のホームページをリニューアルしました。
+                </p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="bg-primary text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
+    <div class="relative z-10 px-8 md:px-14 xl:px-24 py-10 max-w-[960px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+        <div>
+            <div class="flex items-center gap-2 mb-2">
+                <i class="ph ph-atom text-white/70 text-lg"></i>
+                <span class="font-bold text-base">荒木研究室</span>
+            </div>
+            <p class="text-sm text-white/75 leading-relaxed font-light">
+                大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+            </p>
+        </div>
+        <div class="flex flex-col gap-1 text-sm text-white/60">
+            <a href="research.html" class="hover:text-white transition-colors">研究内容・テーマ</a>
+            <a href="gallery.html" class="hover:text-white transition-colors">研究風景</a>
+            <a href="members.html" class="hover:text-white transition-colors">メンバー</a>
+            <a href="career.html" class="hover:text-white transition-colors">就職・進学実績</a>
+        </div>
+        <div class="flex flex-col gap-1 text-sm text-white/60">
+            <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
+            <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
+            <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
+            <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
+        </div>
+    </div>
+    <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
+        <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>

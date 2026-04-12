@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究内容・テーマ - 荒木研究室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
+                    },
+                    colors: {
+                        primary: '#1a5c99',
+                        primaryDark: '#14487a',
+                        surface: '#f4f6f9',
+                        borderSubtle: '#e2e8f0',
+                        textMain: '#2d3748',
+                        textMuted: '#718096',
+                    },
+                    boxShadow: {
+                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+<!-- ヘッダー -->
+<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
+    <div class="flex items-center h-20 px-8 xl:px-14">
+        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
+            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
+            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
+            <div class="hidden sm:block">
+                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
+                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
+            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
+            <a href="research.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">研究内容・テーマ</a>
+            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
+            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
+            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
+        </nav>
+        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
+            <i class="ph ph-list text-2xl"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
+        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
+        <a href="research.html" class="py-2 text-sm font-medium text-primary">研究内容・テーマ</a>
+        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
+        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
+        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    </div>
+</header>
+
+<!-- メインレイアウト -->
+<div class="pt-20 w-full">
+
+    <!-- メインコンテンツ -->
+    <main class="bg-surface">
+
+        <!-- ページヘッダーバナー -->
+        <div class="relative bg-primary overflow-hidden">
+            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
+            <div class="relative z-10 px-8 py-14 text-center">
+                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Research</h2>
+                <p class="text-sm text-white/70 font-light mb-3">研究内容・テーマ</p>
+                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">当研究室では、陽電子消滅法を主軸とした先端的な材料解析技術により、金属・半導体材料の微細構造を原子レベルで解明しています。</p>
+            </div>
+        </div>
+
+        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[1200px] mx-auto relative">
+
+            <!-- 研究概要 -->
+            <div class="mb-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">研究概要</h3>
+                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+            </div>
+            <div class="mb-10 flex flex-col md:flex-row gap-6 items-stretch">
+                <div class="p-5 bg-white rounded-lg border-l-4 border-primary shadow-soft text-[0.96em] text-gray-600 leading-[1.95] md:w-[57%]">
+                    電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。量子機能材料設計分野では自動車用アルミニウム合金や高強度鋼などの金属材料や、近年注目されている多種類の元素を均一に混合した高エントロピー合金や金属３Ｄプリンターで作製した合金などにおいて優れた特性が発現する機構を、主として陽電子を用いた実験および第一原理計算を用いたコンピュータ・シミュレーションにより解明し、新しい材料を設計するための研究を行っています。
+                </div>
+                <div class="shrink-0 md:w-[43%] flex">
+                    <img src="images/araki_lab_diagram.png" alt="研究概要図" class="w-full object-contain rounded-lg shadow-soft border border-borderSubtle bg-white">
+                </div>
+            </div>
+
+            <!-- 研究テーマ -->
+            <div class="mb-6 mt-14 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">研究テーマ</h3>
+                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+            </div>
+            <p class="mb-6 text-sm text-textMuted">当研究室における近年の主な研究テーマをご紹介します。</p>
+
+            <!-- 修士論文テーマ -->
+            <div class="mb-6 bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
+                <div class="px-5 py-3 bg-blue-50/70 border-b border-borderSubtle">
+                    <h4 class="text-sm font-bold text-primary">2025年度 修士論文テーマ</h4>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        cBNにおける点欠陥および複合欠陥が弾性特性に及ぼす影響の第一原理計算
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        Al-Mg-Cu合金における空孔-溶質原子クラスタ形成過程のモンテカルロ計算による解析
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        レーザ粉末床溶融結合法により造形されたβチタン合金における格子欠陥の同定
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        Al-Mg-Si合金の溶質原子クラスタ形成に及ぼす予備時効温度の影響
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        銅固溶体合金における積層欠陥エネルギーの解析
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 卒業論文テーマ -->
+            <div class="mb-6 bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
+                <div class="px-5 py-3 bg-blue-50/70 border-b border-borderSubtle">
+                    <h4 class="text-sm font-bold text-primary">2025年度 卒業論文テーマ</h4>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        レーザー粉末床溶融結合法により造形されたTi-V合金における格子欠陥の同定
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        冷間圧延を施したマルテンサイト鋼中の格子欠陥に及ぼす水素の影響
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        cBNにおける複合欠陥の陽電子寿命の理論計算
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        Al-Mg-Si合金の溶質クラスタ形成に及ぼすMg/Si組成比と時効温度の影響
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        陽電子寿命法によるAl-Zn-Mg合金の炉冷過程中における溶質クラスタ形成挙動の解析
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        第一原理計算によるCu-Ni-Si合金の弾性特性評価
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        Al-Mg-Si合金の溶質原子クラスタに及ぼすCuの影響
+                    </li>
+                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
+                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
+                        βTi-V合金の空孔形成エネルギーの第一原理計算
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- フッター -->
+        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
+            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="ph ph-atom text-white/70 text-lg"></i>
+                        <span class="font-bold text-base">荒木研究室</span>
+                    </div>
+                    <p class="text-sm text-white/75 leading-relaxed font-light">
+                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+                    </p>
+                </div>
+                <div class="flex flex-col gap-1 text-sm text-white/60">
+                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
+                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
+                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
+                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
+                </div>
+            </div>
+            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
+                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </main>
+</div>
+
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
