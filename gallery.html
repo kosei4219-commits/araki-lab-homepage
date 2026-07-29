@@ -4,209 +4,631 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>研究風景 - 荒木研究室</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, 研究風景, 研究設備, Araki Laboratory">
+    <meta name="description" content="荒木研究室の研究風景・設備。陽電子寿命測定システムや熱処理炉、計算機など、研究活動の様子を写真でご紹介します。">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
-                    },
-                    colors: {
-                        primary: '#1a5c99',
-                        primaryDark: '#14487a',
-                        surface: '#f4f6f9',
-                        borderSubtle: '#e2e8f0',
-                        textMain: '#2d3748',
-                        textMuted: '#718096',
-                    },
-                    boxShadow: {
-                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           荒木研究室 研究風景（デザインコンセプト版）
+           このページ専用のスタイル。style.css は使用しない。
+           ===================================================== */
+        :root {
+            --navy: #16324f;
+            --ink: #1d3048;
+            --blue: #1a5c99;
+            --blue-2: #2a6bb0;
+            --blue-deep: #14487a;
+            --sky: #7fa9d6;
+            --mist: #d9e6f4;
+            --pale: #eef4fb;
+            --paper: #fbfdff;
+            --text: #33475e;
+            --muted: #64788d;
+            --faint: #93a7bd;
+            --line: #dce7f2;
+            --mincho: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --serif: 'Noto Serif JP', 'Shippori Mincho', serif;
+            --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
         }
-    </script>
-</head>
-<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--sans); }
+        ::selection { background: var(--blue); color: #fff; }
+        :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; border-radius: 2px; }
 
-<!-- ライトボックス -->
-<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="" alt="">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
+        .container { width: min(1160px, 100% - 48px); margin-inline: auto; }
+
+        /* ==================== ヘッダー ==================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow .3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 6px 24px -8px rgba(22, 50, 79, .14); }
+        .header-top { display: flex; align-items: center; gap: 18px; padding: 14px 0 10px; }
+        .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+        .brand img { height: 40px; width: auto; }
+        .brand-divider { width: 1px; height: 34px; background: var(--line); }
+        .brand-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .14em; color: var(--ink);
+            white-space: nowrap;
+        }
+        .brand-aff { font-size: 10px; line-height: 1.55; color: var(--faint); letter-spacing: .04em; white-space: nowrap; }
+        .menu-btn {
+            display: none; margin-left: auto;
+            background: none; border: none; cursor: pointer;
+            color: var(--navy); font-size: 26px; padding: 6px;
+        }
+        .header-nav { display: flex; justify-content: center; gap: 8px; padding-bottom: 2px; }
+        .header-nav a {
+            position: relative; display: block;
+            padding: 8px 18px 14px;
+            font-size: 13.5px; letter-spacing: .06em; color: #46596f;
+            transition: color .25s ease;
+        }
+        .header-nav a::after {
+            content: ''; position: absolute; left: 50%; bottom: 8px;
+            width: 0; height: 2px; background: var(--blue);
+            transform: translateX(-50%); transition: width .3s ease;
+        }
+        .header-nav a:hover { color: var(--blue); }
+        .header-nav a:hover::after { width: 28px; }
+        .header-nav a.active { color: var(--navy); font-weight: 600; }
+        .header-nav a.active::after { width: 28px; }
+        .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--line); background: #fff; padding: 10px 24px 16px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { padding: 12px 4px; font-size: 14px; color: #46596f; border-bottom: 1px solid #eef3f9; }
+        .mobile-menu a.active { color: var(--blue); font-weight: 600; }
+
+        /* ==================== セクション共通 ==================== */
+        .section-label {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 21px; letter-spacing: .06em; color: var(--blue-2);
+            margin-bottom: 10px;
+        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ==================== ページ冒頭（ヒーロー） ==================== */
+        .page-hero {
+            position: relative; overflow: hidden;
+            background: linear-gradient(108deg, #f7fafd 0%, #edf4fb 55%, #e2edf8 100%);
+            border-bottom: 1px solid var(--line);
+        }
+        .page-hero-img {
+            position: absolute; top: 0; right: 0; bottom: 0;
+            width: 62%; object-fit: cover; object-position: center 40%;
+            height: 100%;
+        }
+        .page-hero-veil {
+            position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(94deg,
+                rgba(247, 250, 253, 1) 0%,
+                rgba(247, 250, 253, .97) 38%,
+                rgba(247, 250, 253, .6) 55%,
+                rgba(247, 250, 253, .08) 78%,
+                rgba(247, 250, 253, .3) 100%);
+        }
+        .page-hero-deco { position: absolute; inset: 0; pointer-events: none; opacity: .8; }
+        .page-hero-inner { position: relative; z-index: 1; padding: 74px 0 78px; max-width: 560px; }
+        .page-hero h1 {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(30px, 3.8vw, 44px);
+            letter-spacing: .14em; color: var(--ink);
+            margin-bottom: 24px;
+        }
+        .page-hero-lead { font-size: 14.5px; line-height: 2.2; letter-spacing: .04em; color: #4a5b70; }
+
+        /* ==================== ギャラリー ==================== */
+        .gallery { background: linear-gradient(180deg, #fbfdff 0%, #f0f6fc 100%); padding: 64px 0 104px; }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+        .chip {
+            border: 1px solid #b9cfe4; background: #fff; color: #46596f;
+            font-size: 12px; font-weight: 500; letter-spacing: .1em;
+            padding: 8px 20px; border-radius: 999px; cursor: pointer;
+            transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .3s ease;
+        }
+        .chip:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 4px 14px -6px rgba(26, 92, 153, .4); }
+        .chip.active {
+            background: var(--navy); border-color: var(--navy); color: #fff;
+            box-shadow: 0 6px 18px -8px rgba(22, 50, 79, .55);
+        }
+        .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .g-card {
+            display: flex; flex-direction: column; text-align: left;
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            overflow: hidden; cursor: zoom-in; padding: 0;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .g-card:hover {
+            transform: translateY(-6px);
+            border-color: #b7d0e9;
+            box-shadow: 0 18px 44px -14px rgba(42, 107, 176, .38);
+        }
+        .g-card.is-hidden { display: none; }
+        .g-card.pop { animation: card-in .5s cubic-bezier(.22, .61, .36, 1) both; }
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(16px) scale(.97); }
+            to { opacity: 1; transform: none; }
+        }
+        .g-media { height: 168px; overflow: hidden; }
+        .g-media img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .6s ease, filter .6s ease;
+        }
+        .g-card:hover .g-media img { transform: scale(1.07); filter: brightness(1.06); }
+        .g-bar {
+            display: flex; align-items: center; gap: 10px;
+            padding: 13px 14px;
+        }
+        .g-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 13.5px; letter-spacing: .05em; line-height: 1.6;
+            color: var(--ink);
+            transition: color .3s ease;
+        }
+        .g-card:hover .g-name { color: var(--blue); }
+        .g-zoom {
+            margin-left: auto; flex-shrink: 0;
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid #c6d8ea; color: var(--blue-2); font-size: 14px;
+            transition: background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+        }
+        .g-card:hover .g-zoom {
+            background: var(--blue); border-color: var(--blue); color: #fff;
+            transform: scale(1.08);
+        }
+
+        /* ==================== 拡大表示（ライトボックス） ==================== */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px;
+            background: rgba(13, 28, 46, .82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0; visibility: hidden;
+            transition: opacity .35s ease, visibility .35s;
+            cursor: zoom-out;
+        }
+        .lightbox.open { opacity: 1; visibility: visible; }
+        .lightbox-inner {
+            max-width: min(880px, 94vw); max-height: 90vh;
+            display: flex; flex-direction: column;
+            background: #fff; border-radius: 14px; overflow: hidden;
+            box-shadow: 0 40px 120px -20px rgba(0, 0, 0, .6);
+            cursor: default;
+            transform: scale(.95) translateY(12px);
+            transition: transform .35s cubic-bezier(.22, .61, .36, 1);
+        }
+        .lightbox.open .lightbox-inner { transform: none; }
+        .lightbox-img-wrap { background: #0d1c2e; display: flex; align-items: center; justify-content: center; min-height: 0; }
+        .lightbox-img-wrap img { max-width: 100%; max-height: min(62vh, 560px); object-fit: contain; }
+        .lightbox-caption { padding: 18px 22px 20px; overflow-y: auto; }
+        .lightbox-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 16px; letter-spacing: .08em; color: var(--ink);
+            margin-bottom: 8px;
+            padding-left: 12px; border-left: 3px solid var(--blue);
+        }
+        .lightbox-desc { font-size: 12.5px; line-height: 2; letter-spacing: .02em; color: var(--muted); }
+        .lightbox-close {
+            position: absolute; top: 16px; right: 20px;
+            background: rgba(255, 255, 255, .12); border: none; cursor: pointer;
+            width: 40px; height: 40px; border-radius: 50%;
+            color: #fff; font-size: 20px;
+            display: flex; align-items: center; justify-content: center;
+            transition: background .3s ease, transform .3s ease;
+        }
+        .lightbox-close:hover { background: rgba(255, 255, 255, .28); transform: rotate(90deg); }
+
+        /* ==================== フッター ==================== */
+        .site-footer { background: linear-gradient(180deg, #edf3fa 0%, #e2ecf7 100%); border-top: 1px solid #d5e2f0; }
+        .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(32px, 5vw, 72px); padding: 60px 0 48px; }
+        .footer-brand-row { display: flex; align-items: flex-start; gap: 22px; }
+        .footer-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .16em; color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .footer-aff { font-size: 12.5px; line-height: 2.05; letter-spacing: .04em; color: #5d7288; }
+        .footer-molecule { flex-shrink: 0; margin-top: 4px; animation: float-soft 8s ease-in-out infinite; }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @media (prefers-reduced-motion: reduce) { .footer-molecule { animation: none; } }
+        .footer-label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #33475e; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; letter-spacing: .04em; color: #4a6785;
+            transition: color .25s ease;
+        }
+        .footer-links a i { font-size: 11px; color: var(--sky); transition: transform .25s ease; }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-links a:hover i { transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(22, 50, 79, .1); padding: 18px 0; text-align: center; }
+        .footer-bottom p { font-size: 11px; letter-spacing: .06em; color: #8aa0b8; }
+
+        /* ==================== レスポンシブ ==================== */
+        @media (max-width: 1024px) {
+            .brand-aff { display: none; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .g-media { height: 190px; }
+        }
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .menu-btn { display: block; }
+            .header-top { padding: 12px 0; }
+            .page-hero-img { width: 100%; opacity: .35; }
+            .page-hero-veil {
+                background: linear-gradient(180deg,
+                    rgba(247, 250, 253, .95) 0%,
+                    rgba(247, 250, 253, .85) 60%,
+                    rgba(247, 250, 253, .75) 100%);
+            }
+            .page-hero-inner { padding: 54px 0 58px; }
+            .gallery { padding: 48px 0 76px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; padding: 48px 0 40px; }
+        }
+        @media (max-width: 560px) {
+            .container { width: calc(100% - 40px); }
+            .photo-grid { grid-template-columns: 1fr; }
+            .g-media { height: 200px; }
+            .brand-name { font-size: 18px; }
+            .brand img { height: 34px; }
+            .lightbox { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
 
 <!-- ヘッダー -->
-<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
-    <div class="flex items-center h-20 px-8 xl:px-14">
-        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
-            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
-            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
-            <div class="hidden sm:block">
-                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
-                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
-            </div>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+        <a href="index.html" class="brand" aria-label="荒木研究室 ホーム">
+            <img src="images/logo-osaka-university.webp" alt="大阪大学">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-name">荒木研究室</span>
+            <span class="brand-aff">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</span>
         </a>
-        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
-            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
-            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
-            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">研究風景</a>
-            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
-            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
-        </nav>
-        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
-            <i class="ph ph-list text-2xl"></i>
+        <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+            <i class="ph ph-list" aria-hidden="true"></i>
         </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
-        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
-        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
-        <a href="gallery.html" class="py-2 text-sm font-medium text-primary">研究風景</a>
-        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
-        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html" class="active">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html" class="active">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
     </div>
 </header>
 
-<!-- メインレイアウト -->
-<div class="pt-20 w-full">
+<!-- ページ冒頭 -->
+<section class="page-hero">
+    <img class="page-hero-img" src="images/lab-research-scene.webp" alt="研究室での研究風景">
+    <div class="page-hero-veil" aria-hidden="true"></div>
+    <svg class="page-hero-deco" viewBox="0 0 1160 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMid slice" aria-hidden="true">
+        <g stroke="#a9c6e8" stroke-width="1" opacity=".55">
+            <line x1="480" y1="60" x2="560" y2="118"/><line x1="560" y1="118" x2="512" y2="196"/>
+            <line x1="560" y1="118" x2="648" y2="88"/><line x1="512" y1="196" x2="592" y2="252"/>
+        </g>
+        <g fill="#7fa9d6" opacity=".6">
+            <circle cx="480" cy="60" r="3"/><circle cx="560" cy="118" r="4"/><circle cx="512" cy="196" r="3"/>
+            <circle cx="648" cy="88" r="3"/><circle cx="592" cy="252" r="2.5"/><circle cx="430" cy="150" r="2.5"/>
+        </g>
+    </svg>
+    <div class="container">
+        <div class="page-hero-inner reveal in">
+            <p class="section-label">Gallery</p>
+            <h1>研究風景・設備</h1>
+            <p class="page-hero-lead">
+                研究室での実験や学会発表など、研究活動の様子をご紹介します。写真をクリックすると拡大表示され、説明をご覧いただけます。
+            </p>
+        </div>
+    </div>
+</section>
 
-    <!-- メインコンテンツ -->
-    <main class="bg-surface">
+<!-- ギャラリー -->
+<section class="gallery">
+    <div class="container">
 
-        <!-- ページヘッダーバナー -->
-        <div class="relative bg-primary overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-8 py-14 text-center">
-                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Gallery</h2>
-                <p class="text-sm text-white/70 font-light mb-3">研究風景・設備</p>
-                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">研究室での実験や学会発表など、研究活動の様子をご紹介します。</p>
-            </div>
+        <!-- 絞り込み -->
+        <div class="filter-bar reveal in" role="group" aria-label="写真の絞り込み">
+            <button class="chip active" type="button" data-filter="all" aria-pressed="true">すべて</button>
+            <button class="chip" type="button" data-filter="実験・測定" aria-pressed="false">実験・測定</button>
+            <button class="chip" type="button" data-filter="設備・装置" aria-pressed="false">設備・装置</button>
+            <button class="chip" type="button" data-filter="解析・計算" aria-pressed="false">解析・計算</button>
+            <button class="chip" type="button" data-filter="研究風景" aria-pressed="false">研究風景</button>
+            <button class="chip" type="button" data-filter="イベント" aria-pressed="false">イベント</button>
         </div>
 
-        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[900px] mx-auto relative">
+        <!-- 写真カード -->
+        <div class="photo-grid">
+            <button class="g-card reveal" type="button" data-tags="実験・測定"
+                data-img="images/equipment-positron-lifetime-system.webp" data-title="陽電子寿命測定システム"
+                data-desc="検出器で捉えたγ線の信号をオシロスコープで解析し、陽電子の寿命を測定するシステムである。完全結晶・転位・空孔など、材料内部の状態によって陽電子の寿命が変化することを利用し、格子欠陥を高感度に検出する。">
+                <span class="g-media"><img src="images/equipment-positron-lifetime-system.webp" alt="陽電子寿命測定システム"></span>
+                <span class="g-bar">
+                    <span class="g-name">陽電子寿命測定システム</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-            <div class="mb-8 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">研究設備・風景</h3>
-                <div class="w-12 h-0.5 bg-primary mx-auto mb-4"></div>
-                <p class="text-sm text-textMuted">画像をクリックすると拡大表示されます。</p>
-            </div>
+            <button class="g-card reveal" style="--d:.06s" type="button" data-tags="設備・装置 実験・測定"
+                data-img="images/equipment-photomultiplier.webp" data-title="光電子増倍管"
+                data-desc="荒木研究室で注力している陽電子消滅法において、材料中の電子と陽電子が対消滅する際に放出されるγ（ガンマ）線を高感度に検出するための装置である。">
+                <span class="g-media"><img src="images/equipment-photomultiplier.webp" alt="光電子増倍管"></span>
+                <span class="g-bar">
+                    <span class="g-name">光電子増倍管</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-            <!-- フォトグリッド -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <button class="g-card reveal" style="--d:.12s" type="button" data-tags="設備・装置 実験・測定"
+                data-img="images/equipment-oscilloscope.webp" data-title="オシロスコープ"
+                data-desc="検出器から送られてくる電気信号の波形を高精度に観測・解析する機器である。陽電子寿命法などにおいて、極めて短い時間スケールの現象を正確に測定するために用いられる。">
+                <span class="g-media"><img src="images/equipment-oscilloscope.webp" alt="オシロスコープ"></span>
+                <span class="g-bar">
+                    <span class="g-name">オシロスコープ</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-                <!-- 光電子増倍管 -->
-                <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-250">
-                    <div class="overflow-hidden cursor-zoom-in" onclick="openLightbox('images/photomultiplier.jpeg', '光電子増倍管')">
-                        <img src="images/photomultiplier.jpeg" alt="光電子増倍管" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-primary mb-2 pl-3 border-l-2 border-primary">光電子増倍管</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">荒木研究室で注力している陽電子消滅法において、材料中の電子と陽電子が対消滅する際に放出されるγ（ガンマ）線を高感度に検出するための装置である。</p>
-                    </div>
-                </div>
+            <button class="g-card reveal" style="--d:.18s" type="button" data-tags="設備・装置"
+                data-img="images/equipment-furnace-superbahn.webp" data-title="スーパーバーン"
+                data-desc="金属や合金などの試料に対して熱処理を行うための高温炉である。研究テーマにあるような「炉冷」プロセスや「時効」処理を実施し、材料内部の溶質クラスタ形成や格子欠陥の状態を制御するために使用される。">
+                <span class="g-media"><img src="images/equipment-furnace-superbahn.webp" alt="スーパーバーン"></span>
+                <span class="g-bar">
+                    <span class="g-name">スーパーバーン</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-                <!-- オシロスコープ -->
-                <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-250">
-                    <div class="overflow-hidden cursor-zoom-in" onclick="openLightbox('images/oscilloscope.jpeg', 'オシロスコープ')">
-                        <img src="images/oscilloscope.jpeg" alt="オシロスコープ" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-primary mb-2 pl-3 border-l-2 border-primary">オシロスコープ</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">検出器から送られてくる電気信号の波形を高精度に観測・解析する機器である。陽電子寿命法などにおいて、極めて短い時間スケールの現象を正確に測定するために用いられる。</p>
-                    </div>
-                </div>
+            <button class="g-card reveal" type="button" data-tags="設備・装置"
+                data-img="images/equipment-electric-furnace.webp" data-title="電気炉"
+                data-desc="スーパーバーンと同様に、金属や合金などの試料に対して熱処理を行うための高温炉である。研究テーマにあるような「炉冷」プロセスや「時効」処理を実施し、材料内部の溶質クラスタ形成や格子欠陥の状態を制御するために使用される。">
+                <span class="g-media"><img src="images/equipment-electric-furnace.webp" alt="電気炉"></span>
+                <span class="g-bar">
+                    <span class="g-name">電気炉</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-                <!-- スーパーバーン -->
-                <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-250">
-                    <div class="overflow-hidden cursor-zoom-in" onclick="openLightbox('images/superbahn.jpeg', 'スーパーバーン')">
-                        <img src="images/superbahn.jpeg" alt="スーパーバーン" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-primary mb-2 pl-3 border-l-2 border-primary">スーパーバーン</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">金属や合金などの試料に対して熱処理を行うための高温炉である。研究テーマにあるような「炉冷」プロセスや「時効」処理を実施し、材料内部の溶質クラスタ形成や格子欠陥の状態を制御するために使用される。</p>
-                    </div>
-                </div>
+            <button class="g-card reveal" style="--d:.06s" type="button" data-tags="解析・計算"
+                data-img="images/equipment-compute-server.webp" data-title="計算機（第一原理計算）"
+                data-desc="実験だけでなく、理論的なアプローチから材料特性を解明するための計算サーバー群である。第一原理計算やモンテカルロ計算、陽電子寿命の理論計算などを実行し、原子・電子レベルから格子欠陥や物性への影響を評価する。">
+                <span class="g-media"><img src="images/equipment-compute-server.webp" alt="計算機（第一原理計算）"></span>
+                <span class="g-bar">
+                    <span class="g-name">計算機（第一原理計算）</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-                <!-- 電気炉 -->
-                <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-250">
-                    <div class="overflow-hidden cursor-zoom-in" onclick="openLightbox('images/electric_furnace.jpeg', '電気炉')">
-                        <img src="images/electric_furnace.jpeg" alt="電気炉" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-primary mb-2 pl-3 border-l-2 border-primary">電気炉</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">スーパーバーンと同様に、金属や合金などの試料に対して熱処理を行うための高温炉である。研究テーマにあるような「炉冷」プロセスや「時効」処理を実施し、材料内部の溶質クラスタ形成や格子欠陥の状態を制御するために使用される。</p>
-                    </div>
-                </div>
+            <button class="g-card reveal" style="--d:.12s" type="button" data-tags="研究風景"
+                data-img="images/lab-research-scene.webp" data-title="研究室での研究風景"
+                data-desc="居室での計算・解析作業やゼミの準備など、日々の研究活動の様子である。学生同士で気軽に議論できる環境で研究を進めている。">
+                <span class="g-media"><img src="images/lab-research-scene.webp" alt="研究室での研究風景"></span>
+                <span class="g-bar">
+                    <span class="g-name">研究室での研究風景</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
 
-                <!-- 計算機 -->
-                <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-250">
-                    <div class="overflow-hidden cursor-zoom-in" onclick="openLightbox('images/computer.jpeg', '計算機（第一原理計算）')">
-                        <img src="images/computer.jpeg" alt="計算機（第一原理計算）" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-sm font-bold text-primary mb-2 pl-3 border-l-2 border-primary">計算機（第一原理計算）</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">実験だけでなく、理論的なアプローチから材料特性を解明するための計算サーバー群である。第一原理計算やモンテカルロ計算、陽電子寿命の理論計算などを実行し、原子・電子レベルから格子欠陥や物性への影響を評価する。</p>
-                    </div>
-                </div>
-
-            </div>
+            <button class="g-card reveal" style="--d:.18s" type="button" data-tags="イベント"
+                data-img="images/lab-event-baseball.webp" data-title="研究室イベント"
+                data-desc="研究室メンバーでの野球の様子である。研究の合間のリフレッシュや、メンバー間の交流も大切にしている。">
+                <span class="g-media"><img src="images/lab-event-baseball.webp" alt="研究室イベント（野球）"></span>
+                <span class="g-bar">
+                    <span class="g-name">研究室イベント</span>
+                    <span class="g-zoom"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></span>
+                </span>
+            </button>
         </div>
 
-        <!-- フッター -->
-        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[900px] mx-auto flex flex-col md:flex-row justify-between gap-6">
-                <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="ph ph-atom text-white/70 text-lg"></i>
-                        <span class="font-bold text-base">荒木研究室</span>
-                    </div>
-                    <p class="text-sm text-white/75 leading-relaxed font-light">
-                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
-                    </p>
-                </div>
-                <div class="flex flex-col gap-1 text-sm text-white/60">
-                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
-                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
-                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
-                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
-                </div>
-            </div>
-            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
-                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
-            </div>
-        </footer>
-    </main>
+    </div>
+</section>
+
+<!-- 拡大表示（ライトボックス） -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="閉じる">
+        <i class="ph ph-x" aria-hidden="true"></i>
+    </button>
+    <div class="lightbox-inner" id="lightbox-inner" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+        <div class="lightbox-img-wrap">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <div class="lightbox-caption">
+            <p class="lightbox-title" id="lightbox-title"></p>
+            <p class="lightbox-desc" id="lightbox-desc"></p>
+        </div>
+    </div>
 </div>
 
+<!-- フッター -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand-row">
+                <div>
+                    <p class="footer-name">荒木研究室</p>
+                    <p class="footer-aff">
+                        大阪大学大学院工学研究科<br>
+                        マテリアル生産科学専攻<br>
+                        量子機能材料設計学領域
+                    </p>
+                </div>
+                <svg class="footer-molecule" width="92" height="76" viewBox="0 0 92 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="18" y1="52" x2="42" y2="24" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="18" y1="52" x2="52" y2="60" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="52" y1="60" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="52" y2="60" stroke="#c5d9ef" stroke-width="1"/>
+                    <circle cx="18" cy="52" r="6" fill="#2a6bb0"/>
+                    <circle cx="42" cy="24" r="8" fill="#1a5c99"/>
+                    <circle cx="72" cy="38" r="5" fill="#7fa9d6"/>
+                    <circle cx="52" cy="60" r="4.5" fill="#a9c6e8"/>
+                    <circle cx="80" cy="14" r="2.5" fill="#c5d9ef"/>
+                    <circle cx="8" cy="18" r="2" fill="#c5d9ef"/>
+                </svg>
+            </div>
+            <div>
+                <p class="footer-label">関連リンク</p>
+                <ul class="footer-links">
+                    <li><a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学</a></li>
+                    <li><a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学 工学研究科</a></li>
+                    <li><a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>マテリアル生産科学専攻</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-label">サイトリンク</p>
+                <ul class="footer-links">
+                    <li><a href="research.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究内容・テーマ</a></li>
+                    <li><a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究風景</a></li>
+                    <li><a href="members.html"><i class="ph ph-caret-right" aria-hidden="true"></i>メンバー</a></li>
+                    <li><a href="career.html"><i class="ph ph-caret-right" aria-hidden="true"></i>就職・進学実績</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+
 <script>
-function openLightbox(src, caption) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox-caption').textContent = caption;
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-});
-// 画像自体のクリックでは閉じない
-document.getElementById('lightbox-img').addEventListener('click', function(e) {
-    e.stopPropagation();
-});
-document.getElementById('menu-btn').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-});
+(function () {
+    'use strict';
+
+    /* ---------- モバイルメニュー ---------- */
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    });
+
+    /* ---------- ヘッダーの影（スクロール時） ---------- */
+    var header = document.getElementById('site-header');
+    var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- スクロールで現れる動き ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- 写真の絞り込み ---------- */
+    var chips = document.querySelectorAll('.chip');
+    var cards = document.querySelectorAll('.g-card');
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            chips.forEach(function (c) {
+                c.classList.toggle('active', c === chip);
+                c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+            });
+            var f = chip.dataset.filter;
+            cards.forEach(function (card) {
+                var show = (f === 'all') || (card.dataset.tags || '').split(' ').indexOf(f) !== -1;
+                card.classList.remove('pop');
+                if (show) {
+                    card.classList.remove('is-hidden');
+                    void card.offsetWidth;
+                    card.classList.add('pop');
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+
+    /* ---------- 拡大表示（ライトボックス） ---------- */
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbTitle = document.getElementById('lightbox-title');
+    var lbDesc = document.getElementById('lightbox-desc');
+    var lbClose = document.getElementById('lightbox-close');
+    var lbInner = document.getElementById('lightbox-inner');
+    var lastFocused = null;
+
+    function openLightbox(card) {
+        lastFocused = card;
+        lbImg.src = card.dataset.img;
+        lbImg.alt = card.dataset.title;
+        lbTitle.textContent = card.dataset.title;
+        lbDesc.textContent = card.dataset.desc || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+    }
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () { openLightbox(card); });
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+        if (!lbInner.contains(e.target)) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+})();
 </script>
 
 </body>

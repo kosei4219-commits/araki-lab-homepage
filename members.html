@@ -4,197 +4,629 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>メンバー - 荒木研究室</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, メンバー, Araki Laboratory">
+    <meta name="description" content="荒木研究室のメンバー構成。指導教員・大学院生が一体となり、最先端の材料科学研究に取り組んでいます。">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
-                    },
-                    colors: {
-                        primary: '#1a5c99',
-                        primaryDark: '#14487a',
-                        surface: '#f4f6f9',
-                        borderSubtle: '#e2e8f0',
-                        textMain: '#2d3748',
-                        textMuted: '#718096',
-                    },
-                    boxShadow: {
-                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           荒木研究室 メンバー（デザインコンセプト版）
+           このページ専用のスタイル。style.css は使用しない。
+           ===================================================== */
+        :root {
+            --navy: #16324f;
+            --ink: #1d3048;
+            --blue: #1a5c99;
+            --blue-2: #2a6bb0;
+            --blue-deep: #14487a;
+            --sky: #7fa9d6;
+            --mist: #d9e6f4;
+            --pale: #eef4fb;
+            --paper: #fbfdff;
+            --text: #33475e;
+            --muted: #64788d;
+            --faint: #93a7bd;
+            --line: #dce7f2;
+            --mincho: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --serif: 'Noto Serif JP', 'Shippori Mincho', serif;
+            --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
         }
-    </script>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--sans); }
+        ::selection { background: var(--blue); color: #fff; }
+        :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; border-radius: 2px; }
+
+        .container { width: min(1160px, 100% - 48px); margin-inline: auto; }
+
+        /* ==================== ヘッダー ==================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow .3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 6px 24px -8px rgba(22, 50, 79, .14); }
+        .header-top { display: flex; align-items: center; gap: 18px; padding: 14px 0 10px; }
+        .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+        .brand img { height: 40px; width: auto; }
+        .brand-divider { width: 1px; height: 34px; background: var(--line); }
+        .brand-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .14em; color: var(--ink);
+            white-space: nowrap;
+        }
+        .brand-aff { font-size: 10px; line-height: 1.55; color: var(--faint); letter-spacing: .04em; white-space: nowrap; }
+        .menu-btn {
+            display: none; margin-left: auto;
+            background: none; border: none; cursor: pointer;
+            color: var(--navy); font-size: 26px; padding: 6px;
+        }
+        .header-nav { display: flex; justify-content: center; gap: 8px; padding-bottom: 2px; }
+        .header-nav a {
+            position: relative; display: block;
+            padding: 8px 18px 14px;
+            font-size: 13.5px; letter-spacing: .06em; color: #46596f;
+            transition: color .25s ease;
+        }
+        .header-nav a::after {
+            content: ''; position: absolute; left: 50%; bottom: 8px;
+            width: 0; height: 2px; background: var(--blue);
+            transform: translateX(-50%); transition: width .3s ease;
+        }
+        .header-nav a:hover { color: var(--blue); }
+        .header-nav a:hover::after { width: 28px; }
+        .header-nav a.active { color: var(--navy); font-weight: 600; }
+        .header-nav a.active::after { width: 28px; }
+        .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--line); background: #fff; padding: 10px 24px 16px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { padding: 12px 4px; font-size: 14px; color: #46596f; border-bottom: 1px solid #eef3f9; }
+        .mobile-menu a.active { color: var(--blue); font-weight: 600; }
+
+        /* ==================== セクション共通 ==================== */
+        .section-label {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 21px; letter-spacing: .06em; color: var(--blue-2);
+            margin-bottom: 10px;
+        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-molecule, .footer-molecule { animation: none !important; }
+        }
+
+        /* ==================== ページ冒頭（ヒーロー） ==================== */
+        .page-hero {
+            position: relative; overflow: hidden;
+            background: linear-gradient(108deg, #f7fafd 0%, #edf4fb 55%, #e2edf8 100%);
+            border-bottom: 1px solid var(--line);
+        }
+        .page-hero-deco { position: absolute; inset: 0; pointer-events: none; }
+        .hero-molecule { animation: float-soft 8s ease-in-out infinite; transform-origin: center; }
+        .page-hero-inner { position: relative; z-index: 1; padding: 74px 0 78px; max-width: 620px; }
+        .page-hero h1 {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(30px, 3.8vw, 44px);
+            letter-spacing: .14em; color: var(--ink);
+            margin-bottom: 24px;
+        }
+        .page-hero-lead { font-size: 14.5px; line-height: 2.2; letter-spacing: .04em; color: #4a5b70; }
+
+        /* ==================== 人数サマリー ==================== */
+        .members-main { background: linear-gradient(180deg, #fbfdff 0%, #f0f6fc 100%); padding: 64px 0 104px; }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 72px; }
+        .stat-card {
+            display: flex; align-items: center; gap: 14px;
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            padding: 18px 22px;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: #b7d0e9;
+            box-shadow: 0 14px 36px -14px rgba(42, 107, 176, .35);
+        }
+        .stat-ic {
+            width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #e3eefa, #cfe2f4);
+            color: var(--blue-2); font-size: 20px;
+        }
+        .stat-name { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: #46596f; line-height: 1.4; }
+        .stat-name small { display: block; font-size: 10px; font-weight: 400; color: var(--faint); letter-spacing: .06em; }
+        .stat-num {
+            margin-left: auto;
+            font-family: var(--serif); font-size: 30px; font-weight: 500;
+            color: var(--blue); letter-spacing: .02em;
+        }
+
+        /* ==================== 見出し ==================== */
+        .group-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+        .group-head::before {
+            content: ''; align-self: center; flex-shrink: 0;
+            width: 9px; height: 9px; background: var(--blue);
+            transform: rotate(45deg); border-radius: 2px;
+        }
+        .group-title {
+            font-family: var(--serif); font-weight: 600;
+            font-size: 19px; letter-spacing: .06em; color: var(--ink);
+        }
+        .group-sub { font-size: 12.5px; letter-spacing: .08em; color: var(--muted); }
+
+        /* ==================== 教員カード ==================== */
+        .faculty-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 76px; }
+        .faculty-card {
+            display: flex; background: #fff;
+            border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .faculty-card:hover {
+            transform: translateY(-6px);
+            border-color: #b7d0e9;
+            box-shadow: 0 20px 48px -16px rgba(42, 107, 176, .4);
+        }
+        .faculty-media { width: 168px; flex-shrink: 0; position: relative; overflow: hidden; }
+        .faculty-media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .6s ease; }
+        .faculty-card:hover .faculty-media img { transform: scale(1.05); }
+        .faculty-media--placeholder {
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #e3eefa, #cfe2f4);
+            color: #9dbde2; font-size: 64px;
+        }
+        .faculty-body { flex: 1; padding: 22px 22px 20px; display: flex; flex-direction: column; }
+        .faculty-role { font-size: 11.5px; letter-spacing: .08em; color: var(--blue-2); margin-bottom: 6px; }
+        .faculty-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .12em; color: var(--ink);
+            margin-bottom: 10px;
+        }
+        .faculty-mail { font-size: 12px; letter-spacing: .02em; color: var(--muted); word-break: break-all; margin-bottom: 16px; }
+        .faculty-btn {
+            margin-top: auto; align-self: flex-start;
+            display: inline-flex; align-items: center; gap: 9px;
+            border: 1px solid #b9cfe4; border-radius: 999px;
+            padding: 9px 22px;
+            font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--blue);
+            transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .35s ease;
+        }
+        .faculty-btn i { transition: transform .3s ease; }
+        .faculty-btn:hover {
+            background: var(--blue); border-color: var(--blue); color: #fff;
+            box-shadow: 0 8px 22px -8px rgba(26, 92, 153, .55);
+        }
+        .faculty-btn:hover i { transform: translateX(3px); }
+
+        /* ==================== 学生（コホート） ==================== */
+        .cohort-tabs { display: none; gap: 10px; margin-bottom: 22px; }
+        .cohort-tab {
+            flex: 1;
+            border: 1px solid #b9cfe4; background: #fff; color: #46596f;
+            font-size: 12.5px; font-weight: 500; letter-spacing: .1em;
+            padding: 9px 0; border-radius: 999px; cursor: pointer;
+            transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .3s ease;
+        }
+        .cohort-tab.active {
+            background: var(--navy); border-color: var(--navy); color: #fff;
+            box-shadow: 0 6px 18px -8px rgba(22, 50, 79, .55);
+        }
+        .cohort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3.5vw, 44px); align-items: start; }
+        .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .member-chip {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            padding: 14px 8px 12px;
+            transition: transform .3s ease, box-shadow .35s ease, border-color .3s ease;
+        }
+        .member-chip:hover {
+            transform: translateY(-4px);
+            border-color: #b7d0e9;
+            box-shadow: 0 12px 30px -12px rgba(42, 107, 176, .38);
+        }
+        .member-chip i { font-size: 19px; color: var(--sky); }
+        .member-chip span {
+            font-family: var(--serif); font-size: 13.5px; font-weight: 500;
+            letter-spacing: .14em; color: #46596f;
+        }
+        .cohort.fade-in { animation: cohort-in .4s cubic-bezier(.22, .61, .36, 1) both; }
+        @keyframes cohort-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        /* ==================== フッター ==================== */
+        .site-footer { background: linear-gradient(180deg, #edf3fa 0%, #e2ecf7 100%); border-top: 1px solid #d5e2f0; }
+        .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(32px, 5vw, 72px); padding: 60px 0 48px; }
+        .footer-brand-row { display: flex; align-items: flex-start; gap: 22px; }
+        .footer-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .16em; color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .footer-aff { font-size: 12.5px; line-height: 2.05; letter-spacing: .04em; color: #5d7288; }
+        .footer-molecule { flex-shrink: 0; margin-top: 4px; animation: float-soft 8s ease-in-out infinite; }
+        .footer-label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #33475e; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; letter-spacing: .04em; color: #4a6785;
+            transition: color .25s ease;
+        }
+        .footer-links a i { font-size: 11px; color: var(--sky); transition: transform .25s ease; }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-links a:hover i { transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(22, 50, 79, .1); padding: 18px 0; text-align: center; }
+        .footer-bottom p { font-size: 11px; letter-spacing: .06em; color: #8aa0b8; }
+
+        /* ==================== レスポンシブ ==================== */
+        @media (max-width: 1024px) {
+            .brand-aff { display: none; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .faculty-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .menu-btn { display: block; }
+            .header-top { padding: 12px 0; }
+            .page-hero-inner { padding: 54px 0 58px; }
+            .members-main { padding: 48px 0 76px; }
+            .stat-grid { margin-bottom: 52px; }
+            .faculty-grid { margin-bottom: 56px; }
+            /* スマホではタブ切り替え表示 */
+            .cohort-tabs { display: flex; }
+            .cohort-grid { grid-template-columns: 1fr; }
+            .cohort { display: none; }
+            .cohort.active { display: block; }
+            .cohort .group-head { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; padding: 48px 0 40px; }
+        }
+        @media (max-width: 560px) {
+            .container { width: calc(100% - 40px); }
+            .brand-name { font-size: 18px; }
+            .brand img { height: 34px; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .stat-card { padding: 14px 16px; }
+            .stat-num { font-size: 26px; }
+            .faculty-media { width: 128px; }
+        }
+    </style>
 </head>
-<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+<body>
 
 <!-- ヘッダー -->
-<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
-    <div class="flex items-center h-20 px-8 xl:px-14">
-        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
-            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
-            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
-            <div class="hidden sm:block">
-                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
-                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
-            </div>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+        <a href="index.html" class="brand" aria-label="荒木研究室 ホーム">
+            <img src="images/logo-osaka-university.webp" alt="大阪大学">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-name">荒木研究室</span>
+            <span class="brand-aff">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</span>
         </a>
-        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
-            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
-            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
-            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
-            <a href="members.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">メンバー</a>
-            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
-        </nav>
-        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
-            <i class="ph ph-list text-2xl"></i>
+        <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+            <i class="ph ph-list" aria-hidden="true"></i>
         </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
-        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
-        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
-        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
-        <a href="members.html" class="py-2 text-sm font-medium text-primary">メンバー</a>
-        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html" class="active">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html" class="active">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
     </div>
 </header>
 
-<!-- メインレイアウト -->
-<div class="pt-20 w-full">
+<!-- ページ冒頭 -->
+<section class="page-hero">
+    <svg class="page-hero-deco" viewBox="0 0 1160 340" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+        <defs>
+            <radialGradient id="sph-a" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#f2f8fe"/>
+                <stop offset="55%" stop-color="#b9d3ec"/>
+                <stop offset="100%" stop-color="#6d9bcd"/>
+            </radialGradient>
+            <radialGradient id="sph-b" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#eef6fd"/>
+                <stop offset="60%" stop-color="#a9c8e8"/>
+                <stop offset="100%" stop-color="#5d8fc7"/>
+            </radialGradient>
+        </defs>
+        <g stroke="#b3cce7" stroke-width="1" opacity=".5">
+            <line x1="640" y1="70" x2="720" y2="130"/><line x1="720" y1="130" x2="668" y2="212"/>
+            <line x1="720" y1="130" x2="812" y2="96"/><line x1="812" y1="96" x2="905" y2="140"/>
+            <line x1="668" y1="212" x2="748" y2="266"/><line x1="905" y1="140" x2="948" y2="228"/>
+            <line x1="748" y1="266" x2="860" y2="288"/><line x1="948" y1="228" x2="860" y2="288"/>
+            <line x1="1010" y1="80" x2="905" y2="140"/><line x1="1010" y1="80" x2="1096" y2="150"/>
+            <line x1="1096" y1="150" x2="948" y2="228"/><line x1="1060" y1="270" x2="948" y2="228"/>
+        </g>
+        <g fill="#7fa9d6" opacity=".7">
+            <circle cx="640" cy="70" r="3"/><circle cx="720" cy="130" r="4"/><circle cx="668" cy="212" r="3"/>
+            <circle cx="812" cy="96" r="3.5"/><circle cx="748" cy="266" r="3"/><circle cx="1010" cy="80" r="3"/>
+            <circle cx="1096" cy="150" r="3.5"/><circle cx="1060" cy="270" r="2.5"/><circle cx="580" cy="160" r="2.5"/>
+        </g>
+        <g class="hero-molecule">
+            <line x1="905" y1="140" x2="860" y2="288" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="905" y1="140" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="948" y1="228" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <circle cx="990" cy="196" r="46" fill="url(#sph-a)"/>
+            <circle cx="905" cy="140" r="26" fill="url(#sph-b)"/>
+            <circle cx="948" cy="228" r="19" fill="url(#sph-b)"/>
+            <circle cx="860" cy="288" r="14" fill="url(#sph-a)"/>
+            <circle cx="1052" cy="128" r="12" fill="url(#sph-b)"/>
+            <line x1="990" y1="196" x2="1052" y2="128" stroke="#9dbde2" stroke-width="2"/>
+        </g>
+    </svg>
+    <div class="container">
+        <div class="page-hero-inner reveal in">
+            <p class="section-label">Members</p>
+            <h1>メンバー構成</h1>
+            <p class="page-hero-lead">
+                指導教員・大学院生が一体となり、最先端の材料科学研究に取り組んでいます。
+            </p>
+        </div>
+    </div>
+</section>
 
-    <!-- メインコンテンツ -->
-    <main class="bg-surface">
+<!-- メンバー -->
+<section class="members-main">
+    <div class="container">
 
-        <!-- ページヘッダーバナー -->
-        <div class="relative bg-primary overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-8 py-14 text-center">
-                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Members</h2>
-                <p class="text-sm text-white/70 font-light mb-3">メンバー構成</p>
-                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">指導教員・大学院生が一体となり、最先端の材料科学研究に取り組んでいます。</p>
+        <!-- 人数サマリー -->
+        <div class="stat-grid">
+            <div class="stat-card reveal">
+                <span class="stat-ic"><i class="ph ph-user" aria-hidden="true"></i></span>
+                <span class="stat-name">Faculty<small>教員</small></span>
+                <span class="stat-num">2</span>
+            </div>
+            <div class="stat-card reveal" style="--d:.08s">
+                <span class="stat-ic"><i class="ph ph-graduation-cap" aria-hidden="true"></i></span>
+                <span class="stat-name">M2<small>修士2年</small></span>
+                <span class="stat-num">6</span>
+            </div>
+            <div class="stat-card reveal" style="--d:.16s">
+                <span class="stat-ic"><i class="ph ph-graduation-cap" aria-hidden="true"></i></span>
+                <span class="stat-name">M1<small>修士1年</small></span>
+                <span class="stat-num">6</span>
+            </div>
+            <div class="stat-card reveal" style="--d:.24s">
+                <span class="stat-ic"><i class="ph ph-student" aria-hidden="true"></i></span>
+                <span class="stat-name">B4<small>学部4年</small></span>
+                <span class="stat-num">7</span>
             </div>
         </div>
 
-        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[900px] mx-auto relative">
-
-            <!-- 教員 -->
-            <section class="mb-10">
-                <div class="mb-6 text-center">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">教員 <span class="text-base font-normal text-primary">Faculty</span></h3>
-                    <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+        <!-- 教員 -->
+        <div class="group-head reveal">
+            <h2 class="group-title">Faculty</h2>
+            <span class="group-sub">教員</span>
+        </div>
+        <div class="faculty-grid">
+            <div class="faculty-card reveal">
+                <div class="faculty-media faculty-media--placeholder" role="img" aria-label="荒木 秀樹 教授">
+                    <i class="ph ph-user" aria-hidden="true"></i>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <!-- 荒木教授 -->
-                    <div class="bg-white rounded-lg border border-borderSubtle shadow-soft p-6 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-md transition-all">
-                        <img src="images/araki_face.jpg" alt="荒木 秀樹" class="w-24 h-24 rounded-full object-cover border-3 mb-4" style="border: 3px solid #1a5c99;">
-                        <span class="text-xs text-textMuted mb-1">教授</span>
-                        <span class="text-base font-bold text-primary mb-3">荒木 秀樹</span>
-                        <div class="text-xs text-gray-500 bg-gray-50 rounded px-3 py-2 w-full break-all">
-                            ✉ <a href="mailto:araki@mat.eng.osaka-u.ac.jp" class="text-primary hover:underline">araki@mat.eng.osaka-u.ac.jp</a>
-                        </div>
-                    </div>
-                    <!-- 水野准教授 -->
-                    <div class="bg-white rounded-lg border border-borderSubtle shadow-soft p-6 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-md transition-all">
-                        <img src="images/mizuno.png" alt="水野 正隆" class="w-24 h-24 rounded-full object-cover border-3 mb-4" style="border: 3px solid #1a5c99;">
-                        <span class="text-xs text-textMuted mb-1">准教授</span>
-                        <span class="text-base font-bold text-primary mb-3">水野 正隆</span>
-                        <div class="text-xs text-gray-500 bg-gray-50 rounded px-3 py-2 w-full break-all">
-                            ✉ <a href="mailto:mizuno@mat.eng.osaka-u.ac.jp" class="text-primary hover:underline">mizuno@mat.eng.osaka-u.ac.jp</a>
-                        </div>
-                    </div>
+                <div class="faculty-body">
+                    <p class="faculty-role">教授 / Professor</p>
+                    <p class="faculty-name">荒木 秀樹</p>
+                    <p class="faculty-mail">araki@mat.eng.osaka-u.ac.jp</p>
+                    <a class="faculty-btn" href="mailto:araki@mat.eng.osaka-u.ac.jp">
+                        メールを送る <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                    </a>
                 </div>
-            </section>
-
-            <!-- 修士2年 -->
-            <section class="mb-8">
-                <div class="mb-5 text-center">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">修士2年 <span class="text-sm font-normal text-primary">M2</span></h3>
-                    <div class="w-10 h-0.5 bg-primary mx-auto"></div>
+            </div>
+            <div class="faculty-card reveal" style="--d:.1s">
+                <div class="faculty-media">
+                    <img src="images/member-mizuno.webp" alt="水野 正隆 准教授">
                 </div>
-                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">O.T.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">O.I.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">K.M.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">K.K.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">S.Y.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">T.T.</div>
+                <div class="faculty-body">
+                    <p class="faculty-role">准教授 / Associate Professor</p>
+                    <p class="faculty-name">水野 正隆</p>
+                    <p class="faculty-mail">mizuno@mat.eng.osaka-u.ac.jp</p>
+                    <a class="faculty-btn" href="mailto:mizuno@mat.eng.osaka-u.ac.jp">
+                        メールを送る <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                    </a>
                 </div>
-            </section>
-
-            <!-- 修士1年 -->
-            <section class="mb-8">
-                <div class="mb-5 text-center">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">修士1年 <span class="text-sm font-normal text-primary">M1</span></h3>
-                    <div class="w-10 h-0.5 bg-primary mx-auto"></div>
-                </div>
-                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">O.T.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">G.H.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">D.K.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">M.S.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">M.J.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">Y.K.</div>
-                </div>
-            </section>
-
-            <!-- 学部4年 -->
-            <section class="mb-8">
-                <div class="mb-5 text-center">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">学部4年 <span class="text-sm font-normal text-primary">B4</span></h3>
-                    <div class="w-10 h-0.5 bg-primary mx-auto"></div>
-                </div>
-                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">A.T.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">I.R.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">K.Y.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">K.R.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">S.K.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">H.Y.</div>
-                    <div class="bg-white border border-borderSubtle rounded-lg px-3 py-3 text-center font-semibold text-gray-600 text-sm hover:border-primary hover:-translate-y-0.5 transition-all shadow-soft tracking-wider">Y.Y.</div>
-                </div>
-            </section>
-
+            </div>
         </div>
 
-        <!-- フッター -->
-        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[900px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+        <!-- 学生：スマホ用タブ -->
+        <div class="cohort-tabs" role="tablist" aria-label="学年の切り替え">
+            <button class="cohort-tab active" type="button" role="tab" aria-selected="true" data-cohort="m2">M2</button>
+            <button class="cohort-tab" type="button" role="tab" aria-selected="false" data-cohort="m1">M1</button>
+            <button class="cohort-tab" type="button" role="tab" aria-selected="false" data-cohort="b4">B4</button>
+        </div>
+
+        <!-- 学生：3列（スマホではタブで切り替え） -->
+        <div class="cohort-grid">
+            <div class="cohort active" id="cohort-m2">
+                <div class="group-head reveal">
+                    <h2 class="group-title">M2</h2>
+                    <span class="group-sub">修士2年</span>
+                </div>
+                <div class="member-grid">
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>O.T.</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>O.I.</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>K.M.</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>K.K.</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>S.Y.</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>T.T.</span></div>
+                </div>
+            </div>
+            <div class="cohort" id="cohort-m1">
+                <div class="group-head reveal">
+                    <h2 class="group-title">M1</h2>
+                    <span class="group-sub">修士1年</span>
+                </div>
+                <div class="member-grid">
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>O.T.</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>G.H.</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>D.K.</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>M.S.</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>M.J.</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>Y.K.</span></div>
+                </div>
+            </div>
+            <div class="cohort" id="cohort-b4">
+                <div class="group-head reveal">
+                    <h2 class="group-title">B4</h2>
+                    <span class="group-sub">学部4年</span>
+                </div>
+                <div class="member-grid">
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>A.T.</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>I.R.</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>K.Y.</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>K.R.</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>S.K.</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>H.Y.</span></div>
+                    <div class="member-chip reveal" style="--d:.3s"><i class="ph ph-user" aria-hidden="true"></i><span>Y.Y.</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand-row">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="ph ph-atom text-white/70 text-lg"></i>
-                        <span class="font-bold text-base">荒木研究室</span>
-                    </div>
-                    <p class="text-sm text-white/75 leading-relaxed font-light">
-                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+                    <p class="footer-name">荒木研究室</p>
+                    <p class="footer-aff">
+                        大阪大学大学院工学研究科<br>
+                        マテリアル生産科学専攻<br>
+                        量子機能材料設計学領域
                     </p>
                 </div>
-                <div class="flex flex-col gap-1 text-sm text-white/60">
-                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
-                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
-                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
-                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
-                </div>
+                <svg class="footer-molecule" width="92" height="76" viewBox="0 0 92 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="18" y1="52" x2="42" y2="24" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="18" y1="52" x2="52" y2="60" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="52" y1="60" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="52" y2="60" stroke="#c5d9ef" stroke-width="1"/>
+                    <circle cx="18" cy="52" r="6" fill="#2a6bb0"/>
+                    <circle cx="42" cy="24" r="8" fill="#1a5c99"/>
+                    <circle cx="72" cy="38" r="5" fill="#7fa9d6"/>
+                    <circle cx="52" cy="60" r="4.5" fill="#a9c6e8"/>
+                    <circle cx="80" cy="14" r="2.5" fill="#c5d9ef"/>
+                    <circle cx="8" cy="18" r="2" fill="#c5d9ef"/>
+                </svg>
             </div>
-            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
-                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+            <div>
+                <p class="footer-label">関連リンク</p>
+                <ul class="footer-links">
+                    <li><a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学</a></li>
+                    <li><a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学 工学研究科</a></li>
+                    <li><a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>マテリアル生産科学専攻</a></li>
+                </ul>
             </div>
-        </footer>
-    </main>
-</div>
+            <div>
+                <p class="footer-label">サイトリンク</p>
+                <ul class="footer-links">
+                    <li><a href="research.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究内容・テーマ</a></li>
+                    <li><a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究風景</a></li>
+                    <li><a href="members.html"><i class="ph ph-caret-right" aria-hidden="true"></i>メンバー</a></li>
+                    <li><a href="career.html"><i class="ph ph-caret-right" aria-hidden="true"></i>就職・進学実績</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<noscript><style>.reveal { opacity: 1; transform: none; } .cohort { display: block !important; } .cohort-tabs { display: none !important; }</style></noscript>
 
 <script>
-    document.getElementById('menu-btn').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+(function () {
+    'use strict';
+
+    /* ---------- モバイルメニュー ---------- */
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
     });
+
+    /* ---------- ヘッダーの影（スクロール時） ---------- */
+    var header = document.getElementById('site-header');
+    var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- スクロールで現れる動き（時間差フェードイン） ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- コホート切り替えタブ（スマホ用） ---------- */
+    var tabs = document.querySelectorAll('.cohort-tab');
+    var cohorts = document.querySelectorAll('.cohort');
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) {
+                t.classList.toggle('active', t === tab);
+                t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+            });
+            cohorts.forEach(function (c) {
+                var isTarget = c.id === 'cohort-' + tab.dataset.cohort;
+                c.classList.toggle('active', isTarget);
+                c.classList.remove('fade-in');
+                if (isTarget) {
+                    void c.offsetWidth;
+                    c.classList.add('fade-in');
+                    /* 非表示中に画面内判定が済まなかった要素を表示状態にする */
+                    c.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+                }
+            });
+        });
+    });
+})();
 </script>
+
 </body>
 </html>

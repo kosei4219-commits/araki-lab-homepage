@@ -4,192 +4,642 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>就職・進学実績 - 荒木研究室</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, 就職, 進学, Araki Laboratory">
+    <meta name="description" content="荒木研究室の就職・進学実績。卒業生は素材メーカーや製造業をはじめ、様々な分野の第一線で活躍しています。">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
-                    },
-                    colors: {
-                        primary: '#1a5c99',
-                        primaryDark: '#14487a',
-                        surface: '#f4f6f9',
-                        borderSubtle: '#e2e8f0',
-                        textMain: '#2d3748',
-                        textMuted: '#718096',
-                    },
-                    boxShadow: {
-                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           荒木研究室 就職・進学実績（デザインコンセプト版）
+           このページ専用のスタイル。style.css は使用しない。
+           ===================================================== */
+        :root {
+            --navy: #16324f;
+            --ink: #1d3048;
+            --blue: #1a5c99;
+            --blue-2: #2a6bb0;
+            --blue-deep: #14487a;
+            --sky: #7fa9d6;
+            --mist: #d9e6f4;
+            --pale: #eef4fb;
+            --paper: #fbfdff;
+            --text: #33475e;
+            --muted: #64788d;
+            --faint: #93a7bd;
+            --line: #dce7f2;
+            --mincho: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --serif: 'Noto Serif JP', 'Shippori Mincho', serif;
+            --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
         }
-    </script>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--sans); }
+        ::selection { background: var(--blue); color: #fff; }
+        :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; border-radius: 2px; }
+
+        .container { width: min(1160px, 100% - 48px); margin-inline: auto; }
+
+        /* ==================== ヘッダー ==================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow .3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 6px 24px -8px rgba(22, 50, 79, .14); }
+        .header-top { display: flex; align-items: center; gap: 18px; padding: 14px 0 10px; }
+        .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+        .brand img { height: 40px; width: auto; }
+        .brand-divider { width: 1px; height: 34px; background: var(--line); }
+        .brand-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .14em; color: var(--ink);
+            white-space: nowrap;
+        }
+        .brand-aff { font-size: 10px; line-height: 1.55; color: var(--faint); letter-spacing: .04em; white-space: nowrap; }
+        .menu-btn {
+            display: none; margin-left: auto;
+            background: none; border: none; cursor: pointer;
+            color: var(--navy); font-size: 26px; padding: 6px;
+        }
+        .header-nav { display: flex; justify-content: center; gap: 8px; padding-bottom: 2px; }
+        .header-nav a {
+            position: relative; display: block;
+            padding: 8px 18px 14px;
+            font-size: 13.5px; letter-spacing: .06em; color: #46596f;
+            transition: color .25s ease;
+        }
+        .header-nav a::after {
+            content: ''; position: absolute; left: 50%; bottom: 8px;
+            width: 0; height: 2px; background: var(--blue);
+            transform: translateX(-50%); transition: width .3s ease;
+        }
+        .header-nav a:hover { color: var(--blue); }
+        .header-nav a:hover::after { width: 28px; }
+        .header-nav a.active { color: var(--navy); font-weight: 600; }
+        .header-nav a.active::after { width: 28px; }
+        .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--line); background: #fff; padding: 10px 24px 16px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { padding: 12px 4px; font-size: 14px; color: #46596f; border-bottom: 1px solid #eef3f9; }
+        .mobile-menu a.active { color: var(--blue); font-weight: 600; }
+
+        /* ==================== セクション共通 ==================== */
+        .section-label {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 21px; letter-spacing: .06em; color: var(--blue-2);
+            margin-bottom: 10px;
+        }
+        .group-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+        .group-head::before {
+            content: ''; align-self: center; flex-shrink: 0;
+            width: 9px; height: 9px; background: var(--blue);
+            transform: rotate(45deg); border-radius: 2px;
+        }
+        .group-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 19px; letter-spacing: .08em; color: var(--ink);
+        }
+        .group-sub { font-size: 12px; letter-spacing: .06em; color: var(--muted); }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-molecule, .footer-molecule { animation: none !important; }
+        }
+
+        /* ==================== ページ冒頭（ヒーロー） ==================== */
+        .page-hero {
+            position: relative; overflow: hidden;
+            background: linear-gradient(108deg, #f7fafd 0%, #edf4fb 55%, #e2edf8 100%);
+            border-bottom: 1px solid var(--line);
+        }
+        .page-hero-deco { position: absolute; inset: 0; pointer-events: none; }
+        .hero-molecule { animation: float-soft 8s ease-in-out infinite; transform-origin: center; }
+        .page-hero-inner { position: relative; z-index: 1; padding: 74px 0 78px; max-width: 620px; }
+        .page-hero h1 {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(30px, 3.8vw, 44px);
+            letter-spacing: .14em; color: var(--ink);
+            margin-bottom: 24px;
+        }
+        .page-hero-lead { font-size: 14.5px; line-height: 2.2; letter-spacing: .04em; color: #4a5b70; }
+
+        /* ==================== 本文 ==================== */
+        .career-main { background: linear-gradient(180deg, #fbfdff 0%, #f0f6fc 100%); padding: 64px 0 104px; }
+
+        /* 実績サマリー */
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 68px; }
+        .stat-card {
+            display: flex; align-items: center; gap: 16px;
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            padding: 20px 24px;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: #b7d0e9;
+            box-shadow: 0 14px 36px -14px rgba(42, 107, 176, .35);
+        }
+        .stat-ic {
+            width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #e3eefa, #cfe2f4);
+            color: var(--blue-2); font-size: 21px;
+        }
+        .stat-name { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: #46596f; line-height: 1.5; }
+        .stat-num {
+            margin-left: auto; text-align: right;
+            font-family: var(--serif); font-size: 29px; font-weight: 500;
+            color: var(--blue); letter-spacing: .02em; line-height: 1.2;
+        }
+        .stat-num small { font-size: 14px; }
+        .stat-num.stat-num--text { font-size: 15px; font-family: var(--mincho); letter-spacing: .06em; }
+
+        /* 業種カード */
+        .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 14px; }
+        .industry-card {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            padding: 20px 10px 16px; cursor: pointer; text-align: center;
+            transition: transform .3s ease, box-shadow .35s ease, border-color .3s ease, background .3s ease;
+        }
+        .industry-card:hover {
+            transform: translateY(-4px);
+            border-color: #b7d0e9;
+            box-shadow: 0 14px 34px -14px rgba(42, 107, 176, .38);
+        }
+        .industry-card i { font-size: 26px; color: var(--blue-2); transition: color .3s ease; }
+        .industry-name { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: #46596f; line-height: 1.6; transition: color .3s ease; }
+        .industry-count { font-family: var(--serif); font-size: 21px; color: var(--blue); transition: color .3s ease; }
+        .industry-count small { font-size: 12px; }
+        .industry-card.active {
+            background: var(--navy); border-color: var(--navy);
+            box-shadow: 0 14px 34px -12px rgba(22, 50, 79, .55);
+        }
+        .industry-card.active i,
+        .industry-card.active .industry-name,
+        .industry-card.active .industry-count { color: #fff; }
+        .industry-hint {
+            font-size: 11.5px; letter-spacing: .05em; color: var(--faint);
+            display: flex; align-items: center; gap: 6px; margin-bottom: 56px;
+        }
+
+        /* 企業一覧＋進学先 */
+        .placement-grid { display: grid; grid-template-columns: 1.9fr 1.1fr; gap: 26px; align-items: start; }
+        .company-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .company-chip {
+            background: #fff; border: 1px solid var(--line); border-radius: 10px;
+            padding: 14px 10px; text-align: center;
+            font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: #3c516a;
+            transition: transform .3s ease, box-shadow .35s ease, border-color .3s ease;
+        }
+        .company-chip:hover {
+            transform: translateY(-3px);
+            border-color: #b7d0e9;
+            box-shadow: 0 10px 26px -12px rgba(42, 107, 176, .38);
+            color: var(--blue);
+        }
+        .company-chip.is-hidden { display: none; }
+        .company-chip.pop { animation: card-in .45s cubic-bezier(.22, .61, .36, 1) both; }
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(12px) scale(.97); }
+            to { opacity: 1; transform: none; }
+        }
+        .company-note { grid-column: 1 / -1; font-size: 11px; letter-spacing: .05em; color: var(--faint); margin-top: 4px; }
+
+        /* 進学先パネル */
+        .grad-panel {
+            position: relative; overflow: hidden;
+            background: #fff; border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 12px 36px -20px rgba(22, 50, 79, .25);
+            padding: 22px 22px 96px;
+        }
+        .grad-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .grad-head i { font-size: 20px; color: var(--blue-2); }
+        .grad-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 15.5px; letter-spacing: .08em; color: var(--ink);
+        }
+        .grad-list { list-style: none; }
+        .grad-list li {
+            position: relative; padding: 10px 0 10px 20px;
+            font-size: 13px; line-height: 1.9; letter-spacing: .02em; color: #4a5b70;
+            border-bottom: 1px solid #eef3f9;
+        }
+        .grad-list li::before {
+            content: ''; position: absolute; left: 4px; top: 20px;
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(42, 107, 176, .55);
+        }
+        .grad-city { position: absolute; left: 0; right: 0; bottom: 0; pointer-events: none; }
+
+        /* ==================== フッター ==================== */
+        .site-footer { background: linear-gradient(180deg, #edf3fa 0%, #e2ecf7 100%); border-top: 1px solid #d5e2f0; }
+        .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(32px, 5vw, 72px); padding: 60px 0 48px; }
+        .footer-brand-row { display: flex; align-items: flex-start; gap: 22px; }
+        .footer-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .16em; color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .footer-aff { font-size: 12.5px; line-height: 2.05; letter-spacing: .04em; color: #5d7288; }
+        .footer-molecule { flex-shrink: 0; margin-top: 4px; animation: float-soft 8s ease-in-out infinite; }
+        .footer-label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #33475e; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; letter-spacing: .04em; color: #4a6785;
+            transition: color .25s ease;
+        }
+        .footer-links a i { font-size: 11px; color: var(--sky); transition: transform .25s ease; }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-links a:hover i { transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(22, 50, 79, .1); padding: 18px 0; text-align: center; }
+        .footer-bottom p { font-size: 11px; letter-spacing: .06em; color: #8aa0b8; }
+
+        /* ==================== レスポンシブ ==================== */
+        @media (max-width: 1024px) {
+            .brand-aff { display: none; }
+            .stat-grid { grid-template-columns: 1fr; }
+            .industry-grid { grid-template-columns: repeat(2, 1fr); }
+            .placement-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .menu-btn { display: block; }
+            .header-top { padding: 12px 0; }
+            .page-hero-inner { padding: 54px 0 58px; }
+            .career-main { padding: 48px 0 76px; }
+            .stat-grid { margin-bottom: 48px; }
+            .industry-hint { margin-bottom: 44px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; padding: 48px 0 40px; }
+        }
+        @media (max-width: 560px) {
+            .container { width: calc(100% - 40px); }
+            .brand-name { font-size: 18px; }
+            .brand img { height: 34px; }
+            .company-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
-<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+<body>
 
 <!-- ヘッダー -->
-<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
-    <div class="flex items-center h-20 px-8 xl:px-14">
-        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
-            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
-            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
-            <div class="hidden sm:block">
-                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
-                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
-            </div>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+        <a href="index.html" class="brand" aria-label="荒木研究室 ホーム">
+            <img src="images/logo-osaka-university.webp" alt="大阪大学">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-name">荒木研究室</span>
+            <span class="brand-aff">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</span>
         </a>
-        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
-            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
-            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
-            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
-            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
-            <a href="career.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">就職・進学実績</a>
-        </nav>
-        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
-            <i class="ph ph-list text-2xl"></i>
+        <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+            <i class="ph ph-list" aria-hidden="true"></i>
         </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
-        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
-        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
-        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
-        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
-        <a href="career.html" class="py-2 text-sm font-medium text-primary">就職・進学実績</a>
+    <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html" class="active">就職・進学実績</a>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html" class="active">就職・進学実績</a>
     </div>
 </header>
 
-<!-- メインレイアウト -->
-<div class="pt-20 w-full">
+<!-- ページ冒頭 -->
+<section class="page-hero">
+    <svg class="page-hero-deco" viewBox="0 0 1160 340" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+        <defs>
+            <radialGradient id="sph-a" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#f2f8fe"/>
+                <stop offset="55%" stop-color="#b9d3ec"/>
+                <stop offset="100%" stop-color="#6d9bcd"/>
+            </radialGradient>
+            <radialGradient id="sph-b" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#eef6fd"/>
+                <stop offset="60%" stop-color="#a9c8e8"/>
+                <stop offset="100%" stop-color="#5d8fc7"/>
+            </radialGradient>
+        </defs>
+        <g stroke="#b3cce7" stroke-width="1" opacity=".5">
+            <line x1="640" y1="70" x2="720" y2="130"/><line x1="720" y1="130" x2="668" y2="212"/>
+            <line x1="720" y1="130" x2="812" y2="96"/><line x1="812" y1="96" x2="905" y2="140"/>
+            <line x1="668" y1="212" x2="748" y2="266"/><line x1="905" y1="140" x2="948" y2="228"/>
+            <line x1="748" y1="266" x2="860" y2="288"/><line x1="948" y1="228" x2="860" y2="288"/>
+            <line x1="1010" y1="80" x2="905" y2="140"/><line x1="1010" y1="80" x2="1096" y2="150"/>
+            <line x1="1096" y1="150" x2="948" y2="228"/><line x1="1060" y1="270" x2="948" y2="228"/>
+        </g>
+        <g fill="#7fa9d6" opacity=".7">
+            <circle cx="640" cy="70" r="3"/><circle cx="720" cy="130" r="4"/><circle cx="668" cy="212" r="3"/>
+            <circle cx="812" cy="96" r="3.5"/><circle cx="748" cy="266" r="3"/><circle cx="1010" cy="80" r="3"/>
+            <circle cx="1096" cy="150" r="3.5"/><circle cx="1060" cy="270" r="2.5"/><circle cx="580" cy="160" r="2.5"/>
+        </g>
+        <g class="hero-molecule">
+            <line x1="905" y1="140" x2="860" y2="288" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="905" y1="140" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="948" y1="228" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <circle cx="990" cy="196" r="46" fill="url(#sph-a)"/>
+            <circle cx="905" cy="140" r="26" fill="url(#sph-b)"/>
+            <circle cx="948" cy="228" r="19" fill="url(#sph-b)"/>
+            <circle cx="860" cy="288" r="14" fill="url(#sph-a)"/>
+            <circle cx="1052" cy="128" r="12" fill="url(#sph-b)"/>
+            <line x1="990" y1="196" x2="1052" y2="128" stroke="#9dbde2" stroke-width="2"/>
+        </g>
+    </svg>
+    <div class="container">
+        <div class="page-hero-inner reveal in">
+            <p class="section-label">Career</p>
+            <h1>就職・進学実績</h1>
+            <p class="page-hero-lead">
+                荒木研究室の卒業生は、素材メーカーや製造業をはじめ、様々な分野の第一線で活躍しています。
+            </p>
+        </div>
+    </div>
+</section>
 
-    <!-- メインコンテンツ -->
-    <main class="bg-surface">
+<!-- 本文 -->
+<section class="career-main">
+    <div class="container">
 
-        <!-- ページヘッダーバナー -->
-        <div class="relative bg-primary overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-8 py-14 text-center">
-                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Career</h2>
-                <p class="text-sm text-white/70 font-light mb-3">就職・進学実績</p>
-                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">荒木研究室の卒業生は、素材メーカーや製造業をはじめ、様々な分野の第一線で活躍しています。</p>
+        <!-- 実績サマリー -->
+        <div class="stat-grid">
+            <div class="stat-card reveal">
+                <span class="stat-ic"><i class="ph ph-buildings" aria-hidden="true"></i></span>
+                <span class="stat-name">主な就職先企業</span>
+                <span class="stat-num">17<small> 社</small></span>
+            </div>
+            <div class="stat-card reveal" style="--d:.08s">
+                <span class="stat-ic"><i class="ph ph-squares-four" aria-hidden="true"></i></span>
+                <span class="stat-name">業種分野</span>
+                <span class="stat-num">8<small> 分野</small></span>
+            </div>
+            <div class="stat-card reveal" style="--d:.16s">
+                <span class="stat-ic"><i class="ph ph-graduation-cap" aria-hidden="true"></i></span>
+                <span class="stat-name">大学院進学</span>
+                <span class="stat-num stat-num--text">大阪大学大学院</span>
             </div>
         </div>
 
-        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[900px] mx-auto relative">
+        <!-- 業種別の主な就職先 -->
+        <div class="group-head reveal">
+            <h2 class="group-title">業種別の主な就職先</h2>
+            <span class="group-sub">近年の実績（社数）</span>
+        </div>
+        <div class="industry-grid">
+            <button class="industry-card reveal" type="button" data-industry="metal" aria-pressed="false">
+                <i class="ph ph-factory" aria-hidden="true"></i>
+                <span class="industry-name">鉄鋼・非鉄金属</span>
+                <span class="industry-count">4<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.06s" type="button" data-industry="machine" aria-pressed="false">
+                <i class="ph ph-car" aria-hidden="true"></i>
+                <span class="industry-name">輸送用機器・機械</span>
+                <span class="industry-count">3<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.12s" type="button" data-industry="consulting" aria-pressed="false">
+                <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+                <span class="industry-name">コンサルティング</span>
+                <span class="industry-count">3<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.18s" type="button" data-industry="maker" aria-pressed="false">
+                <i class="ph ph-package" aria-hidden="true"></i>
+                <span class="industry-name">その他メーカー</span>
+                <span class="industry-count">2<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" type="button" data-industry="infra" aria-pressed="false">
+                <i class="ph ph-lightning" aria-hidden="true"></i>
+                <span class="industry-name">インフラ・エネルギー</span>
+                <span class="industry-count">2<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.06s" type="button" data-industry="electronics" aria-pressed="false">
+                <i class="ph ph-cpu" aria-hidden="true"></i>
+                <span class="industry-name">電機・電子部品</span>
+                <span class="industry-count">1<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.12s" type="button" data-industry="it" aria-pressed="false">
+                <i class="ph ph-laptop" aria-hidden="true"></i>
+                <span class="industry-name">IT・情報通信</span>
+                <span class="industry-count">1<small> 社</small></span>
+            </button>
+            <button class="industry-card reveal" style="--d:.18s" type="button" data-industry="finance" aria-pressed="false">
+                <i class="ph ph-bank" aria-hidden="true"></i>
+                <span class="industry-name">金融・保険</span>
+                <span class="industry-count">1<small> 社</small></span>
+            </button>
+        </div>
+        <p class="industry-hint reveal"><i class="ph ph-cursor-click" aria-hidden="true"></i>業種カードを押すと、下の企業一覧を絞り込めます（もう一度押すと全表示に戻ります）</p>
 
-            <!-- 就職先 -->
-            <div class="mb-8 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">近年の主な就職先</h3>
-                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
+        <!-- 主な就職先企業＋進学先 -->
+        <div class="placement-grid">
+            <div>
+                <div class="group-head reveal">
+                    <h2 class="group-title">主な就職先企業</h2>
+                    <span class="group-sub">五十音順</span>
+                </div>
+                <div class="company-grid">
+                    <div class="company-chip reveal" data-industry="it">NTTデータグループ</div>
+                    <div class="company-chip reveal" style="--d:.03s" data-industry="infra">大阪ガス</div>
+                    <div class="company-chip reveal" style="--d:.06s" data-industry="infra">関西電力</div>
+                    <div class="company-chip reveal" style="--d:.09s" data-industry="maker">キリンホールディングス</div>
+                    <div class="company-chip reveal" style="--d:.12s" data-industry="metal">神戸製鋼所</div>
+                    <div class="company-chip reveal" style="--d:.15s" data-industry="machine">小松製作所</div>
+                    <div class="company-chip reveal" style="--d:.18s" data-industry="metal">JFEスチール</div>
+                    <div class="company-chip reveal" style="--d:.21s" data-industry="metal">住友電気工業</div>
+                    <div class="company-chip reveal" style="--d:.24s" data-industry="finance">東京海上日動火災保険</div>
+                    <div class="company-chip reveal" style="--d:.27s" data-industry="machine">豊田自動織機</div>
+                    <div class="company-chip reveal" style="--d:.3s" data-industry="machine">日産自動車</div>
+                    <div class="company-chip reveal" style="--d:.33s" data-industry="consulting">日立コンサルティング</div>
+                    <div class="company-chip reveal" style="--d:.36s" data-industry="consulting">PwCコンサルティング</div>
+                    <div class="company-chip reveal" style="--d:.39s" data-industry="consulting">ベイカレント・コンサルティング</div>
+                    <div class="company-chip reveal" style="--d:.42s" data-industry="metal">三井金属</div>
+                    <div class="company-chip reveal" style="--d:.45s" data-industry="electronics">村田製作所</div>
+                    <div class="company-chip reveal" style="--d:.48s" data-industry="maker">YKK</div>
+                    <p class="company-note">※上記は一例です</p>
+                </div>
             </div>
 
-            <div class="bg-white rounded-lg border border-borderSubtle shadow-soft p-6 mb-10">
-                <h3 class="industry-title title-metal">鉄鋼・非鉄金属</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-metal">神戸製鋼所</span>
-                    <span class="company-tag tag-metal">住友電気工業</span>
-                    <span class="company-tag tag-metal">JFEスチール</span>
-                    <span class="company-tag tag-metal">三井金属</span>
+            <!-- 進学先 -->
+            <div class="grad-panel reveal" style="--d:.1s">
+                <div class="grad-head">
+                    <i class="ph ph-graduation-cap" aria-hidden="true"></i>
+                    <h2 class="grad-title">進学先（大学院）</h2>
                 </div>
-
-                <h3 class="industry-title title-machine">輸送用機器・機械</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-machine">小松製作所</span>
-                    <span class="company-tag tag-machine">豊田自動織機</span>
-                    <span class="company-tag tag-machine">日産自動車</span>
-                </div>
-
-                <h3 class="industry-title title-electronics">電機・電子部品</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-electronics">村田製作所</span>
-                </div>
-
-                <h3 class="industry-title title-food">その他メーカー</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-food">キリンホールディングス株式会社</span>
-                    <span class="company-tag tag-food">YKK</span>
-                </div>
-
-                <h3 class="industry-title title-infra">インフラ・エネルギー</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-infra">関西電力</span>
-                    <span class="company-tag tag-infra">大阪ガス</span>
-                </div>
-
-                <h3 class="industry-title title-it">IT・通信</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-it">NTTデータグループ</span>
-                </div>
-
-                <h3 class="industry-title title-consulting">コンサルティング</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-consulting">日立コンサルティング</span>
-                    <span class="company-tag tag-consulting">PwCコンサルティング合同会社</span>
-                    <span class="company-tag tag-consulting">ベイカレント・コンサルティング</span>
-                </div>
-
-                <h3 class="industry-title title-finance">金融・保険</h3>
-                <div class="company-container">
-                    <span class="company-tag tag-finance">東京海上日動火災保険</span>
-                </div>
-            </div>
-
-            <!-- 進学実績 -->
-            <div class="mb-8 mt-14 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">近年の進学実績</h3>
-                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
-            </div>
-
-            <div class="bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
-                <ul class="divide-y divide-gray-100">
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[14px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        大阪大学大学院 工学研究科 マテリアル生産科学専攻
-                    </li>
+                <ul class="grad-list">
+                    <li>大阪大学大学院 工学研究科<br>マテリアル生産科学専攻</li>
                 </ul>
+                <svg class="grad-city" viewBox="0 0 340 90" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                    <g fill="#dce8f5">
+                        <rect x="10" y="38" width="34" height="52"/>
+                        <rect x="52" y="20" width="28" height="70"/>
+                        <rect x="88" y="48" width="40" height="42"/>
+                        <rect x="136" y="30" width="24" height="60"/>
+                        <rect x="168" y="54" width="36" height="36"/>
+                        <rect x="212" y="24" width="30" height="66"/>
+                        <rect x="250" y="44" width="26" height="46"/>
+                        <rect x="284" y="34" width="40" height="56"/>
+                    </g>
+                    <g fill="#c2d6ec">
+                        <rect x="58" y="28" width="5" height="5"/><rect x="68" y="28" width="5" height="5"/>
+                        <rect x="58" y="40" width="5" height="5"/><rect x="68" y="40" width="5" height="5"/>
+                        <rect x="142" y="38" width="4" height="4"/><rect x="150" y="38" width="4" height="4"/>
+                        <rect x="218" y="32" width="5" height="5"/><rect x="228" y="32" width="5" height="5"/>
+                        <rect x="218" y="44" width="5" height="5"/><rect x="228" y="44" width="5" height="5"/>
+                        <rect x="292" y="42" width="5" height="5"/><rect x="302" y="42" width="5" height="5"/>
+                    </g>
+                </svg>
             </div>
-
         </div>
 
-        <!-- フッター -->
-        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[900px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand-row">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="ph ph-atom text-white/70 text-lg"></i>
-                        <span class="font-bold text-base">荒木研究室</span>
-                    </div>
-                    <p class="text-sm text-white/75 leading-relaxed font-light">
-                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+                    <p class="footer-name">荒木研究室</p>
+                    <p class="footer-aff">
+                        大阪大学大学院工学研究科<br>
+                        マテリアル生産科学専攻<br>
+                        量子機能材料設計学領域
                     </p>
                 </div>
-                <div class="flex flex-col gap-1 text-sm text-white/60">
-                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
-                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
-                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
-                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
-                </div>
+                <svg class="footer-molecule" width="92" height="76" viewBox="0 0 92 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="18" y1="52" x2="42" y2="24" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="18" y1="52" x2="52" y2="60" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="52" y1="60" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="52" y2="60" stroke="#c5d9ef" stroke-width="1"/>
+                    <circle cx="18" cy="52" r="6" fill="#2a6bb0"/>
+                    <circle cx="42" cy="24" r="8" fill="#1a5c99"/>
+                    <circle cx="72" cy="38" r="5" fill="#7fa9d6"/>
+                    <circle cx="52" cy="60" r="4.5" fill="#a9c6e8"/>
+                    <circle cx="80" cy="14" r="2.5" fill="#c5d9ef"/>
+                    <circle cx="8" cy="18" r="2" fill="#c5d9ef"/>
+                </svg>
             </div>
-            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
-                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+            <div>
+                <p class="footer-label">関連リンク</p>
+                <ul class="footer-links">
+                    <li><a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学</a></li>
+                    <li><a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学 工学研究科</a></li>
+                    <li><a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>マテリアル生産科学専攻</a></li>
+                </ul>
             </div>
-        </footer>
-    </main>
-</div>
+            <div>
+                <p class="footer-label">サイトリンク</p>
+                <ul class="footer-links">
+                    <li><a href="research.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究内容・テーマ</a></li>
+                    <li><a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究風景</a></li>
+                    <li><a href="members.html"><i class="ph ph-caret-right" aria-hidden="true"></i>メンバー</a></li>
+                    <li><a href="career.html"><i class="ph ph-caret-right" aria-hidden="true"></i>就職・進学実績</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
 <script>
-    document.getElementById('menu-btn').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+(function () {
+    'use strict';
+
+    /* ---------- モバイルメニュー ---------- */
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
     });
+
+    /* ---------- ヘッダーの影（スクロール時） ---------- */
+    var header = document.getElementById('site-header');
+    var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- スクロールで現れる動き ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- 業種カードで企業を絞り込み ---------- */
+    var industryCards = document.querySelectorAll('.industry-card');
+    var companyChips = document.querySelectorAll('.company-chip');
+    var current = null;
+    industryCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            var key = card.dataset.industry;
+            current = (current === key) ? null : key;
+            industryCards.forEach(function (c) {
+                var on = current !== null && c.dataset.industry === current;
+                c.classList.toggle('active', on);
+                c.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+            companyChips.forEach(function (chip) {
+                var show = (current === null) || chip.dataset.industry === current;
+                chip.classList.remove('pop');
+                if (show) {
+                    chip.classList.add('in'); /* 絞り込み時は出現待ちを解除 */
+                    chip.classList.remove('is-hidden');
+                    void chip.offsetWidth;
+                    chip.classList.add('pop');
+                } else {
+                    chip.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+})();
 </script>
+
 </body>
 </html>

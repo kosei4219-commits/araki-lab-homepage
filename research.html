@@ -4,211 +4,912 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>研究内容・テーマ - 荒木研究室</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, 第一原理計算, Araki Laboratory">
+    <meta name="description" content="荒木研究室の研究内容・テーマ。陽電子消滅法による格子欠陥解析と第一原理計算による材料設計を軸に、金属・半導体材料の微細構造を原子レベルで解明しています。">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
-                    },
-                    colors: {
-                        primary: '#1a5c99',
-                        primaryDark: '#14487a',
-                        surface: '#f4f6f9',
-                        borderSubtle: '#e2e8f0',
-                        textMain: '#2d3748',
-                        textMuted: '#718096',
-                    },
-                    boxShadow: {
-                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           荒木研究室 研究内容・テーマ（デザインコンセプト版）
+           このページ専用のスタイル。style.css は使用しない。
+           ===================================================== */
+        :root {
+            --navy: #16324f;
+            --ink: #1d3048;
+            --blue: #1a5c99;
+            --blue-2: #2a6bb0;
+            --blue-deep: #14487a;
+            --sky: #7fa9d6;
+            --mist: #d9e6f4;
+            --pale: #eef4fb;
+            --paper: #fbfdff;
+            --text: #33475e;
+            --muted: #64788d;
+            --faint: #93a7bd;
+            --line: #dce7f2;
+            --mincho: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --serif: 'Noto Serif JP', 'Shippori Mincho', serif;
+            --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
         }
-    </script>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--sans); }
+        ::selection { background: var(--blue); color: #fff; }
+        :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; border-radius: 2px; }
+
+        .container { width: min(1160px, 100% - 48px); margin-inline: auto; }
+
+        /* ==================== ヘッダー ==================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow .3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 6px 24px -8px rgba(22, 50, 79, .14); }
+        .header-top { display: flex; align-items: center; gap: 18px; padding: 14px 0 10px; }
+        .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+        .brand img { height: 40px; width: auto; }
+        .brand-divider { width: 1px; height: 34px; background: var(--line); }
+        .brand-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .14em; color: var(--ink);
+            white-space: nowrap;
+        }
+        .brand-aff { font-size: 10px; line-height: 1.55; color: var(--faint); letter-spacing: .04em; white-space: nowrap; }
+        .menu-btn {
+            display: none; margin-left: auto;
+            background: none; border: none; cursor: pointer;
+            color: var(--navy); font-size: 26px; padding: 6px;
+        }
+        .header-nav { display: flex; justify-content: center; gap: 8px; padding-bottom: 2px; }
+        .header-nav a {
+            position: relative; display: block;
+            padding: 8px 18px 14px;
+            font-size: 13.5px; letter-spacing: .06em; color: #46596f;
+            transition: color .25s ease;
+        }
+        .header-nav a::after {
+            content: ''; position: absolute; left: 50%; bottom: 8px;
+            width: 0; height: 2px; background: var(--blue);
+            transform: translateX(-50%); transition: width .3s ease;
+        }
+        .header-nav a:hover { color: var(--blue); }
+        .header-nav a:hover::after { width: 28px; }
+        .header-nav a.active { color: var(--navy); font-weight: 600; }
+        .header-nav a.active::after { width: 28px; }
+        .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--line); background: #fff; padding: 10px 24px 16px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { padding: 12px 4px; font-size: 14px; color: #46596f; border-bottom: 1px solid #eef3f9; }
+        .mobile-menu a.active { color: var(--blue); font-weight: 600; }
+
+        /* ==================== セクション共通 ==================== */
+        .section-label {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 21px; letter-spacing: .06em; color: var(--blue-2);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(23px, 2.5vw, 30px);
+            letter-spacing: .12em; color: var(--ink);
+        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-molecule, .vacancy-ring, .e-flow { animation: none !important; }
+        }
+
+        /* ==================== ページ冒頭（ヒーロー） ==================== */
+        .page-hero {
+            position: relative; overflow: hidden;
+            background: linear-gradient(108deg, #f7fafd 0%, #edf4fb 55%, #e2edf8 100%);
+            border-bottom: 1px solid var(--line);
+        }
+        .page-hero-deco { position: absolute; inset: 0; pointer-events: none; }
+        .hero-molecule { animation: float-soft 8s ease-in-out infinite; transform-origin: center; }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .page-hero-inner { position: relative; z-index: 1; padding: 74px 0 78px; max-width: 620px; }
+        .page-hero h1 {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(30px, 3.8vw, 44px);
+            letter-spacing: .14em; color: var(--ink);
+            margin-bottom: 24px;
+        }
+        .page-hero-lead {
+            font-size: 14.5px; line-height: 2.2; letter-spacing: .04em;
+            color: #4a5b70;
+        }
+
+        /* ==================== 研究概要 ==================== */
+        .overview { background: #fff; padding: 96px 0 104px; }
+        .overview-grid {
+            display: grid; grid-template-columns: .92fr 1.08fr;
+            gap: clamp(40px, 5vw, 70px); align-items: center;
+        }
+        .overview-body {
+            font-size: 14.5px; line-height: 2.25; letter-spacing: .04em;
+            color: #4a5b70; margin-top: 26px;
+        }
+
+        /* ---------- 研究の流れ図 ---------- */
+        .diagram-panel {
+            position: relative;
+            background: linear-gradient(165deg, #fbfdff 0%, #f2f7fc 100%);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 18px 50px -22px rgba(22, 50, 79, .25);
+            aspect-ratio: 560 / 470;
+        }
+        .diagram-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .vacancy-ring { animation: vacancy-pulse 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+        @keyframes vacancy-pulse {
+            0%, 100% { opacity: .35; }
+            50% { opacity: .95; }
+        }
+        .dnode {
+            position: absolute; z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+            background: none; border: none; cursor: pointer;
+            padding: 8px 10px; border-radius: 10px;
+            transition: background .25s ease, box-shadow .3s ease;
+        }
+        .dnode:hover, .dnode:focus-visible {
+            background: rgba(255, 255, 255, .92);
+            box-shadow: 0 8px 26px -8px rgba(42, 107, 176, .45), 0 0 0 1px #c9dcef;
+        }
+        .dnode-ic { font-size: 21px; color: var(--blue-2); line-height: 1; }
+        .dnode-jp {
+            font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+            color: var(--ink); line-height: 1.5; white-space: nowrap;
+        }
+        .dnode-en { font-size: 9px; letter-spacing: .05em; color: var(--blue-2); white-space: nowrap; }
+        .dnode--top    { left: 50%; top: 3%;  transform: translateX(-50%); }
+        .dnode--left   { left: 2.5%; top: 38%; }
+        .dnode--right  { right: 2.5%; top: 36%; }
+        .dnode--bottom { left: 50%; bottom: 3%; transform: translateX(-50%); }
+        .dnode--core   { left: 50%; top: 47%; transform: translate(-50%, -50%); width: 34%; aspect-ratio: 1; border-radius: 50%; }
+        .dnode--core:hover, .dnode--core:focus-visible { background: rgba(255, 255, 255, .5); }
+        .eplus-badge {
+            position: absolute; z-index: 2; left: 50%; top: 15.5%; transform: translateX(-50%);
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(circle at 32% 30%, #7f9ff0, #4a58c9 70%);
+            color: #fff; font-size: 12px; font-weight: 700;
+            box-shadow: 0 0 0 5px rgba(88, 108, 216, .16), 0 0 18px rgba(88, 108, 216, .55);
+            pointer-events: none;
+        }
+        .e-flow { animation: e-travel 2.4s ease-in infinite; }
+        @keyframes e-travel {
+            0%   { transform: translateY(0);    opacity: 0; }
+            15%  { opacity: 1; }
+            80%  { opacity: 1; }
+            100% { transform: translateY(74px); opacity: 0; }
+        }
+        /* 吹き出し（図のフォーカス） */
+        .tip {
+            position: absolute; z-index: 5;
+            top: calc(100% + 8px); left: 50%; transform: translate(-50%, 6px);
+            width: 212px;
+            background: #fff; border: 1px solid #cfe0f0; border-radius: 10px;
+            box-shadow: 0 14px 36px -10px rgba(22, 50, 79, .35);
+            padding: 11px 13px;
+            font-size: 11px; line-height: 1.85; letter-spacing: .02em;
+            color: #4a5b70; text-align: left; font-weight: 400;
+            opacity: 0; visibility: hidden; pointer-events: none;
+            transition: opacity .3s ease, transform .3s ease, visibility .3s;
+        }
+        .dnode:hover .tip, .dnode:focus .tip, .dnode:focus-within .tip {
+            opacity: 1; visibility: visible; transform: translate(-50%, 0);
+        }
+        .dnode--left  .tip { left: 0; transform: translate(0, 6px); }
+        .dnode--left:hover .tip, .dnode--left:focus .tip { transform: translate(0, 0); }
+        .dnode--right .tip { left: auto; right: 0; transform: translate(0, 6px); }
+        .dnode--right:hover .tip, .dnode--right:focus .tip { transform: translate(0, 0); }
+        .dnode--bottom .tip, .dnode--core .tip { top: auto; bottom: calc(100% + 8px); transform: translate(-50%, -6px); }
+        .dnode--bottom:hover .tip, .dnode--bottom:focus .tip,
+        .dnode--core:hover .tip, .dnode--core:focus .tip { transform: translate(-50%, 0); }
+        .diagram-hint {
+            position: absolute; z-index: 2; right: 14px; bottom: 10px;
+            font-size: 9.5px; letter-spacing: .08em; color: var(--faint);
+            display: flex; align-items: center; gap: 5px;
+        }
+
+        /* ==================== 主な研究テーマ ==================== */
+        .themes { background: linear-gradient(180deg, #fbfdff 0%, #f0f6fc 100%); padding: 96px 0 104px; }
+        .themes-lead { font-size: 13.5px; letter-spacing: .04em; color: var(--muted); margin-top: 16px; }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 34px; }
+        .chip {
+            border: 1px solid #b9cfe4; background: #fff; color: #46596f;
+            font-size: 12px; font-weight: 500; letter-spacing: .1em;
+            padding: 8px 22px; border-radius: 999px; cursor: pointer;
+            transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .3s ease;
+        }
+        .chip:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 4px 14px -6px rgba(26, 92, 153, .4); }
+        .chip.active {
+            background: var(--navy); border-color: var(--navy); color: #fff;
+            box-shadow: 0 6px 18px -8px rgba(22, 50, 79, .55);
+        }
+        .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .theme-card {
+            background: #fff; border: 1px solid var(--line); border-radius: 12px;
+            overflow: hidden;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .theme-card:hover {
+            transform: translateY(-6px);
+            border-color: #b7d0e9;
+            box-shadow: 0 18px 44px -14px rgba(42, 107, 176, .38);
+        }
+        .theme-card.is-hidden { display: none; }
+        .theme-card.pop { animation: card-in .5s cubic-bezier(.22, .61, .36, 1) both; }
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(16px) scale(.97); }
+            to { opacity: 1; transform: none; }
+        }
+        .theme-media { position: relative; height: 148px; overflow: hidden; }
+        .theme-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+        .theme-card:hover .theme-media img { transform: scale(1.06); }
+        .theme-num {
+            position: absolute; left: 12px; top: 12px; z-index: 1;
+            width: 34px; height: 34px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(22, 50, 79, .88); color: #fff;
+            font-family: var(--serif); font-size: 14px; letter-spacing: .04em;
+            box-shadow: 0 4px 14px rgba(13, 28, 46, .35);
+        }
+        .theme-body { padding: 20px 20px 22px; }
+        .theme-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 15.5px; line-height: 1.75; letter-spacing: .04em;
+            color: var(--ink); margin-bottom: 10px;
+        }
+        .theme-desc { font-size: 12.5px; line-height: 1.95; letter-spacing: .02em; color: var(--muted); }
+
+        /* ==================== 研究テーマ一覧（アコーディオン） ==================== */
+        .theses { background: #fff; padding: 96px 0 104px; }
+        .theses-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(20px, 2.2vw, 25px); letter-spacing: .1em;
+            color: var(--blue); margin-bottom: 34px;
+        }
+        .theses-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 26px; align-items: start; }
+        .acc-panel {
+            background: #fff; border: 1px solid var(--line); border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px -20px rgba(22, 50, 79, .25);
+        }
+        .acc-head {
+            width: 100%; display: flex; align-items: center; gap: 12px;
+            background: linear-gradient(180deg, #f7fafd, #eff5fb);
+            border: none; border-bottom: 1px solid var(--line);
+            padding: 16px 20px; cursor: pointer; text-align: left;
+            transition: background .25s ease;
+        }
+        .acc-head:hover { background: #eef4fb; }
+        .acc-head i:first-child { font-size: 19px; color: var(--blue-2); }
+        .acc-head-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 15.5px; letter-spacing: .08em; color: var(--ink);
+        }
+        .acc-chev { margin-left: auto; font-size: 16px; color: var(--sky); transition: transform .4s ease; }
+        .acc-head[aria-expanded="false"] .acc-chev { transform: rotate(-180deg); }
+        .acc-body { overflow: hidden; height: auto; transition: height .45s cubic-bezier(.22, .61, .36, 1); }
+        .thesis-list { list-style: none; }
+        .thesis-list li {
+            display: flex; align-items: baseline; gap: 13px;
+            padding: 13px 18px; border-bottom: 1px solid #eef3f9;
+            font-size: 13px; line-height: 1.9; letter-spacing: .02em; color: #4a5b70;
+            transition: background .25s ease;
+        }
+        .thesis-list li:last-child { border-bottom: none; }
+        .thesis-list li:hover { background: #f6f9fd; }
+        .thesis-no {
+            font-family: var(--serif); font-size: 12px; color: var(--blue-2);
+            flex-shrink: 0; letter-spacing: .04em;
+        }
+        .thesis-list i { margin-left: auto; align-self: center; flex-shrink: 0; font-size: 12px; color: #c3d5e8; }
+
+        /* ==================== 関連ページ ==================== */
+        .related { background: linear-gradient(180deg, #fbfdff 0%, #f1f6fc 100%); padding: 88px 0 104px; }
+        .related-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(20px, 2.2vw, 24px); letter-spacing: .1em;
+            color: var(--blue); margin-bottom: 30px;
+        }
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .related-card {
+            display: flex; background: #fff;
+            border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+            min-height: 128px;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: #b7d0e9;
+            box-shadow: 0 16px 40px -14px rgba(42, 107, 176, .38);
+        }
+        .related-media { width: 118px; flex-shrink: 0; position: relative; overflow: hidden; }
+        .related-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+        .related-card:hover .related-media img { transform: scale(1.07); }
+        .related-media--icon {
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #e3eefa, #cfe2f4);
+            color: var(--blue-2); font-size: 42px;
+        }
+        .related-body { position: relative; flex: 1; padding: 16px 16px 14px; display: flex; flex-direction: column; }
+        .related-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 15px; letter-spacing: .08em; color: var(--ink);
+            margin-bottom: 7px;
+            transition: color .3s ease;
+        }
+        .related-card:hover .related-name { color: var(--blue); }
+        .related-desc { font-size: 11.5px; line-height: 1.85; letter-spacing: .02em; color: var(--muted); }
+        .related-arrow {
+            margin-top: auto; align-self: flex-end;
+            color: var(--blue-2); font-size: 17px;
+            transition: transform .3s ease;
+        }
+        .related-card:hover .related-arrow { transform: translateX(5px); }
+
+        /* ==================== フッター ==================== */
+        .site-footer { background: linear-gradient(180deg, #edf3fa 0%, #e2ecf7 100%); border-top: 1px solid #d5e2f0; }
+        .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: clamp(32px, 5vw, 72px); padding: 60px 0 48px; }
+        .footer-brand-row { display: flex; align-items: flex-start; gap: 22px; }
+        .footer-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .16em; color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .footer-aff { font-size: 12.5px; line-height: 2.05; letter-spacing: .04em; color: #5d7288; }
+        .footer-molecule { flex-shrink: 0; margin-top: 4px; animation: float-soft 8s ease-in-out infinite; }
+        .footer-label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #33475e; margin-bottom: 16px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; letter-spacing: .04em; color: #4a6785;
+            transition: color .25s ease;
+        }
+        .footer-links a i { font-size: 11px; color: var(--sky); transition: transform .25s ease; }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-links a:hover i { transform: translateX(3px); }
+        .footer-bottom { border-top: 1px solid rgba(22, 50, 79, .1); padding: 18px 0; text-align: center; }
+        .footer-bottom p { font-size: 11px; letter-spacing: .06em; color: #8aa0b8; }
+
+        /* ==================== レスポンシブ ==================== */
+        @media (max-width: 1024px) {
+            .brand-aff { display: none; }
+            .theme-grid { grid-template-columns: repeat(2, 1fr); }
+            .related-grid { grid-template-columns: 1fr; }
+            .overview-grid { grid-template-columns: 1fr; }
+            .diagram-panel { width: min(100%, 560px); margin-inline: auto; }
+        }
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .menu-btn { display: block; }
+            .header-top { padding: 12px 0; }
+            .page-hero-inner { padding: 54px 0 58px; }
+            .overview { padding: 68px 0 76px; }
+            .themes { padding: 68px 0 76px; }
+            .theses { padding: 68px 0 76px; }
+            .related { padding: 62px 0 76px; }
+            .theses-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; padding: 48px 0 40px; }
+        }
+        @media (max-width: 560px) {
+            .container { width: calc(100% - 40px); }
+            .theme-grid { grid-template-columns: 1fr; }
+            .brand-name { font-size: 18px; }
+            .brand img { height: 34px; }
+            .diagram-panel { aspect-ratio: 560 / 540; }
+            .dnode-jp { font-size: 11px; white-space: normal; max-width: 128px; }
+            .dnode-en { display: none; }
+            .dnode--left { left: 0; }
+            .dnode--right { right: 0; }
+            .tip { width: 178px; font-size: 10.5px; }
+            .diagram-hint { display: none; }
+        }
+    </style>
 </head>
-<body class="bg-surface text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+<body>
 
 <!-- ヘッダー -->
-<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
-    <div class="flex items-center h-20 px-8 xl:px-14">
-        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
-            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
-            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
-            <div class="hidden sm:block">
-                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
-                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
-            </div>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+        <a href="index.html" class="brand" aria-label="荒木研究室 ホーム">
+            <img src="images/logo-osaka-university.webp" alt="大阪大学">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-name">荒木研究室</span>
+            <span class="brand-aff">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</span>
         </a>
-        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
-            <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">ホーム</a>
-            <a href="research.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">研究内容・テーマ</a>
-            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
-            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
-            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
-        </nav>
-        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
-            <i class="ph ph-list text-2xl"></i>
+        <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+            <i class="ph ph-list" aria-hidden="true"></i>
         </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
-        <a href="index.html" class="py-2 text-sm font-medium text-gray-600">ホーム</a>
-        <a href="research.html" class="py-2 text-sm font-medium text-primary">研究内容・テーマ</a>
-        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
-        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
-        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html">ホーム</a>
+        <a href="research.html" class="active">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">ホーム</a>
+        <a href="research.html" class="active">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
     </div>
 </header>
 
-<!-- メインレイアウト -->
-<div class="pt-20 w-full">
+<!-- ページ冒頭 -->
+<section class="page-hero">
+    <svg class="page-hero-deco" viewBox="0 0 1160 340" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+        <defs>
+            <radialGradient id="sph-a" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#f2f8fe"/>
+                <stop offset="55%" stop-color="#b9d3ec"/>
+                <stop offset="100%" stop-color="#6d9bcd"/>
+            </radialGradient>
+            <radialGradient id="sph-b" cx="34%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#eef6fd"/>
+                <stop offset="60%" stop-color="#a9c8e8"/>
+                <stop offset="100%" stop-color="#5d8fc7"/>
+            </radialGradient>
+        </defs>
+        <!-- 細かな粒子ネットワーク -->
+        <g stroke="#b3cce7" stroke-width="1" opacity=".5">
+            <line x1="640" y1="70" x2="720" y2="130"/><line x1="720" y1="130" x2="668" y2="212"/>
+            <line x1="720" y1="130" x2="812" y2="96"/><line x1="812" y1="96" x2="905" y2="140"/>
+            <line x1="668" y1="212" x2="748" y2="266"/><line x1="905" y1="140" x2="948" y2="228"/>
+            <line x1="748" y1="266" x2="860" y2="288"/><line x1="948" y1="228" x2="860" y2="288"/>
+            <line x1="1010" y1="80" x2="905" y2="140"/><line x1="1010" y1="80" x2="1096" y2="150"/>
+            <line x1="1096" y1="150" x2="948" y2="228"/><line x1="1060" y1="270" x2="948" y2="228"/>
+        </g>
+        <g fill="#7fa9d6" opacity=".7">
+            <circle cx="640" cy="70" r="3"/><circle cx="720" cy="130" r="4"/><circle cx="668" cy="212" r="3"/>
+            <circle cx="812" cy="96" r="3.5"/><circle cx="748" cy="266" r="3"/><circle cx="1010" cy="80" r="3"/>
+            <circle cx="1096" cy="150" r="3.5"/><circle cx="1060" cy="270" r="2.5"/><circle cx="580" cy="160" r="2.5"/>
+        </g>
+        <!-- 分子クラスタ -->
+        <g class="hero-molecule">
+            <line x1="905" y1="140" x2="860" y2="288" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="905" y1="140" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <line x1="948" y1="228" x2="990" y2="196" stroke="#9dbde2" stroke-width="2"/>
+            <circle cx="990" cy="196" r="46" fill="url(#sph-a)"/>
+            <circle cx="905" cy="140" r="26" fill="url(#sph-b)"/>
+            <circle cx="948" cy="228" r="19" fill="url(#sph-b)"/>
+            <circle cx="860" cy="288" r="14" fill="url(#sph-a)"/>
+            <circle cx="1052" cy="128" r="12" fill="url(#sph-b)"/>
+            <line x1="990" y1="196" x2="1052" y2="128" stroke="#9dbde2" stroke-width="2"/>
+        </g>
+    </svg>
+    <div class="container">
+        <div class="page-hero-inner reveal in">
+            <p class="section-label">Research</p>
+            <h1>研究内容・テーマ</h1>
+            <p class="page-hero-lead">
+                当研究室では、陽電子消滅法を主軸とした先端的な材料解析技術により、金属・半導体材料の微細構造を原子レベルで解明しています。
+            </p>
+        </div>
+    </div>
+</section>
 
-    <!-- メインコンテンツ -->
-    <main class="bg-surface">
-
-        <!-- ページヘッダーバナー -->
-        <div class="relative bg-primary overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-8 py-14 text-center">
-                <h2 class="text-4xl font-bold text-white tracking-tight mb-2">Research</h2>
-                <p class="text-sm text-white/70 font-light mb-3">研究内容・テーマ</p>
-                <p class="text-sm text-white/60 font-light max-w-xl mx-auto leading-relaxed">当研究室では、陽電子消滅法を主軸とした先端的な材料解析技術により、金属・半導体材料の微細構造を原子レベルで解明しています。</p>
-            </div>
+<!-- 研究概要 -->
+<section class="overview">
+    <div class="container overview-grid">
+        <div class="reveal">
+            <p class="section-label">Research Overview</p>
+            <h2 class="section-title">研究概要</h2>
+            <p class="overview-body">
+                電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。量子機能材料設計分野では自動車用アルミニウム合金や高強度鋼などの金属材料や、近年注目されている多種類の元素を均一に混合した高エントロピー合金や金属３Ｄプリンターで作製した合金などにおいて優れた特性が発現する機構を、主として陽電子を用いた実験および第一原理計算を用いたコンピュータ・シミュレーションにより解明し、新しい材料を設計するための研究を行っています。
+            </p>
         </div>
 
-        <div class="px-6 py-10 md:px-10 lg:px-14 max-w-[1200px] mx-auto relative">
+        <!-- 研究の流れ図（ホバー／タップで説明表示） -->
+        <div class="diagram-panel reveal" style="--d:.15s">
+            <svg class="diagram-bg" viewBox="0 0 560 470" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="#7fa9d6"/>
+                    </marker>
+                    <radialGradient id="atom-g" cx="34%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#dcebfa"/>
+                        <stop offset="60%" stop-color="#8db4dd"/>
+                        <stop offset="100%" stop-color="#4a7cb5"/>
+                    </radialGradient>
+                </defs>
+                <!-- 循環の矢印 -->
+                <g stroke="#8fb4dd" stroke-width="1.8" marker-end="url(#arrow)">
+                    <path d="M225,66 C150,84 108,128 92,182"/>
+                    <path d="M335,66 C410,84 452,126 466,178"/>
+                    <path d="M95,268 C118,336 178,382 228,398"/>
+                    <path d="M465,262 C444,334 384,380 332,398"/>
+                </g>
+                <!-- e+ の入射線（点線） -->
+                <line x1="280" y1="86" x2="280" y2="152" stroke="#7c8ede" stroke-width="1.6" stroke-dasharray="4 5"/>
+                <!-- 結晶格子（中央）：一箇所だけ原子が抜けた「空孔」 -->
+                <g stroke="#a9c6e8" stroke-width="1.6">
+                    <line x1="204" y1="180" x2="356" y2="180"/><line x1="204" y1="238" x2="356" y2="238"/><line x1="204" y1="296" x2="356" y2="296"/>
+                    <line x1="204" y1="180" x2="204" y2="296"/><line x1="280" y1="180" x2="280" y2="296"/><line x1="356" y1="180" x2="356" y2="296"/>
+                </g>
+                <g fill="url(#atom-g)">
+                    <circle cx="204" cy="180" r="13"/><circle cx="280" cy="180" r="13"/><circle cx="356" cy="180" r="13"/>
+                    <circle cx="204" cy="238" r="13"/><circle cx="356" cy="238" r="13"/>
+                    <circle cx="204" cy="296" r="13"/><circle cx="280" cy="296" r="13"/><circle cx="356" cy="296" r="13"/>
+                </g>
+                <!-- 空孔（原子の抜け穴）がゆっくり明滅する -->
+                <circle class="vacancy-ring" cx="280" cy="238" r="12" stroke="#7c8ede" stroke-width="1.6" stroke-dasharray="3 4" fill="rgba(124,142,222,.08)"/>
+            </svg>
 
-            <!-- 研究概要 -->
-            <div class="mb-8 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">研究概要</h3>
-                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
-            </div>
-            <div class="mb-10 flex flex-col md:flex-row gap-6 items-stretch">
-                <div class="p-5 bg-white rounded-lg border-l-4 border-primary shadow-soft text-[0.96em] text-gray-600 leading-[1.95] md:w-[57%]">
-                    電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。量子機能材料設計分野では自動車用アルミニウム合金や高強度鋼などの金属材料や、近年注目されている多種類の元素を均一に混合した高エントロピー合金や金属３Ｄプリンターで作製した合金などにおいて優れた特性が発現する機構を、主として陽電子を用いた実験および第一原理計算を用いたコンピュータ・シミュレーションにより解明し、新しい材料を設計するための研究を行っています。
-                </div>
-                <div class="shrink-0 md:w-[43%] flex">
-                    <img src="images/araki_lab_diagram.png" alt="研究概要図" class="w-full object-contain rounded-lg shadow-soft border border-borderSubtle bg-white">
-                </div>
-            </div>
+            <!-- e+ が繰り返し材料に入っていく動き -->
+            <span class="eplus-badge e-flow" aria-hidden="true">e⁺</span>
 
-            <!-- 研究テーマ -->
-            <div class="mb-6 mt-14 text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">研究テーマ</h3>
-                <div class="w-12 h-0.5 bg-primary mx-auto"></div>
-            </div>
-            <p class="mb-6 text-sm text-textMuted">当研究室における近年の主な研究テーマをご紹介します。</p>
+            <button class="dnode dnode--top" type="button">
+                <span class="dnode-jp">陽電子消滅法</span>
+                <span class="dnode-en">(Positron Analysis)</span>
+                <span class="tip" role="tooltip">電子の反物質「陽電子」を材料に入射し、電子と対消滅する際に放出されるγ線を計測して、材料内部の情報を得る手法です。</span>
+            </button>
+
+            <button class="dnode dnode--left" type="button">
+                <span class="dnode-ic"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></span>
+                <span class="dnode-jp">格子欠陥・微細構造<br>の検出</span>
+                <span class="tip" role="tooltip">格子欠陥や空孔、転位などの微細構造を陽電子消滅法で高感度に検出します。</span>
+            </button>
+
+            <button class="dnode dnode--right" type="button">
+                <span class="dnode-ic"><i class="ph ph-monitor" aria-hidden="true"></i></span>
+                <span class="dnode-jp">第一原理計算</span>
+                <span class="dnode-en">(First-principles Calculation)</span>
+                <span class="tip" role="tooltip">量子力学に基づくコンピュータ・シミュレーションで、原子・電子レベルから材料の性質を予測します。</span>
+            </button>
+
+            <button class="dnode dnode--bottom" type="button">
+                <span class="dnode-ic"><i class="ph ph-graph" aria-hidden="true"></i></span>
+                <span class="dnode-jp">材料設計・特性最適化</span>
+                <span class="dnode-en">(Material Design)</span>
+                <span class="tip" role="tooltip">実験と計算で得られた知見をもとに、優れた特性を持つ新しい材料の設計につなげます。</span>
+            </button>
+
+            <button class="dnode dnode--core" type="button" aria-label="結晶格子と空孔">
+                <span class="tip" role="tooltip">金属・半導体材料の原子配列。点線の丸は原子が抜けた「空孔」で、こうした欠陥が材料の特性を大きく左右します。</span>
+            </button>
+
+            <p class="diagram-hint"><i class="ph ph-cursor" aria-hidden="true"></i>図の項目にふれると説明が表示されます</p>
+        </div>
+    </div>
+</section>
+
+<!-- 主な研究テーマ -->
+<section class="themes">
+    <div class="container">
+        <div class="reveal">
+            <p class="section-label">Themes</p>
+            <h2 class="section-title">主な研究テーマ</h2>
+            <p class="themes-lead">当研究室における近年の主な研究テーマをご紹介します。</p>
+        </div>
+
+        <!-- 絞り込み -->
+        <div class="filter-bar reveal" style="--d:.1s" role="group" aria-label="研究テーマの絞り込み">
+            <button class="chip active" type="button" data-filter="all" aria-pressed="true">すべて</button>
+            <button class="chip" type="button" data-filter="実験" aria-pressed="false">実験</button>
+            <button class="chip" type="button" data-filter="計算" aria-pressed="false">計算</button>
+            <button class="chip" type="button" data-filter="材料" aria-pressed="false">材料</button>
+        </div>
+
+        <div class="theme-grid">
+            <article class="theme-card reveal" data-tags="実験">
+                <div class="theme-media">
+                    <img src="images/topic-positron-annihilation.png" alt="陽電子消滅法による格子欠陥解析のイメージ">
+                    <span class="theme-num">01</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">陽電子消滅法による<br>格子欠陥解析</h3>
+                    <p class="theme-desc">陽電子寿命測定・ドップラー広がり測定により、空孔型欠陥や転位等の微細構造を高感度に評価します。</p>
+                </div>
+            </article>
+            <article class="theme-card reveal" style="--d:.08s" data-tags="計算">
+                <div class="theme-media">
+                    <img src="images/topic-first-principles.png" alt="第一原理計算による材料設計のイメージ">
+                    <span class="theme-num">02</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">第一原理計算による<br>材料設計</h3>
+                    <p class="theme-desc">第一原理計算を用いて、欠陥生成や物性予測を行い、材料設計の指針を提供します。</p>
+                </div>
+            </article>
+            <article class="theme-card reveal" style="--d:.16s" data-tags="材料 実験">
+                <div class="theme-media">
+                    <img src="images/topic-high-entropy-alloy.png" alt="高エントロピー合金の微細組織イメージ">
+                    <span class="theme-num">03</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">高エントロピー合金の<br>特性発現機構</h3>
+                    <p class="theme-desc">高エントロピー合金における局所構造と特性の相関を解明し、材料開発につなげます。</p>
+                </div>
+            </article>
+            <article class="theme-card reveal" style="--d:.24s" data-tags="材料 実験">
+                <div class="theme-media">
+                    <img src="images/topic-metal-3d-printing.png" alt="金属3Dプリンターによる造形">
+                    <span class="theme-num">04</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">金属3Dプリンター造形<br>合金の欠陥評価</h3>
+                    <p class="theme-desc">AM造形材に特有の欠陥や残留応力の評価を通じて、信頼性向上に貢献します。</p>
+                </div>
+            </article>
+            <article class="theme-card reveal" style="--d:.32s" data-tags="実験 計算 材料">
+                <div class="theme-media">
+                    <img src="images/topic-solute-cluster.webp" alt="溶質原子が集まってクラスタを形成していく過程のイメージ" loading="lazy">
+                    <span class="theme-num">05</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">Al-Mg-Si系合金の<br>溶質クラスタ形成</h3>
+                    <p class="theme-desc">時効過程における溶質クラスタ形成挙動を実験と計算の両面から解析します。</p>
+                </div>
+            </article>
+            <article class="theme-card reveal" style="--d:.4s" data-tags="計算">
+                <div class="theme-media">
+                    <img src="images/topic-cbn-defect.webp" alt="結晶中の複合欠陥と電子状態計算のイメージ" loading="lazy">
+                    <span class="theme-num">06</span>
+                </div>
+                <div class="theme-body">
+                    <h3 class="theme-title">cBN複合欠陥の<br>理論計算</h3>
+                    <p class="theme-desc">cBN中の複合欠陥の形成エネルギーや電子状態を計算し、物性への影響を評価します。</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 2025年度 研究テーマ一覧 -->
+<section class="theses">
+    <div class="container">
+        <h2 class="theses-title reveal">2025年度 研究テーマ一覧</h2>
+        <div class="theses-grid">
 
             <!-- 修士論文テーマ -->
-            <div class="mb-6 bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
-                <div class="px-5 py-3 bg-blue-50/70 border-b border-borderSubtle">
-                    <h4 class="text-sm font-bold text-primary">2025年度 修士論文テーマ</h4>
+            <div class="acc-panel reveal">
+                <button class="acc-head" type="button" aria-expanded="true" aria-controls="acc-master">
+                    <i class="ph ph-graduation-cap" aria-hidden="true"></i>
+                    <span class="acc-head-title">修士論文テーマ</span>
+                    <i class="ph ph-caret-up acc-chev" aria-hidden="true"></i>
+                </button>
+                <div class="acc-body" id="acc-master">
+                    <ol class="thesis-list">
+                        <li><span class="thesis-no">01</span>cBNにおける点欠陥および複合欠陥が弾性特性に及ぼす影響の第一原理計算<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">02</span>Al-Mg-Cu合金における空孔-溶質原子クラスタ形成過程のモンテカルロ計算による解析<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">03</span>レーザ粉末床溶融結合法により造形されたβチタン合金における格子欠陥の同定<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">04</span>Al-Mg-Si合金の溶質原子クラスタ形成に及ぼす予備時効温度の影響<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">05</span>銅固溶体合金における積層欠陥エネルギーの解析<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                    </ol>
                 </div>
-                <ul class="divide-y divide-gray-100">
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        cBNにおける点欠陥および複合欠陥が弾性特性に及ぼす影響の第一原理計算
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        Al-Mg-Cu合金における空孔-溶質原子クラスタ形成過程のモンテカルロ計算による解析
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        レーザ粉末床溶融結合法により造形されたβチタン合金における格子欠陥の同定
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        Al-Mg-Si合金の溶質原子クラスタ形成に及ぼす予備時効温度の影響
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        銅固溶体合金における積層欠陥エネルギーの解析
-                    </li>
-                </ul>
             </div>
 
             <!-- 卒業論文テーマ -->
-            <div class="mb-6 bg-white rounded-lg border border-borderSubtle shadow-soft overflow-hidden">
-                <div class="px-5 py-3 bg-blue-50/70 border-b border-borderSubtle">
-                    <h4 class="text-sm font-bold text-primary">2025年度 卒業論文テーマ</h4>
+            <div class="acc-panel reveal" style="--d:.12s">
+                <button class="acc-head" type="button" aria-expanded="true" aria-controls="acc-bachelor">
+                    <i class="ph ph-student" aria-hidden="true"></i>
+                    <span class="acc-head-title">卒業論文テーマ</span>
+                    <i class="ph ph-caret-up acc-chev" aria-hidden="true"></i>
+                </button>
+                <div class="acc-body" id="acc-bachelor">
+                    <ol class="thesis-list">
+                        <li><span class="thesis-no">01</span>レーザー粉末床溶融結合法により造形されたTi-V合金における格子欠陥の同定<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">02</span>冷間圧延を施したマルテンサイト鋼中の格子欠陥に及ぼす水素の影響<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">03</span>cBNにおける複合欠陥の陽電子寿命の理論計算<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">04</span>Al-Mg-Si合金の溶質クラスタ形成に及ぼすMg/Si組成比と時効温度の影響<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">05</span>陽電子寿命法によるAl-Zn-Mg合金の炉冷過程中における溶質クラスタ形成挙動の解析<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">06</span>第一原理計算によるCu-Ni-Si合金の弾性特性評価<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">07</span>Al-Mg-Si合金の溶質原子クラスタに及ぼすCuの影響<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                        <li><span class="thesis-no">08</span>βTi-V合金の空孔形成エネルギーの第一原理計算<i class="ph ph-caret-right" aria-hidden="true"></i></li>
+                    </ol>
                 </div>
-                <ul class="divide-y divide-gray-100">
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        レーザー粉末床溶融結合法により造形されたTi-V合金における格子欠陥の同定
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        冷間圧延を施したマルテンサイト鋼中の格子欠陥に及ぼす水素の影響
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        cBNにおける複合欠陥の陽電子寿命の理論計算
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        Al-Mg-Si合金の溶質クラスタ形成に及ぼすMg/Si組成比と時効温度の影響
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        陽電子寿命法によるAl-Zn-Mg合金の炉冷過程中における溶質クラスタ形成挙動の解析
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        第一原理計算によるCu-Ni-Si合金の弾性特性評価
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        Al-Mg-Si合金の溶質原子クラスタに及ぼすCuの影響
-                    </li>
-                    <li class="relative px-5 py-3 pl-10 text-sm text-gray-600 leading-relaxed hover:bg-gray-50 transition-colors">
-                        <span class="absolute left-4 top-[17px] w-2 h-2 rounded-full bg-primary/60"></span>
-                        βTi-V合金の空孔形成エネルギーの第一原理計算
-                    </li>
-                </ul>
             </div>
 
         </div>
+    </div>
+</section>
 
-        <!-- フッター -->
-        <footer class="mt-16 bg-primary text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-            <div class="relative z-10 px-6 py-8 md:px-10 lg:px-14 max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between gap-6">
+<!-- 関連ページ -->
+<section class="related">
+    <div class="container">
+        <h2 class="related-title reveal">関連ページ</h2>
+        <div class="related-grid">
+            <a href="gallery.html" class="related-card reveal">
+                <div class="related-media">
+                    <img src="images/lab-research-scene.webp" alt="研究風景">
+                </div>
+                <div class="related-body">
+                    <p class="related-name">研究風景</p>
+                    <p class="related-desc">実験装置や研究活動の様子を写真でご覧いただけます。</p>
+                    <i class="ph ph-arrow-right related-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="members.html" class="related-card reveal" style="--d:.1s">
+                <div class="related-media related-media--icon">
+                    <i class="ph ph-users-three" aria-hidden="true"></i>
+                </div>
+                <div class="related-body">
+                    <p class="related-name">メンバー</p>
+                    <p class="related-desc">研究室メンバーの紹介と研究分野をご覧いただけます。</p>
+                    <i class="ph ph-arrow-right related-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="career.html" class="related-card reveal" style="--d:.2s">
+                <div class="related-media related-media--icon">
+                    <i class="ph ph-buildings" aria-hidden="true"></i>
+                </div>
+                <div class="related-body">
+                    <p class="related-name">就職・進学実績</p>
+                    <p class="related-desc">進路実績や主な就職先・進学先をご紹介します。</p>
+                    <i class="ph ph-arrow-right related-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand-row">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="ph ph-atom text-white/70 text-lg"></i>
-                        <span class="font-bold text-base">荒木研究室</span>
-                    </div>
-                    <p class="text-sm text-white/75 leading-relaxed font-light">
-                        大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
+                    <p class="footer-name">荒木研究室</p>
+                    <p class="footer-aff">
+                        大阪大学大学院工学研究科<br>
+                        マテリアル生産科学専攻<br>
+                        量子機能材料設計学領域
                     </p>
                 </div>
-                <div class="flex flex-col gap-1 text-sm text-white/60">
-                    <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
-                    <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
-                    <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
-                    <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
-                </div>
+                <svg class="footer-molecule" width="92" height="76" viewBox="0 0 92 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="18" y1="52" x2="42" y2="24" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="18" y1="52" x2="52" y2="60" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="52" y1="60" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="52" y2="60" stroke="#c5d9ef" stroke-width="1"/>
+                    <circle cx="18" cy="52" r="6" fill="#2a6bb0"/>
+                    <circle cx="42" cy="24" r="8" fill="#1a5c99"/>
+                    <circle cx="72" cy="38" r="5" fill="#7fa9d6"/>
+                    <circle cx="52" cy="60" r="4.5" fill="#a9c6e8"/>
+                    <circle cx="80" cy="14" r="2.5" fill="#c5d9ef"/>
+                    <circle cx="8" cy="18" r="2" fill="#c5d9ef"/>
+                </svg>
             </div>
-            <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
-                <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+            <div>
+                <p class="footer-label">関連リンク</p>
+                <ul class="footer-links">
+                    <li><a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学</a></li>
+                    <li><a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学 工学研究科</a></li>
+                    <li><a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>マテリアル生産科学専攻</a></li>
+                </ul>
             </div>
-        </footer>
-    </main>
-</div>
+            <div>
+                <p class="footer-label">サイトリンク</p>
+                <ul class="footer-links">
+                    <li><a href="research.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究内容・テーマ</a></li>
+                    <li><a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究風景</a></li>
+                    <li><a href="members.html"><i class="ph ph-caret-right" aria-hidden="true"></i>メンバー</a></li>
+                    <li><a href="career.html"><i class="ph ph-caret-right" aria-hidden="true"></i>就職・進学実績</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
 <script>
-    document.getElementById('menu-btn').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+(function () {
+    'use strict';
+
+    /* ---------- モバイルメニュー ---------- */
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
     });
+
+    /* ---------- ヘッダーの影（スクロール時） ---------- */
+    var header = document.getElementById('site-header');
+    var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- スクロールで現れる動き ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- テーマカードの絞り込み ---------- */
+    var chips = document.querySelectorAll('.chip');
+    var cards = document.querySelectorAll('.theme-card');
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            chips.forEach(function (c) {
+                c.classList.toggle('active', c === chip);
+                c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+            });
+            var f = chip.dataset.filter;
+            cards.forEach(function (card) {
+                var show = (f === 'all') || (card.dataset.tags || '').split(' ').indexOf(f) !== -1;
+                card.classList.remove('pop');
+                if (show) {
+                    card.classList.remove('is-hidden');
+                    /* アニメーションをリセットして再生 */
+                    void card.offsetWidth;
+                    card.classList.add('pop');
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+
+    /* ---------- 論文テーマのアコーディオン ---------- */
+    document.querySelectorAll('.acc-head').forEach(function (head) {
+        head.addEventListener('click', function () {
+            var body = document.getElementById(head.getAttribute('aria-controls'));
+            var isOpen = head.getAttribute('aria-expanded') === 'true';
+            head.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+            if (isOpen) {
+                /* 閉じる：現在の高さから 0 へ */
+                body.style.height = body.scrollHeight + 'px';
+                void body.offsetHeight; /* 高さを確定させてから 0 に切り替える */
+                body.style.height = '0px';
+            } else {
+                /* 開く：0 から中身の高さへ、終わったら自動高さに戻す */
+                body.style.height = body.scrollHeight + 'px';
+                body.addEventListener('transitionend', function handler() {
+                    body.style.height = 'auto';
+                    body.removeEventListener('transitionend', handler);
+                });
+            }
+        });
+    });
+})();
 </script>
+
 </body>
 </html>

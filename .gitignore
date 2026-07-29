@@ -1,0 +1,18 @@
+# === 絶対に公開してはいけないもの ===
+# サーバー接続情報（ホスト名・ユーザー名・パスワードが入っている）
+.vscode/
+*sftp.json
+*ftp-config.json
+.env
+.env.*
+
+# === 開発ツールの設定（公開不要） ===
+.claude/
+.agents/
+.aidesigner/
+.mcp.json
+
+# === OS が勝手に作るファイル ===
+Thumbs.db
+.DS_Store
+desktop.ini

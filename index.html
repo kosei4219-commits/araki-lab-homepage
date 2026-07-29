@@ -5,246 +5,1350 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>荒木研究室</title>
     <meta name="keywords" content="陽電子, ポジトロン, POSITRON, 陽電子消滅法, Araki Laboratory">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="大阪大学大学院工学研究科 マテリアル生産科学専攻 量子機能材料設計学領域 荒木研究室。陽電子消滅法と第一原理計算による材料科学研究。">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Lora"', '"Noto Sans JP"', 'serif'],
-                    },
-                    colors: {
-                        primary: '#1a5c99',
-                        primaryDark: '#14487a',
-                        surface: '#f4f6f9',
-                        borderSubtle: '#e2e8f0',
-                        textMain: '#2d3748',
-                        textMuted: '#718096',
-                    },
-                    boxShadow: {
-                        soft: '0 4px 20px -2px rgba(0,0,0,0.05)',
-                    }
-                }
-            }
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================================================
+           荒木研究室 トップページ（デザインコンセプト版）
+           このページ専用のスタイル。style.css は使用しない。
+           ===================================================== */
+        :root {
+            --navy: #16324f;
+            --ink: #1d3048;
+            --blue: #1a5c99;
+            --blue-2: #2a6bb0;
+            --blue-deep: #14487a;
+            --sky: #7fa9d6;
+            --mist: #d9e6f4;
+            --pale: #eef4fb;
+            --paper: #fbfdff;
+            --text: #33475e;
+            --muted: #64788d;
+            --faint: #93a7bd;
+            --line: #dce7f2;
+            --mincho: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --serif: 'Noto Serif JP', 'Shippori Mincho', serif;
+            --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
         }
-    </script>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ::selection { background: var(--blue); color: #fff; }
+        :focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; border-radius: 2px; }
+
+        .container { width: min(1160px, 100% - 48px); margin-inline: auto; }
+
+        /* ==================== ヘッダー ==================== */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            transition: box-shadow .3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 6px 24px -8px rgba(22, 50, 79, .14); }
+        .header-top {
+            display: flex; align-items: center; gap: 18px;
+            padding: 14px 0 10px;
+        }
+        .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+        .brand img { height: 40px; width: auto; }
+        .brand-divider { width: 1px; height: 34px; background: var(--line); }
+        .brand-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .14em; color: var(--ink);
+            white-space: nowrap;
+        }
+        .brand-aff {
+            font-size: 10px; line-height: 1.55; color: var(--faint);
+            letter-spacing: .04em; white-space: nowrap;
+        }
+        .menu-btn {
+            display: none; margin-left: auto;
+            background: none; border: none; cursor: pointer;
+            color: var(--navy); font-size: 26px; padding: 6px;
+        }
+        .header-nav {
+            display: flex; justify-content: center; gap: 8px;
+            padding-bottom: 2px;
+        }
+        .header-nav a {
+            position: relative; display: block;
+            padding: 8px 18px 14px;
+            font-size: 13.5px; letter-spacing: .06em; color: #46596f;
+            transition: color .25s ease;
+        }
+        .header-nav a::after {
+            content: ''; position: absolute; left: 50%; bottom: 8px;
+            width: 0; height: 2px; background: var(--blue);
+            transform: translateX(-50%); transition: width .3s ease;
+        }
+        .header-nav a:hover { color: var(--blue); }
+        .header-nav a:hover::after { width: 28px; }
+        .header-nav a.active { color: var(--navy); font-weight: 600; }
+        .header-nav a.active::after { width: 28px; }
+        .mobile-menu {
+            display: none; flex-direction: column;
+            border-top: 1px solid var(--line);
+            background: #fff; padding: 10px 24px 16px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            padding: 12px 4px; font-size: 14px; color: #46596f;
+            border-bottom: 1px solid #eef3f9;
+        }
+        .mobile-menu a.active { color: var(--blue); font-weight: 600; }
+
+        /* ==================== ヒーロー ==================== */
+        .hero {
+            position: relative;
+            height: min(calc(100vh - 122px), 720px);
+            min-height: 540px;
+            overflow: hidden;
+            background: linear-gradient(105deg, #f4f8fd 0%, #e8f0fa 45%, #dbe8f6 100%);
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 44%;
+        }
+        .hero-veil { position: absolute; inset: 0; pointer-events: none; }
+        /* 明るい画像に合わせ、文字の下だけ薄く白をかけて読みやすくする */
+        .hero-veil-left {
+            background: linear-gradient(93deg,
+                rgba(252, 254, 255, .92) 0%,
+                rgba(252, 254, 255, .80) 28%,
+                rgba(252, 254, 255, .40) 45%,
+                rgba(252, 254, 255, 0) 60%);
+        }
+        .hero-veil-bottom {
+            background: linear-gradient(180deg,
+                rgba(251, 253, 255, 0) 62%,
+                rgba(251, 253, 255, .55) 84%,
+                rgba(251, 253, 255, .95) 100%);
+        }
+        #particle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .hero-inner {
+            position: relative; z-index: 3;
+            height: 100%;
+            display: flex; flex-direction: column; justify-content: center;
+            padding-bottom: 46px;
+        }
+        .hero-eyebrow {
+            font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+            color: #5f7690;
+            font-weight: 400; margin-bottom: 30px;
+        }
+        .hero-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(40px, 5.4vw, 62px);
+            letter-spacing: .22em; line-height: 1.25;
+            color: var(--ink);
+        }
+        .hero-title-en {
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(19px, 2vw, 25px);
+            letter-spacing: .06em; color: #2c4159;
+            margin-top: 10px; margin-bottom: 34px;
+        }
+        .hero-copy {
+            font-size: clamp(15px, 1.35vw, 17px); font-weight: 500;
+            line-height: 2.15; letter-spacing: .05em; color: #33475e;
+            margin-bottom: 36px;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--blue); color: #fff;
+            font-size: 13.5px; font-weight: 500; letter-spacing: .08em;
+            padding: 14px 28px; border-radius: 6px;
+            transition: background .3s ease, box-shadow .35s ease, transform .3s ease;
+        }
+        .btn-primary i { transition: transform .3s ease; }
+        .btn-primary:hover {
+            background: var(--blue-deep);
+            box-shadow: 0 8px 28px -6px rgba(26, 92, 153, .55);
+            transform: translateY(-2px);
+        }
+        .btn-primary:hover i { transform: translateX(4px); }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(255, 255, 255, .85);
+            border: 1px solid #c6d8ea; color: #2c4159;
+            font-size: 13.5px; font-weight: 500; letter-spacing: .08em;
+            padding: 14px 26px; border-radius: 6px;
+            transition: border-color .3s ease, color .3s ease, box-shadow .35s ease, transform .3s ease;
+        }
+        .btn-ghost:hover {
+            border-color: var(--blue); color: var(--blue);
+            box-shadow: 0 8px 26px -8px rgba(26, 92, 153, .35);
+            transform: translateY(-2px);
+        }
+        .hero-note {
+            font-size: 11px; line-height: 1.9; letter-spacing: .05em;
+            color: #7f95ae;
+        }
+        .hero-scroll {
+            position: absolute; z-index: 4;
+            left: 50%; bottom: 20px; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            background: none; border: none; cursor: pointer;
+            color: #6d87a3; font-family: var(--sans);
+            font-size: 10px; letter-spacing: .38em; text-indent: .38em;
+        }
+        .hero-scroll i { font-size: 16px; animation: scroll-bob 2s ease-in-out infinite; }
+        @keyframes scroll-bob {
+            0%, 100% { transform: translateY(0); opacity: .7; }
+            50% { transform: translateY(6px); opacity: 1; }
+        }
+
+        /* ==================== セクション共通 ==================== */
+        .section-label {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 22px; letter-spacing: .06em; color: var(--blue-2);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(24px, 2.6vw, 31px);
+            letter-spacing: .12em; color: var(--ink);
+        }
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 12px;
+            border: 1px solid #9db8d2; color: #2c4159;
+            font-size: 13px; font-weight: 500; letter-spacing: .14em;
+            padding: 13px 34px; border-radius: 4px;
+            transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .35s ease;
+        }
+        .btn-outline i { transition: transform .3s ease; }
+        .btn-outline:hover {
+            background: var(--navy); border-color: var(--navy); color: #fff;
+            box-shadow: 0 10px 30px -10px rgba(22, 50, 79, .5);
+        }
+        .btn-outline:hover i { transform: translateX(4px); }
+
+        /* スクロールで現れる動き */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, .61, .36, 1); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-scroll i, .footer-molecule { animation: none !important; }
+            .lab-state.flash { animation: none; }
+        }
+
+        /* ==================== About ==================== */
+        .about {
+            background: linear-gradient(180deg, #fbfdff 0%, #f0f6fc 100%);
+            padding: 104px 0 110px;
+            position: relative; overflow: hidden;
+        }
+        .about-grid {
+            display: grid; grid-template-columns: 1.05fr .95fr;
+            gap: clamp(40px, 6vw, 84px); align-items: center;
+        }
+        .about-catch {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: clamp(17px, 1.9vw, 21px); letter-spacing: .1em;
+            color: var(--blue-2); margin: 30px 0 24px;
+        }
+        .about-body {
+            font-size: 14.5px; line-height: 2.3; letter-spacing: .04em;
+            color: #4a5b70; margin-bottom: 38px;
+        }
+        .about-visual { position: relative; }
+        .about-visual::before {
+            content: ''; position: absolute; inset: -12% -8%;
+            background: radial-gradient(closest-side, rgba(127, 169, 214, .35), rgba(127, 169, 214, 0) 72%);
+            pointer-events: none;
+        }
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ---------- 陽電子消滅シミュレーター（触って動く） ---------- */
+        .lab-sim {
+            position: relative; width: 100%;
+            aspect-ratio: 3 / 2;
+            border-radius: 18px; overflow: hidden;
+            background: radial-gradient(120% 105% at 22% 12%, #1d4374 0%, #12294a 46%, #0b1a30 100%);
+            border: 1px solid rgba(255, 255, 255, .12);
+            box-shadow: 0 24px 60px -18px rgba(22, 50, 79, .45);
+            cursor: crosshair;
+            touch-action: manipulation;
+            transition: box-shadow .4s ease;
+            margin: 0;
+        }
+        .about-visual:hover .lab-sim { box-shadow: 0 28px 72px -16px rgba(42, 107, 176, .55); }
+        .lab-sim canvas { display: block; width: 100%; height: 100%; }
+        /* 下部の文字を読みやすくする影 */
+        .lab-sim::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 42%;
+            background: linear-gradient(180deg, rgba(8, 20, 36, 0) 0%, rgba(8, 20, 36, .72) 78%, rgba(8, 20, 36, .88) 100%);
+            pointer-events: none;
+        }
+        .lab-hud {
+            position: absolute; top: 12px; left: 13px; z-index: 2;
+            display: flex; gap: 8px; pointer-events: none;
+        }
+        .lab-readout {
+            background: rgba(9, 22, 40, .5);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: 8px; padding: 5px 11px 6px;
+        }
+        .lab-readout-label {
+            display: block; font-size: 8.5px; letter-spacing: .12em;
+            color: rgba(206, 226, 250, .55); margin-bottom: 1px;
+        }
+        .lab-readout-value {
+            font-family: var(--serif); font-size: 16px; line-height: 1.1;
+            color: #d7e8fc; letter-spacing: .03em;
+        }
+        .lab-readout-value small { font-size: 9.5px; letter-spacing: .06em; opacity: .7; }
+        .lab-state {
+            position: absolute; left: 14px; bottom: 32px; right: 14px; z-index: 2;
+            font-size: 10.5px; letter-spacing: .05em; line-height: 1.5;
+            color: rgba(215, 232, 252, .72); pointer-events: none;
+        }
+        .lab-state.flash { animation: state-in .45s ease both; }
+        @keyframes state-in {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: none; }
+        }
+        .lab-hint {
+            position: absolute; left: 14px; bottom: 11px; right: 14px; z-index: 2;
+            display: flex; align-items: center; gap: 6px;
+            font-size: 9.5px; letter-spacing: .05em;
+            color: rgba(190, 214, 242, .42); pointer-events: none;
+        }
+        .lab-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+        /* ==================== Activities ==================== */
+        .activities { background: #fff; padding: 104px 0 110px; }
+        .activities-head { margin-bottom: 48px; }
+        .activity-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+            margin-bottom: 54px;
+        }
+        .activity-card {
+            display: flex; flex-direction: column;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px; overflow: hidden;
+            transition: transform .35s ease, box-shadow .4s ease, border-color .35s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-6px);
+            border-color: #b7d0e9;
+            box-shadow: 0 18px 44px -14px rgba(42, 107, 176, .38);
+        }
+        .activity-media { position: relative; height: 112px; overflow: hidden; }
+        .activity-media img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .6s ease;
+        }
+        .activity-card:hover .activity-media img { transform: scale(1.06); }
+        .activity-media::after {
+            content: ''; position: absolute; inset: auto 0 0 0; height: 52px;
+            background: linear-gradient(180deg, rgba(13, 28, 46, 0), rgba(13, 28, 46, .55));
+        }
+        .activity-num {
+            position: absolute; left: 14px; bottom: 8px; z-index: 1;
+            font-family: var(--serif); font-size: 24px; font-weight: 500;
+            color: #fff; letter-spacing: .06em;
+            text-shadow: 0 2px 10px rgba(13, 28, 46, .6);
+        }
+        .activity-body { display: flex; flex-direction: column; flex: 1; padding: 18px 18px 14px; }
+        .activity-title {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 15px; line-height: 1.75; letter-spacing: .04em;
+            color: var(--ink); margin-bottom: 10px;
+            transition: color .3s ease;
+        }
+        .activity-card:hover .activity-title { color: var(--blue); }
+        .activity-desc {
+            font-size: 12.5px; line-height: 1.95; letter-spacing: .02em;
+            color: var(--muted); margin-bottom: 14px;
+        }
+        .activity-arrow {
+            margin-top: auto; align-self: flex-end;
+            color: var(--blue-2); font-size: 18px;
+            transition: transform .3s ease;
+        }
+        .activity-card:hover .activity-arrow { transform: translateX(5px); }
+        .activities-more { text-align: center; }
+
+        /* ==================== News & Topics ==================== */
+        .news {
+            position: relative; overflow: hidden;
+            background: linear-gradient(180deg, #f3f8fd 0%, #ecf3fb 100%);
+            padding: 96px 0 120px;
+        }
+        .news-waves {
+            position: absolute; right: -60px; bottom: -18px;
+            width: 880px; max-width: 90%;
+            opacity: .8; pointer-events: none;
+        }
+        .news-waves g { animation: wave-flow 26s linear infinite; }
+        @keyframes wave-flow { to { transform: translateX(-800px); } }
+        @media (prefers-reduced-motion: reduce) { .news-waves g { animation: none; } }
+        .news-inner { position: relative; z-index: 1; }
+        .news-head { margin-bottom: 30px; }
+        .news-list { border-top: 1px solid var(--line); }
+        .news-row {
+            display: grid;
+            grid-template-columns: 108px 84px 1fr 24px;
+            align-items: center; gap: 18px;
+            padding: 20px 10px;
+            border-bottom: 1px solid var(--line);
+            transition: background .25s ease, transform .25s ease;
+        }
+        a.news-row:hover {
+            background: rgba(255, 255, 255, .85);
+            transform: translateX(5px);
+        }
+        a.news-row:hover .news-text { color: var(--blue); }
+        .news-date { font-size: 13.5px; letter-spacing: .04em; color: #5d7288; }
+        .news-tag {
+            justify-self: start;
+            font-size: 10.5px; font-weight: 700; letter-spacing: .1em;
+            padding: 4px 12px; border-radius: 3px; white-space: nowrap;
+        }
+        .news-tag--outline { color: var(--blue); border: 1px solid #a8c6e2; background: rgba(255, 255, 255, .8); }
+        .news-tag--fill { color: #fff; background: var(--blue); border: 1px solid var(--blue); }
+        .news-text { font-size: 14.5px; letter-spacing: .03em; color: #33475e; line-height: 1.8; transition: color .25s ease; }
+        .news-chevron { color: var(--sky); font-size: 15px; }
+
+        /* ==================== フッター ==================== */
+        .site-footer {
+            background: linear-gradient(180deg, #edf3fa 0%, #e2ecf7 100%);
+            border-top: 1px solid #d5e2f0;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+            gap: clamp(32px, 5vw, 72px);
+            padding: 60px 0 48px;
+        }
+        .footer-brand-row { display: flex; align-items: flex-start; gap: 22px; }
+        .footer-name {
+            font-family: var(--mincho); font-weight: 600;
+            font-size: 21px; letter-spacing: .16em; color: var(--ink);
+            margin-bottom: 14px;
+        }
+        .footer-aff { font-size: 12.5px; line-height: 2.05; letter-spacing: .04em; color: #5d7288; }
+        .footer-molecule { flex-shrink: 0; margin-top: 4px; animation: float-soft 8s ease-in-out infinite; }
+        .footer-label {
+            font-size: 13px; font-weight: 700; letter-spacing: .12em;
+            color: #33475e; margin-bottom: 16px;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; letter-spacing: .04em; color: #4a6785;
+            transition: color .25s ease, transform .25s ease;
+        }
+        .footer-links a i { font-size: 11px; color: var(--sky); transition: transform .25s ease; }
+        .footer-links a:hover { color: var(--blue); }
+        .footer-links a:hover i { transform: translateX(3px); }
+        .footer-bottom {
+            border-top: 1px solid rgba(22, 50, 79, .1);
+            padding: 18px 0; text-align: center;
+        }
+        .footer-bottom p { font-size: 11px; letter-spacing: .06em; color: #8aa0b8; }
+
+        /* ==================== レスポンシブ ==================== */
+        @media (max-width: 1024px) {
+            .activity-grid { grid-template-columns: repeat(2, 1fr); }
+            .brand-aff { display: none; }
+        }
+        @media (max-width: 860px) {
+            .header-nav { display: none; }
+            .menu-btn { display: block; }
+            .header-top { padding: 12px 0; }
+            .hero { height: auto; min-height: 0; padding: 74px 0 88px; }
+            .hero-bg { object-position: 58% 46%; opacity: .82; }
+            /* 文字のある上半分は白く、下半分は画像を見せる */
+            .hero-veil-left {
+                background: linear-gradient(180deg,
+                    rgba(252, 254, 255, .90) 0%,
+                    rgba(252, 254, 255, .84) 42%,
+                    rgba(252, 254, 255, .58) 68%,
+                    rgba(252, 254, 255, .28) 100%);
+            }
+            .hero-inner { padding-bottom: 0; }
+            .hero-eyebrow { margin-bottom: 22px; }
+            .hero-title-en { margin-bottom: 26px; }
+            .hero-copy { margin-bottom: 30px; }
+            .hero-scroll { display: none; }
+            .about { padding: 72px 0 80px; }
+            .about-grid { grid-template-columns: 1fr; gap: 46px; }
+            .about-visual { max-width: 420px; margin-inline: auto; }
+            .activities { padding: 72px 0 80px; }
+            .news { padding: 68px 0 96px; }
+            .news-row { grid-template-columns: 92px 76px 1fr 20px; gap: 12px; padding: 16px 6px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; padding: 48px 0 40px; }
+        }
+        @media (max-width: 560px) {
+            .container { width: calc(100% - 40px); }
+            .activity-grid { grid-template-columns: 1fr; }
+            .news-row { grid-template-columns: 1fr; gap: 8px; }
+            .news-chevron { display: none; }
+            .brand-name { font-size: 18px; }
+            .brand img { height: 34px; }
+        }
+    </style>
 </head>
-<body class="bg-white text-textMain font-sans min-h-screen flex flex-col selection:bg-primary selection:text-white">
+<body>
 
 <!-- ヘッダー -->
-<header class="fixed top-0 left-0 w-full bg-white z-50 border-b border-borderSubtle shadow-sm" style="border-top: 4px solid #1a5c99;">
-    <div class="flex items-center h-20 px-8 xl:px-14">
-        <!-- ロゴ・研究室名 -->
-        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0">
-            <img src="images/2109-osaka_university_logo.webp" alt="大阪大学" class="h-11 w-auto">
-            <div class="w-px h-9 bg-borderSubtle hidden sm:block"></div>
-            <div class="hidden sm:block">
-                <span class="font-bold text-xl text-gray-900 tracking-wide">荒木研究室</span>
-                <p class="text-[10px] text-gray-400 leading-tight mt-0.5">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</p>
-            </div>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+        <a href="index.html" class="brand" aria-label="荒木研究室 ホーム">
+            <img src="images/logo-osaka-university.webp" alt="大阪大学">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-name">荒木研究室</span>
+            <span class="brand-aff">大阪大学大学院工学研究科<br>マテリアル生産科学専攻　量子機能材料設計学領域</span>
         </a>
-        <!-- 水平ナビゲーション -->
-        <nav class="hidden md:flex items-center gap-1 ml-auto mr-6">
-            <a href="index.html" class="px-4 py-2 text-sm font-medium text-primary border-b-2 border-primary">ホーム</a>
-            <a href="research.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究内容・テーマ</a>
-            <a href="gallery.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">研究風景</a>
-            <a href="members.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">メンバー</a>
-            <a href="career.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">就職・進学実績</a>
-        </nav>
-        <!-- モバイル用ハンバーガー -->
-        <button id="menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary" aria-label="メニュー">
-            <i class="ph ph-list text-2xl"></i>
+        <button class="menu-btn" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+            <i class="ph ph-list" aria-hidden="true"></i>
         </button>
     </div>
-    <!-- モバイルメニュー -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-borderSubtle px-8 py-4 flex flex-col gap-2">
-        <a href="index.html" class="py-2 text-sm font-medium text-primary">ホーム</a>
-        <a href="research.html" class="py-2 text-sm font-medium text-gray-600">研究内容・テーマ</a>
-        <a href="gallery.html" class="py-2 text-sm font-medium text-gray-600">研究風景</a>
-        <a href="members.html" class="py-2 text-sm font-medium text-gray-600">メンバー</a>
-        <a href="career.html" class="py-2 text-sm font-medium text-gray-600">就職・進学実績</a>
+    <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html" class="active">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="active">ホーム</a>
+        <a href="research.html">研究内容・テーマ</a>
+        <a href="gallery.html">研究風景</a>
+        <a href="members.html">メンバー</a>
+        <a href="career.html">就職・進学実績</a>
     </div>
 </header>
 
-<!-- ヒーローセクション -->
-<section class="flex flex-col md:flex-row w-full mt-20 md:h-[calc(100vh-5rem)]">
-    <!-- 左：テキストエリア -->
-    <div class="w-full md:w-1/2 order-2 md:order-1 flex flex-col justify-center px-8 md:px-14 xl:px-24 bg-white relative py-10 md:py-0">
-        <p class="text-xs text-textMuted tracking-widest uppercase mb-5 md:mb-8 font-light">
-            Osaka University — Graduate School of Engineering
-        </p>
-        <h1 class="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-2">
-            荒木研究室
-        </h1>
-        <p class="text-sm font-sans italic text-textMuted mb-5 md:mb-8">Araki Laboratory</p>
-        <div class="w-12 h-0.5 bg-primary mb-5 md:mb-8"></div>
-        <p class="text-lg md:text-xl xl:text-2xl text-gray-700 font-light leading-relaxed mb-4">
-            材料の謎を、原子の目で解き明かす。
-        </p>
-        <p class="text-lg md:text-xl xl:text-2xl text-gray-700 font-light leading-relaxed mb-8 md:mb-12">
+<!-- ヒーロー -->
+<section class="hero">
+    <img class="hero-bg" src="images/hero-crystal-lattice.webp" alt="結晶格子と原子のイメージ" fetchpriority="high">
+    <div class="hero-veil hero-veil-left" aria-hidden="true"></div>
+    <div class="hero-veil hero-veil-bottom" aria-hidden="true"></div>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+    <div class="container hero-inner">
+        <p class="hero-eyebrow">Osaka University — Graduate School of Engineering</p>
+        <h1 class="hero-title">荒木研究室</h1>
+        <p class="hero-title-en">Araki Laboratory</p>
+        <p class="hero-copy">
+            材料の謎を、原子の目で解き明かす。<br>
             陽電子と計算で切り拓く材料科学の最前線。
         </p>
-        <div class="flex gap-4">
-            <a href="research.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-primaryDark transition-colors">
-                研究内容を見る <i class="ph ph-arrow-right"></i>
-            </a>
-            <a href="members.html" class="inline-flex items-center gap-2 px-6 py-3 border border-borderSubtle text-gray-700 text-sm font-medium rounded hover:border-primary hover:text-primary transition-colors">
-                メンバー
-            </a>
+        <div class="hero-actions">
+            <a href="research.html" class="btn-primary">研究内容を見る <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            <a href="members.html" class="btn-ghost">メンバーを見る <i class="ph ph-users" aria-hidden="true"></i></a>
         </div>
-        <p class="hidden md:block absolute bottom-8 left-14 xl:left-24 text-[10px] text-gray-300 font-light leading-relaxed">
+        <p class="hero-note">
             Unravel the mysteries of materials at the atomic scale.<br>
             Advancing materials science through positrons and computation.
         </p>
     </div>
-    <!-- 右：イメージエリア -->
-    <div class="w-full md:w-1/2 order-1 md:order-2 relative overflow-hidden bg-gray-900 h-56 sm:h-72 md:h-auto">
-        <img src="images/l_13020102.jpg" alt="結晶構造シミュレーション" class="absolute inset-0 w-full h-full object-cover object-center">
+    <button class="hero-scroll" id="hero-scroll" aria-label="下へスクロール">
+        SCROLL
+        <i class="ph ph-caret-down" aria-hidden="true"></i>
+    </button>
+</section>
 
-        <div class="absolute inset-0 flex items-end p-10">
-            <div class="text-white/60 text-xs font-light leading-relaxed hidden md:block">
-                大阪大学大学院工学研究科<br>
-                マテリアル生産科学専攻　量子機能材料設計学領域
+<!-- About -->
+<section class="about" id="about">
+    <div class="container about-grid">
+        <div class="reveal">
+            <p class="section-label">About</p>
+            <h2 class="section-title">荒木研究室について</h2>
+            <p class="about-catch">材料の謎を、原子の目で解き明かす。</p>
+            <p class="about-body">
+                電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。自動車用アルミニウム合金や高強度鋼などの金属材料や、高エントロピー合金・金属３Ｄプリンターで作製した合金の特性発現機構を、陽電子を用いた実験および第一原理計算により解明し、新しい材料を設計するための研究を行っています。
+            </p>
+            <a href="research.html" class="btn-outline">View More <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="about-visual reveal" style="--d:.15s">
+            <figure class="lab-sim" id="lab-sim">
+                <canvas id="lab-canvas"></canvas>
+                <div class="lab-hud">
+                    <div class="lab-readout">
+                        <span class="lab-readout-label">陽電子寿命</span>
+                        <span class="lab-readout-value" id="lab-life">—<small> ps</small></span>
+                    </div>
+                    <div class="lab-readout">
+                        <span class="lab-readout-label">見つけた欠陥</span>
+                        <span class="lab-readout-value" id="lab-count">0</span>
+                    </div>
+                </div>
+                <p class="lab-state" id="lab-state">結晶の中を拡散中…</p>
+                <figcaption class="lab-hint">
+                    <i class="ph ph-cursor" aria-hidden="true"></i>
+                    <span id="lab-hint-text">動かす：陽電子を誘導　／　クリック：打ち込む</span>
+                </figcaption>
+                <p class="lab-sr">
+                    陽電子消滅法の体験装置です。原子が並んだ結晶の中で陽電子（e⁺）を動かし、
+                    原子が抜けた「空孔」などの格子欠陥に捕まえると対消滅が起こり、
+                    2本のγ線が正反対に飛び出します。欠陥の種類によって陽電子の寿命が変わることを、
+                    鉄における実測値（完全結晶107ps、転位150ps、単空孔177ps、2重空孔197ps）で示しています。
+                </p>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- Activities -->
+<section class="activities">
+    <div class="container">
+        <div class="activities-head reveal">
+            <p class="section-label">Activities</p>
+            <h2 class="section-title">研究室の活動</h2>
+        </div>
+        <div class="activity-grid">
+            <a href="research.html" class="activity-card reveal">
+                <div class="activity-media">
+                    <img src="images/topic-positron-annihilation.png" alt="陽電子消滅法の実験装置">
+                    <span class="activity-num">01</span>
+                </div>
+                <div class="activity-body">
+                    <h3 class="activity-title">陽電子消滅法による<br>格子欠陥解析</h3>
+                    <p class="activity-desc">電子の反物質である陽電子を用いて、材料中の原子空孔などの格子欠陥を高感度に検出・解析します。</p>
+                    <i class="ph ph-arrow-right activity-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="research.html" class="activity-card reveal" style="--d:.1s">
+                <div class="activity-media">
+                    <img src="images/topic-first-principles.png" alt="第一原理計算による原子構造モデル">
+                    <span class="activity-num">02</span>
+                </div>
+                <div class="activity-body">
+                    <h3 class="activity-title">第一原理計算による<br>材料設計</h3>
+                    <p class="activity-desc">原子レベルのコンピュータ・シミュレーションにより、新しい材料の探索と性能評価を行います。</p>
+                    <i class="ph ph-arrow-right activity-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="research.html" class="activity-card reveal" style="--d:.2s">
+                <div class="activity-media">
+                    <img src="images/topic-high-entropy-alloy.png" alt="高エントロピー合金の微細組織イメージ">
+                    <span class="activity-num">03</span>
+                </div>
+                <div class="activity-body">
+                    <h3 class="activity-title">高エントロピー合金・<br>先進金属材料の研究</h3>
+                    <p class="activity-desc">多種類の元素を均一に混合した高エントロピー合金の優れた特性発現機構を解明し、新しい材料設計の指針を提供します。</p>
+                    <i class="ph ph-arrow-right activity-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+            <a href="research.html" class="activity-card reveal" style="--d:.3s">
+                <div class="activity-media">
+                    <img src="images/topic-metal-3d-printing.png" alt="金属3Dプリンターによる造形">
+                    <span class="activity-num">04</span>
+                </div>
+                <div class="activity-body">
+                    <h3 class="activity-title">金属3Dプリンター<br>造形合金の欠陥評価</h3>
+                    <p class="activity-desc">レーザー粉末床溶融結合法により造形された合金における格子欠陥を同定し、材料特性への影響を体系的に評価します。</p>
+                    <i class="ph ph-arrow-right activity-arrow" aria-hidden="true"></i>
+                </div>
+            </a>
+        </div>
+        <div class="activities-more reveal">
+            <a href="research.html" class="btn-outline">View More <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- News & Topics -->
+<section class="news">
+    <svg class="news-waves" viewBox="0 0 880 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g>
+            <path d="M0,120 C66,80 133,80 200,120 S333,160 400,120 S533,80 600,120 S733,160 800,120 S933,80 1000,120 S1133,160 1200,120 S1333,80 1400,120 S1533,160 1600,120"
+                  stroke="#8fb4dd" stroke-width="1.6" opacity=".55"/>
+            <path d="M0,150 C66,115 133,115 200,150 S333,185 400,150 S533,115 600,150 S733,185 800,150 S933,115 1000,150 S1133,185 1200,150 S1333,115 1400,150 S1533,185 1600,150"
+                  stroke="#aac8e8" stroke-width="1.4" opacity=".45"/>
+            <path d="M0,90 C66,58 133,58 200,90 S333,122 400,90 S533,58 600,90 S733,122 800,90 S933,58 1000,90 S1133,122 1200,90 S1333,58 1400,90 S1533,122 1600,90"
+                  stroke="#c5d9ef" stroke-width="1.2" opacity=".5"/>
+        </g>
+    </svg>
+    <div class="container news-inner">
+        <div class="news-head reveal">
+            <h2 class="section-title" style="font-family: var(--serif); letter-spacing:.05em;">News &amp; Topics</h2>
+        </div>
+        <div class="news-list reveal" style="--d:.1s">
+            <a href="members.html" class="news-row">
+                <time class="news-date">2026年4月</time>
+                <span class="news-tag news-tag--outline">メンバー</span>
+                <p class="news-text">新B4学生7名が荒木研究室に配属されました。</p>
+                <i class="ph ph-caret-right news-chevron" aria-hidden="true"></i>
+            </a>
+            <div class="news-row">
+                <time class="news-date">2026年4月</time>
+                <span class="news-tag news-tag--fill">お知らせ</span>
+                <p class="news-text">荒木研究室のホームページをリニューアルしました。</p>
+                <span></span>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Us セクション -->
-<section class="py-24 bg-surface border-t border-borderSubtle">
-    <div class="max-w-[720px] mx-auto px-8 text-center">
-        <h2 class="text-5xl font-bold text-gray-900 tracking-tight mb-3">About</h2>
-        <p class="text-sm text-textMuted mb-10">荒木研究室について</p>
-        <p class="text-xl font-bold text-gray-900 leading-relaxed mb-6">
-            材料の謎を、原子の目で解き明かす。
-        </p>
-        <p class="text-[0.97em] text-gray-600 leading-[2] mb-10">
-            電子の反物質である陽電子（ポジトロン）を利用することにより、材料の内部構造を原子サイズオーダで観察することができます。自動車用アルミニウム合金や高強度鋼などの金属材料や、高エントロピー合金・金属３Ｄプリンターで作製した合金の特性発現機構を、陽電子を用いた実験および第一原理計算により解明し、新しい材料を設計するための研究を行っています。
-        </p>
-        <a href="research.html" class="inline-block px-10 py-3 bg-gray-900 text-white text-sm font-medium tracking-wider hover:bg-gray-700 transition-colors">
-            View More
-        </a>
-    </div>
-</section>
-
-<!-- Research セクション -->
-<section class="py-24 bg-white border-t border-borderSubtle">
-    <div class="max-w-[960px] mx-auto px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-5xl font-bold text-gray-900 tracking-tight mb-3">Activities</h2>
-            <p class="text-sm text-textMuted">研究室の活動</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            <a href="research.html" class="group block">
-                <div class="overflow-hidden mb-5">
-                    <img src="images/photomultiplier.jpeg" alt="陽電子消滅法" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">陽電子消滅法による格子欠陥解析</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">陽電子消滅法の基礎研究の観点から、ディープラーニングと、時代を先駆ける研究に挑んでいます。特に、世界のモデルのドット研究、大規模言語モデル、脳・AIに関する研究を積極的に進めています。</p>
-            </a>
-            <a href="research.html" class="group block">
-                <div class="overflow-hidden mb-5">
-                    <img src="images/computer.jpeg" alt="第一原理計算" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">第一原理計算による材料設計</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">基礎研究の成果を発信のある学び・質の高い教育として多くの人に提供し、人・知識ひいては社会の変化に関わることを目的に講義の活動も積極的に進めています。</p>
-            </a>
-            <a href="research.html" class="group block">
-                <div class="overflow-hidden mb-5">
-                    <img src="images/research_scene.jpeg" alt="先進合金材料" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">高エントロピー合金・先進金属材料の研究</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">多種類の元素を均一に混合した高エントロピー合金の優れた特性発現機構を解明し、新しい材料設計の指針を提供します。</p>
-            </a>
-            <a href="research.html" class="group block">
-                <div class="overflow-hidden mb-5">
-                    <img src="images/electric_furnace.jpeg" alt="金属材料プロセス" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <h3 class="text-base font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">金属3Dプリンター造形合金の欠陥評価</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">レーザー粉末床溶融結合法により造形された合金における格子欠陥を同定し、材料特性への影響を体系的に評価します。</p>
-            </a>
-        </div>
-        <div class="mt-12 text-center">
-            <a href="research.html" class="inline-block px-10 py-3 border border-gray-900 text-gray-900 text-sm font-medium tracking-wider hover:bg-gray-900 hover:text-white transition-colors">
-                View More
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- お知らせ セクション -->
-<section class="px-8 md:px-14 xl:px-24 py-20 bg-white border-t border-borderSubtle">
-    <div class="max-w-[960px] mx-auto">
-        <div class="flex items-center gap-3 mb-8">
-            <div class="w-1 h-10 bg-primary rounded-full"></div>
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">お知らせ</h2>
-            <span class="text-base text-textMuted font-light">News & Topics</span>
-        </div>
-        <div class="bg-surface rounded-lg border border-borderSubtle overflow-hidden">
-            <a href="members.html" class="news-row flex flex-col sm:flex-row sm:items-center gap-3 p-4 hover:bg-white border-b border-gray-100 last:border-0 relative group">
-                <div class="flex items-center gap-3 sm:w-[200px] shrink-0">
-                    <time class="font-sans text-sm text-gray-500 w-20 shrink-0">2026年4月</time>
-                    <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 bg-green-50 text-green-700 border border-green-100 rounded-sm whitespace-nowrap">メンバー</span>
-                </div>
-                <p class="flex-1 text-[15px] text-gray-700 group-hover:text-primary transition-colors leading-relaxed">
-                    新B4学生7名が荒木研究室に配属されました。
-                </p>
-            </a>
-            <a href="#" class="news-row flex flex-col sm:flex-row sm:items-center gap-3 p-4 hover:bg-white border-b border-gray-100 last:border-0 relative group">
-                <div class="flex items-center gap-3 sm:w-[200px] shrink-0">
-                    <time class="font-sans text-sm text-gray-500 w-20 shrink-0">2026年4月</time>
-                    <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 bg-blue-50 text-primary border border-blue-100 rounded-sm whitespace-nowrap">お知らせ</span>
-                </div>
-                <p class="flex-1 text-[15px] text-gray-700 group-hover:text-primary transition-colors leading-relaxed">
-                    荒木研究室のホームページをリニューアルしました。
-                </p>
-            </a>
         </div>
     </div>
 </section>
 
 <!-- フッター -->
-<footer class="bg-primary text-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-grid-hero opacity-10 pointer-events-none"></div>
-    <div class="relative z-10 px-8 md:px-14 xl:px-24 py-10 max-w-[960px] mx-auto flex flex-col md:flex-row justify-between gap-6">
-        <div>
-            <div class="flex items-center gap-2 mb-2">
-                <i class="ph ph-atom text-white/70 text-lg"></i>
-                <span class="font-bold text-base">荒木研究室</span>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand-row">
+                <div>
+                    <p class="footer-name">荒木研究室</p>
+                    <p class="footer-aff">
+                        大阪大学大学院工学研究科<br>
+                        マテリアル生産科学専攻<br>
+                        量子機能材料設計学領域
+                    </p>
+                </div>
+                <svg class="footer-molecule" width="92" height="76" viewBox="0 0 92 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="18" y1="52" x2="42" y2="24" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="18" y1="52" x2="52" y2="60" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="52" y1="60" x2="72" y2="38" stroke="#a9c6e8" stroke-width="1.2"/>
+                    <line x1="42" y1="24" x2="52" y2="60" stroke="#c5d9ef" stroke-width="1"/>
+                    <circle cx="18" cy="52" r="6" fill="#2a6bb0"/>
+                    <circle cx="42" cy="24" r="8" fill="#1a5c99"/>
+                    <circle cx="72" cy="38" r="5" fill="#7fa9d6"/>
+                    <circle cx="52" cy="60" r="4.5" fill="#a9c6e8"/>
+                    <circle cx="80" cy="14" r="2.5" fill="#c5d9ef"/>
+                    <circle cx="8" cy="18" r="2" fill="#c5d9ef"/>
+                </svg>
             </div>
-            <p class="text-sm text-white/75 leading-relaxed font-light">
-                大阪大学大学院工学研究科<br>マテリアル生産科学専攻 量子機能材料設計学領域
-            </p>
+            <div>
+                <p class="footer-label">関連リンク</p>
+                <ul class="footer-links">
+                    <li><a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学</a></li>
+                    <li><a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>大阪大学 工学研究科</a></li>
+                    <li><a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener"><i class="ph ph-caret-right" aria-hidden="true"></i>マテリアル生産科学専攻</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-label">サイトリンク</p>
+                <ul class="footer-links">
+                    <li><a href="research.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究内容・テーマ</a></li>
+                    <li><a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i>研究風景</a></li>
+                    <li><a href="members.html"><i class="ph ph-caret-right" aria-hidden="true"></i>メンバー</a></li>
+                    <li><a href="career.html"><i class="ph ph-caret-right" aria-hidden="true"></i>就職・進学実績</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="flex flex-col gap-1 text-sm text-white/60">
-            <a href="research.html" class="hover:text-white transition-colors">研究内容・テーマ</a>
-            <a href="gallery.html" class="hover:text-white transition-colors">研究風景</a>
-            <a href="members.html" class="hover:text-white transition-colors">メンバー</a>
-            <a href="career.html" class="hover:text-white transition-colors">就職・進学実績</a>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
         </div>
-        <div class="flex flex-col gap-1 text-sm text-white/60">
-            <p class="text-xs text-white/40 uppercase tracking-widest mb-1">関連リンク</p>
-            <a href="https://www.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学</a>
-            <a href="https://www.eng.osaka-u.ac.jp/ja/" target="_blank" rel="noopener" class="hover:text-white transition-colors">大阪大学 工学研究科</a>
-            <a href="http://www.mms.eng.osaka-u.ac.jp/" target="_blank" rel="noopener" class="hover:text-white transition-colors">マテリアル生産科学専攻</a>
-        </div>
-    </div>
-    <div class="bg-[#124270] py-3 text-center relative z-10 border-t border-white/10">
-        <p class="text-xs text-white/50 tracking-wide">Copyright &copy; 荒木研究室（Araki Laboratory）, Osaka University. All Rights Reserved.</p>
     </div>
 </footer>
 
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+
 <script>
-    document.getElementById('menu-btn').addEventListener('click', function() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
+(function () {
+    'use strict';
+
+    /* ---------- モバイルメニュー ---------- */
+    var menuBtn = document.getElementById('menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
     });
+
+    /* ---------- ヘッダーの影（スクロール時） ---------- */
+    var header = document.getElementById('site-header');
+    var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- SCROLL ボタン ---------- */
+    document.getElementById('hero-scroll').addEventListener('click', function () {
+        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    /* ---------- スクロールで現れる動き ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* ---------- 粒子の漂い（ヒーロー背景・マウス連動） ---------- */
+    var canvas = document.getElementById('particle-canvas');
+    var hero = canvas.parentElement;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var particles = [];
+    var mouse = { x: -9999, y: -9999 };
+    var W = 0, H = 0, rafId = null;
+
+    function resize() {
+        W = hero.clientWidth;
+        H = hero.clientHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var count = Math.min(Math.round(W / 17), 92);
+        particles = [];
+        for (var i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.32,
+                vy: (Math.random() - 0.5) * 0.32,
+                r: 1 + Math.random() * 1.7
+            });
+        }
+    }
+
+    function step() {
+        ctx.clearRect(0, 0, W, H);
+        var linkDist = 115;
+        for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            /* マウスに近い粒子はやわらかく逃げる */
+            var dxm = p.x - mouse.x, dym = p.y - mouse.y;
+            var dm = Math.sqrt(dxm * dxm + dym * dym);
+            if (dm < 130 && dm > 0.001) {
+                var f = (130 - dm) / 130 * 0.55;
+                p.x += (dxm / dm) * f;
+                p.y += (dym / dm) * f;
+            }
+            if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+            if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+        }
+        /* 粒子どうしを細い線でつなぐ */
+        ctx.lineWidth = 1;
+        for (var a = 0; a < particles.length; a++) {
+            for (var b = a + 1; b < particles.length; b++) {
+                var dx = particles[a].x - particles[b].x;
+                var dy = particles[a].y - particles[b].y;
+                var d2 = dx * dx + dy * dy;
+                if (d2 < linkDist * linkDist) {
+                    var alpha = (1 - Math.sqrt(d2) / linkDist) * 0.28;
+                    ctx.strokeStyle = 'rgba(58, 110, 165,' + alpha.toFixed(3) + ')';
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(particles[b].x, particles[b].y);
+                    ctx.stroke();
+                }
+            }
+            /* カーソルとも線がつながる */
+            var dxc = particles[a].x - mouse.x, dyc = particles[a].y - mouse.y;
+            var dc2 = dxc * dxc + dyc * dyc;
+            if (dc2 < 150 * 150) {
+                var ac = (1 - Math.sqrt(dc2) / 150) * 0.4;
+                ctx.strokeStyle = 'rgba(42, 107, 176,' + ac.toFixed(3) + ')';
+                ctx.beginPath();
+                ctx.moveTo(particles[a].x, particles[a].y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+        }
+        for (var k = 0; k < particles.length; k++) {
+            var q = particles[k];
+            ctx.fillStyle = 'rgba(58, 110, 165, 0.5)';
+            ctx.beginPath();
+            ctx.arc(q.x, q.y, q.r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        rafId = requestAnimationFrame(step);
+    }
+
+    function start() {
+        if (rafId === null) rafId = requestAnimationFrame(step);
+    }
+    function stop() {
+        if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    resize();
+    if (reduceMotion) {
+        /* 動きを減らす設定のときは静止画として一度だけ描画 */
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(function (q) {
+            ctx.fillStyle = 'rgba(58, 110, 165, 0.4)';
+            ctx.beginPath();
+            ctx.arc(q.x, q.y, q.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    } else {
+        start();
+        window.addEventListener('resize', function () { resize(); }, { passive: true });
+        hero.addEventListener('mousemove', function (e) {
+            var rect = hero.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        hero.addEventListener('mouseleave', function () {
+            mouse.x = -9999; mouse.y = -9999;
+        });
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stop(); else start();
+        });
+    }
+})();
+
+/* =====================================================================
+   About セクション：陽電子消滅シミュレーター
+   結晶中で陽電子（e⁺）を動かし、格子欠陥で対消滅させて遊べる装置。
+   寿命の数値は鉄における実測値（完全結晶107 / 転位150 / 単空孔177 / 2重空孔197 ps）。
+   ===================================================================== */
+(function () {
+    'use strict';
+
+    var wrap = document.getElementById('lab-sim');
+    if (!wrap) return;
+    var canvas = document.getElementById('lab-canvas');
+    if (!canvas || !canvas.getContext) return;
+
+    var ctx = canvas.getContext('2d');
+    var elLife = document.getElementById('lab-life');
+    var elCount = document.getElementById('lab-count');
+    var elState = document.getElementById('lab-state');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    /* 欠陥の種類と陽電子寿命（鉄の実測値） */
+    var DEFS = [
+        { fx: .29, fy: .30, kind: '単空孔',   ps: 177, cells: 1 },
+        { fx: .72, fy: .27, kind: '2重空孔',  ps: 197, cells: 2 },
+        { fx: .21, fy: .73, kind: '単空孔',   ps: 177, cells: 1 },
+        { fx: .68, fy: .70, kind: '転位',     ps: 150, cells: 0 }
+    ];
+    var BULK = { kind: '完全結晶', ps: 107 };
+
+    var W = 0, H = 0, gap = 0, atomR = 0, sprite = null, spriteS = 0;
+    var atoms = [], bonds = [], defects = [], gammas = [], flashes = [], beams = [], trail = [];
+    var pos = { x: 0, y: 0, state: 'free', t: 0, life: 0, alpha: 0, def: null, capR: 0, capA: 0 };
+    var target = { x: 0, y: 0, has: false };
+    var count = 0, raf = null, last = 0, wander = 0, visible = true;
+
+    function setState(txt) {
+        elState.textContent = txt;
+        elState.classList.remove('flash');
+        void elState.offsetWidth;
+        elState.classList.add('flash');
+    }
+
+    /* ---------- 結晶格子の組み立て ---------- */
+    function build() {
+        var rect = wrap.getBoundingClientRect();
+        W = Math.max(1, rect.width);
+        H = Math.max(1, rect.height);
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        gap = Math.max(30, Math.min(W / 8.2, 56));
+        atomR = gap * 0.225;
+
+        /* 六方最密風に原子を並べる */
+        atoms = [];
+        var rowH = gap * 0.866;
+        var rows = Math.ceil(H / rowH) + 2;
+        var cols = Math.ceil(W / gap) + 2;
+        for (var r = -1; r < rows; r++) {
+            for (var c = -1; c < cols; c++) {
+                var x = c * gap + (r % 2 ? gap / 2 : 0);
+                var y = r * rowH;
+                atoms.push({ ox: x, oy: y, x: x, y: y, dead: false });
+            }
+        }
+
+        defects = DEFS.map(function (d) {
+            return { x: d.fx * W, y: d.fy * H, kind: d.kind, ps: d.ps,
+                     cells: d.cells, rad: gap * 0.45, cool: 0, ph: Math.random() * 6.283 };
+        });
+
+        /* 転位：芯より上・右側の原子をずらして「余分な半原子面」を作る */
+        var dis = null;
+        defects.forEach(function (d) { if (d.kind === '転位') dis = d; });
+        if (dis) {
+            atoms.forEach(function (a) {
+                if (a.oy < dis.y && a.ox > dis.x - gap * 0.4) {
+                    a.ox += gap * 0.36; a.x = a.ox;
+                }
+            });
+            dis.rad = gap * 0.5;
+        }
+
+        /* 空孔：欠陥位置に最も近い原子を抜く */
+        defects.forEach(function (d) {
+            if (!d.cells) return;
+            var live = atoms.filter(function (a) { return !a.dead; });
+            live.sort(function (p, q) {
+                return ((p.ox - d.x) * (p.ox - d.x) + (p.oy - d.y) * (p.oy - d.y)) -
+                       ((q.ox - d.x) * (q.ox - d.x) + (q.oy - d.y) * (q.oy - d.y));
+            });
+            var cx = 0, cy = 0, n = Math.min(d.cells, live.length);
+            for (var k = 0; k < n; k++) { live[k].dead = true; cx += live[k].ox; cy += live[k].oy; }
+            if (n) { d.x = cx / n; d.y = cy / n; }
+            d.rad = n > 1 ? gap * 0.66 : gap * 0.44;
+        });
+        atoms = atoms.filter(function (a) { return !a.dead; });
+
+        /* 原子どうしの結合線を先に求めておく */
+        bonds = [];
+        var lim = gap * gap * 1.16;
+        for (var i = 0; i < atoms.length; i++) {
+            for (var j = i + 1; j < atoms.length; j++) {
+                var dx = atoms[i].ox - atoms[j].ox, dy = atoms[i].oy - atoms[j].oy;
+                if (dx * dx + dy * dy < lim) bonds.push([i, j]);
+            }
+        }
+
+        /* 原子の絵は使い回す（毎回描くと重いため） */
+        spriteS = Math.ceil(atomR * 2.8);
+        sprite = document.createElement('canvas');
+        sprite.width = Math.round(spriteS * dpr);
+        sprite.height = Math.round(spriteS * dpr);
+        var sc = sprite.getContext('2d');
+        sc.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var g = sc.createRadialGradient(spriteS * 0.37, spriteS * 0.33, atomR * 0.12,
+                                        spriteS / 2, spriteS / 2, atomR);
+        g.addColorStop(0, '#f0f7ff');
+        g.addColorStop(.42, '#a6c8ec');
+        g.addColorStop(1, '#3d6b9e');
+        sc.fillStyle = g;
+        sc.beginPath();
+        sc.arc(spriteS / 2, spriteS / 2, atomR, 0, 6.2832);
+        sc.fill();
+
+        if (!pos.x) { pos.x = W * 0.5; pos.y = H * 0.5; }
+    }
+
+    /* ---------- 対消滅 ---------- */
+    function annihilate(d) {
+        var info = d || BULK;
+        flashes.push({ x: pos.x, y: pos.y, t: 0 });
+        var a0 = Math.random() * 6.2832;
+        gammas.push({ x: pos.x, y: pos.y, ang: a0, t: 0 });
+        gammas.push({ x: pos.x, y: pos.y, ang: a0 + Math.PI, t: 0 });
+        elLife.innerHTML = info.ps + '<small> ps</small>';
+        if (d) {
+            count++;
+            elCount.textContent = count;
+            d.cool = 2400;
+            setState(d.kind + 'で対消滅 — γ線を2本放出');
+        } else {
+            setState('完全結晶の中で対消滅 — 欠陥がないと寿命は短い');
+        }
+        pos.state = 'gone';
+        pos.t = 0;
+        trail.length = 0;
+    }
+
+    function capture(d) {
+        pos.state = 'captured';
+        pos.t = 0;
+        pos.def = d;
+        pos.capR = Math.sqrt((pos.x - d.x) * (pos.x - d.x) + (pos.y - d.y) * (pos.y - d.y));
+        pos.capA = Math.atan2(pos.y - d.y, pos.x - d.x);
+        setState(d.kind + 'に捕獲されました…');
+    }
+
+    function implant() {
+        if (pos.state === 'captured') return;
+        pos.state = 'free';
+        pos.life = 0;
+        pos.alpha = 0;
+        pos.x = target.x;
+        pos.y = target.y;
+        trail.length = 0;
+        beams.push({ x: target.x, y: target.y, t: 0 });
+        setState('陽電子を打ち込みました');
+    }
+
+    /* ---------- 毎コマの更新と描画 ---------- */
+    function frame(now) {
+        /* 0〜48ms に収める（タブ復帰などで時間が飛んでも壊れないように） */
+        var dt = Math.max(0, Math.min(48, now - (last || now)));
+        last = now;
+
+        /* --- 更新 --- */
+        defects.forEach(function (d) { if (d.cool > 0) d.cool -= dt; });
+
+        if (pos.state === 'free') {
+            var tx, ty;
+            if (target.has) { tx = target.x; ty = target.y; }
+            else {
+                wander += dt * 0.001;
+                tx = W * (0.5 + 0.33 * Math.cos(wander * 0.66));
+                ty = H * (0.5 + 0.29 * Math.sin(wander * 1.07));
+            }
+            /* 画面のリフレッシュレートによらず同じ速さで追従させる */
+            var ease = 1 - Math.exp(-dt / 170);
+            pos.x += (tx - pos.x) * ease;
+            pos.y += (ty - pos.y) * ease;
+            pos.alpha = Math.min(1, pos.alpha + dt / 260);
+            pos.life += dt;
+
+            for (var i = 0; i < defects.length; i++) {
+                var d = defects[i];
+                if (d.cool > 0) continue;
+                var dx = pos.x - d.x, dy = pos.y - d.y;
+                if (dx * dx + dy * dy < (d.rad + gap * 0.3) * (d.rad + gap * 0.3)) { capture(d); break; }
+            }
+            /* 欠陥に出会わなければ、やがて完全結晶中で対消滅する */
+            if (pos.state === 'free' && pos.life > 9500) annihilate(null);
+        } else if (pos.state === 'captured') {
+            pos.t += dt;
+            var k = Math.min(1, pos.t / 540);
+            var dd = pos.def;
+            var ang = pos.capA + k * 7.5;
+            var rr = (1 - k) * pos.capR;
+            pos.x = dd.x + Math.cos(ang) * rr;
+            pos.y = dd.y + Math.sin(ang) * rr;
+            if (k >= 1) annihilate(dd);
+        } else {
+            pos.t += dt;
+            if (pos.t > 720) {
+                pos.state = 'free';
+                pos.life = 0;
+                pos.alpha = 0;
+                pos.x = target.has ? target.x : W * 0.5;
+                pos.y = target.has ? target.y : H * 0.5;
+                setState('結晶の中を拡散中…');
+            }
+        }
+
+        if (pos.state === 'free' || pos.state === 'captured') {
+            trail.push({ x: pos.x, y: pos.y });
+            if (trail.length > 18) trail.shift();
+        }
+
+        /* 陽電子の周りで原子がわずかに押しのけられる */
+        var reach = gap * 2.3;
+        var aEase = 1 - Math.exp(-dt / 110);
+        for (var a = 0; a < atoms.length; a++) {
+            var at = atoms[a], ex = at.ox, ey = at.oy;
+            if (pos.state !== 'gone') {
+                var vx = at.ox - pos.x, vy = at.oy - pos.y;
+                var dist = Math.sqrt(vx * vx + vy * vy);
+                if (dist < reach && dist > 0.01) {
+                    var push = (1 - dist / reach) * gap * 0.17 * pos.alpha;
+                    ex += vx / dist * push;
+                    ey += vy / dist * push;
+                }
+            }
+            at.x += (ex - at.x) * aEase;
+            at.y += (ey - at.y) * aEase;
+        }
+
+        /* --- 描画 --- */
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(146, 184, 230, .34)';
+        ctx.beginPath();
+        for (var b = 0; b < bonds.length; b++) {
+            var p = atoms[bonds[b][0]], q = atoms[bonds[b][1]];
+            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+        }
+        ctx.stroke();
+
+        for (var s = 0; s < atoms.length; s++) {
+            ctx.drawImage(sprite, atoms[s].x - spriteS / 2, atoms[s].y - spriteS / 2, spriteS, spriteS);
+        }
+
+        /* 欠陥（点線の輪）。転位には ⊥ の記号を添える */
+        for (var v = 0; v < defects.length; v++) {
+            var df = defects[v];
+            var ready = df.cool <= 0;
+            var pulse = 0.5 + 0.5 * Math.sin(now * 0.0025 + df.ph);
+            ctx.setLineDash([3, 4]);
+            ctx.lineWidth = 1.4;
+            ctx.strokeStyle = ready
+                ? 'rgba(150, 170, 255,' + (0.32 + 0.42 * pulse).toFixed(3) + ')'
+                : 'rgba(150, 170, 255, .13)';
+            ctx.beginPath();
+            ctx.arc(df.x, df.y, df.rad, 0, 6.2832);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            if (df.kind === '転位') {
+                var t = df.rad * 0.5;
+                ctx.beginPath();
+                ctx.moveTo(df.x - t, df.y + t * 0.8); ctx.lineTo(df.x + t, df.y + t * 0.8);
+                ctx.moveTo(df.x, df.y + t * 0.8); ctx.lineTo(df.x, df.y - t);
+                ctx.stroke();
+            }
+        }
+
+        /* 打ち込みビーム */
+        for (var bm = beams.length - 1; bm >= 0; bm--) {
+            var be = beams[bm];
+            be.t += dt;
+            var bk = be.t / 420;
+            if (bk >= 1) { beams.splice(bm, 1); continue; }
+            ctx.strokeStyle = 'rgba(255, 150, 200,' + (0.75 * (1 - bk)).toFixed(3) + ')';
+            ctx.lineWidth = 2 * (1 - bk) + 0.6;
+            ctx.beginPath();
+            ctx.moveTo(be.x - W * 0.9 * (1 - bk) - 30, be.y - H * 0.5 * (1 - bk) - 20);
+            ctx.lineTo(be.x, be.y);
+            ctx.stroke();
+        }
+
+        /* γ線（正反対に飛ぶ2本） */
+        for (var gi = gammas.length - 1; gi >= 0; gi--) {
+            var gm = gammas[gi];
+            gm.t += dt;
+            var head = gm.t * 0.46;
+            var tail = Math.max(0, head - 52);
+            var span = Math.max(W, H) * 0.85;
+            if (tail > span) { gammas.splice(gi, 1); continue; }
+            var fade = 1 - Math.max(0, (head - span * 0.55) / (span * 0.45));
+            fade = Math.max(0, Math.min(1, fade));
+            ctx.save();
+            ctx.translate(gm.x, gm.y);
+            ctx.rotate(gm.ang);
+            ctx.beginPath();
+            for (var u = tail; u <= head; u += 2.4) {
+                var amp = 4.4 * Math.min(1, u / 20);
+                var wy = Math.sin(u * 0.34) * amp;
+                if (u === tail) ctx.moveTo(u, wy); else ctx.lineTo(u, wy);
+            }
+            ctx.strokeStyle = 'rgba(246, 199, 118,' + (0.9 * fade).toFixed(3) + ')';
+            ctx.lineWidth = 1.8;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            ctx.restore();
+            if (fade > 0.3 && head < span) {
+                ctx.fillStyle = 'rgba(250, 214, 150,' + (0.85 * fade).toFixed(3) + ')';
+                ctx.font = '600 11px ' + getComputedStyle(document.body).fontFamily;
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText('γ', gm.x + Math.cos(gm.ang) * (head + 9), gm.y + Math.sin(gm.ang) * (head + 9));
+            }
+        }
+
+        /* 対消滅の閃光 */
+        for (var fi = flashes.length - 1; fi >= 0; fi--) {
+            var fl = flashes[fi];
+            fl.t += dt;
+            var fk = fl.t / 620;
+            if (fk >= 1) { flashes.splice(fi, 1); continue; }
+            var rr2 = gap * (0.3 + fk * 2.4);
+            ctx.strokeStyle = 'rgba(214, 232, 255,' + (0.75 * (1 - fk)).toFixed(3) + ')';
+            ctx.lineWidth = 2.4 * (1 - fk) + 0.4;
+            ctx.beginPath(); ctx.arc(fl.x, fl.y, rr2, 0, 6.2832); ctx.stroke();
+            if (fk < 0.4) {
+                var core = ctx.createRadialGradient(fl.x, fl.y, 0, fl.x, fl.y, gap * 1.5 * (1 - fk));
+                core.addColorStop(0, 'rgba(255, 255, 255,' + (0.6 * (1 - fk / 0.4)).toFixed(3) + ')');
+                core.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = core;
+                ctx.beginPath(); ctx.arc(fl.x, fl.y, gap * 1.5, 0, 6.2832); ctx.fill();
+            }
+        }
+
+        /* 陽電子の軌跡と本体 */
+        if (pos.state !== 'gone') {
+            for (var ti = 0; ti < trail.length; ti++) {
+                var tp = trail[ti], tk = ti / trail.length;
+                ctx.fillStyle = 'rgba(150, 168, 250,' + (0.3 * tk * pos.alpha).toFixed(3) + ')';
+                ctx.beginPath(); ctx.arc(tp.x, tp.y, 1 + 3.4 * tk, 0, 6.2832); ctx.fill();
+            }
+            var pr = gap * 0.31;
+            var halo = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, pr * 3.4);
+            halo.addColorStop(0, 'rgba(150, 168, 250,' + (0.5 * pos.alpha).toFixed(3) + ')');
+            halo.addColorStop(1, 'rgba(150, 168, 250, 0)');
+            ctx.fillStyle = halo;
+            ctx.beginPath(); ctx.arc(pos.x, pos.y, pr * 3.4, 0, 6.2832); ctx.fill();
+
+            var core2 = ctx.createRadialGradient(pos.x - pr * 0.3, pos.y - pr * 0.35, pr * 0.1,
+                                                 pos.x, pos.y, pr);
+            core2.addColorStop(0, 'rgba(240, 244, 255,' + pos.alpha.toFixed(3) + ')');
+            core2.addColorStop(.55, 'rgba(141, 158, 244,' + pos.alpha.toFixed(3) + ')');
+            core2.addColorStop(1, 'rgba(74, 88, 201,' + pos.alpha.toFixed(3) + ')');
+            ctx.fillStyle = core2;
+            ctx.beginPath(); ctx.arc(pos.x, pos.y, pr, 0, 6.2832); ctx.fill();
+
+            ctx.fillStyle = 'rgba(255, 255, 255,' + (0.95 * pos.alpha).toFixed(3) + ')';
+            ctx.font = '700 ' + Math.round(pr * 0.95) + 'px ' + getComputedStyle(document.body).fontFamily;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('e⁺', pos.x, pos.y + 0.5);
+        }
+
+        raf = requestAnimationFrame(frame);
+    }
+
+    /* ---------- 起動・入力 ---------- */
+    function start() { if (raf === null && visible && !reduce) { last = 0; raf = requestAnimationFrame(frame); } }
+    function stop() { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } }
+
+    function setTarget(e) {
+        var r = wrap.getBoundingClientRect();
+        target.x = e.clientX - r.left;
+        target.y = e.clientY - r.top;
+        target.has = true;
+    }
+
+    build();
+
+    /* 指で操作する端末では案内文を変える */
+    if (window.matchMedia('(hover: none)').matches) {
+        var hintEl = document.getElementById('lab-hint-text');
+        if (hintEl) hintEl.textContent = 'タップ：陽電子を打ち込む';
+    }
+
+    if (reduce) {
+        /* 動きを抑える設定のときは静止画として一度だけ描く */
+        pos.alpha = 1;
+        pos.x = W * 0.5; pos.y = H * 0.5;
+        frame(0);
+        stop();
+    } else {
+        start();
+        wrap.addEventListener('pointermove', function (e) {
+            if (e.pointerType === 'touch') return;   /* スマホのスクロールを邪魔しない */
+            setTarget(e);
+        });
+        wrap.addEventListener('pointerleave', function () { target.has = false; });
+        wrap.addEventListener('pointerdown', function (e) { setTarget(e); implant(); });
+
+        window.addEventListener('resize', function () { build(); }, { passive: true });
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stop(); else start();
+        });
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (en) {
+                visible = en[0].isIntersecting;
+                if (visible) start(); else stop();
+            }, { threshold: 0 }).observe(wrap);
+        }
+    }
+})();
 </script>
 
 </body>
