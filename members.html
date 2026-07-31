@@ -230,22 +230,22 @@
             box-shadow: 0 6px 18px -8px rgba(22, 50, 79, .55);
         }
         .cohort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3.5vw, 44px); align-items: start; }
-        .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .member-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .member-chip {
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-            background: #fff; border: 1px solid var(--line); border-radius: 12px;
-            padding: 14px 8px 12px;
+            display: flex; align-items: center; gap: 9px;
+            background: #fff; border: 1px solid var(--line); border-radius: 10px;
+            padding: 11px 12px;
             transition: transform .3s ease, box-shadow .35s ease, border-color .3s ease;
         }
         .member-chip:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: #b7d0e9;
             box-shadow: 0 12px 30px -12px rgba(42, 107, 176, .38);
         }
-        .member-chip i { font-size: 19px; color: var(--sky); }
+        .member-chip i { font-size: 17px; color: var(--sky); flex-shrink: 0; }
         .member-chip span {
-            font-family: var(--serif); font-size: 13.5px; font-weight: 500;
-            letter-spacing: .14em; color: #46596f;
+            font-family: var(--serif); font-size: 13px; font-weight: 500;
+            letter-spacing: .03em; color: #46596f; white-space: nowrap;
         }
         .cohort.fade-in { animation: cohort-in .4s cubic-bezier(.22, .61, .36, 1) both; }
         @keyframes cohort-in {
@@ -470,12 +470,12 @@
                     <span class="group-sub">修士2年</span>
                 </div>
                 <div class="member-grid">
-                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>O.T.</span></div>
-                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>O.I.</span></div>
-                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>K.M.</span></div>
-                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>K.K.</span></div>
-                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>S.Y.</span></div>
-                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>T.T.</span></div>
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>太田 健介</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>大見 祐介</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>木村 一太</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>楠本 将己</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>重田 悠人</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>天正 知樹</span></div>
                 </div>
             </div>
             <div class="cohort" id="cohort-m1">
@@ -484,12 +484,12 @@
                     <span class="group-sub">修士1年</span>
                 </div>
                 <div class="member-grid">
-                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>O.T.</span></div>
-                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>G.H.</span></div>
-                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>D.K.</span></div>
-                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>M.S.</span></div>
-                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>M.J.</span></div>
-                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>Y.K.</span></div>
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>岡村 大輝</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>後藤 晴人</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>出口 航成</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>前田 柊人</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>松下 仁</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>吉武 晧成</span></div>
                 </div>
             </div>
             <div class="cohort" id="cohort-b4">
@@ -498,13 +498,13 @@
                     <span class="group-sub">学部4年</span>
                 </div>
                 <div class="member-grid">
-                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>A.T.</span></div>
-                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>I.R.</span></div>
-                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>K.Y.</span></div>
-                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>K.R.</span></div>
-                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>S.K.</span></div>
-                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>H.Y.</span></div>
-                    <div class="member-chip reveal" style="--d:.3s"><i class="ph ph-user" aria-hidden="true"></i><span>Y.Y.</span></div>
+                    <div class="member-chip reveal"><i class="ph ph-user" aria-hidden="true"></i><span>阿久津 智輝</span></div>
+                    <div class="member-chip reveal" style="--d:.05s"><i class="ph ph-user" aria-hidden="true"></i><span>今井 稜介</span></div>
+                    <div class="member-chip reveal" style="--d:.1s"><i class="ph ph-user" aria-hidden="true"></i><span>加藤 悠一郎</span></div>
+                    <div class="member-chip reveal" style="--d:.15s"><i class="ph ph-user" aria-hidden="true"></i><span>窪田 廉志郎</span></div>
+                    <div class="member-chip reveal" style="--d:.2s"><i class="ph ph-user" aria-hidden="true"></i><span>櫻井 公大</span></div>
+                    <div class="member-chip reveal" style="--d:.25s"><i class="ph ph-user" aria-hidden="true"></i><span>比嘉 祐大</span></div>
+                    <div class="member-chip reveal" style="--d:.3s"><i class="ph ph-user" aria-hidden="true"></i><span>山野 雄市</span></div>
                 </div>
             </div>
         </div>
